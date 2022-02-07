@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DGU_ByteArrayAssist
+namespace DGU.ByteArrayAssist
 {
 	/// <summary>
 	/// byte 배열을 처리하기위한 유틸리티

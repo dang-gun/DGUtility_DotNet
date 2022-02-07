@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DGU_StringAssist
+namespace DGU.StringAssist
 {
 	public static class NumberAssist
 	{

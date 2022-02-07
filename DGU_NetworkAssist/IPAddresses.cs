@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace DGU_NetworkAssist
+namespace DGU.NetworkAssist
 {
 	/// <summary>
 	/// IP처리 관련 유틸리티
