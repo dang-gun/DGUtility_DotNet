@@ -11,7 +11,7 @@ namespace ByteAssist
 	public static class ByteArrayAssist
 	{
 		/// <summary>
-		/// byteA와 byteB를 합친다.
+		/// byteA와 byteB를 합칩니다.
 		/// </summary>
 		/// <param name="byteA"></param>
 		/// <param name="byteB"></param>
@@ -31,7 +31,7 @@ namespace ByteAssist
 
 		/// <summary>
 		/// byteB의 내용을 그대로 byteA로 복사합니다.
-		/// <para>입력값의 크기가 다른건 예외처리 하지 않습니다.</para>
+		/// 입력값의 크기가 다른건 예외처리 하지 않습니다.
 		/// </summary>
 		/// <param name="byteA"></param>
 		/// <param name="byteB"></param>
@@ -45,7 +45,7 @@ namespace ByteAssist
 		}
 
 		/// <summary>
-		/// 데이터의 앞을 지정한 크기 만큼 지운다.(왼쪽)
+		/// 데이터의 앞을 지정한 크기 만큼 지운다.
 		/// </summary>
 		/// <param name="byteA"></param>
 		/// <param name="nLength"></param>
@@ -59,7 +59,7 @@ namespace ByteAssist
 		}
 
 		/// <summary>
-		/// 데이터의 뒤를 지정한 크기만큼 지운다.(오른쪽)
+		/// 데이터의 뒤를 지정한 크기만큼 지운다.
 		/// </summary>
 		/// <param name="byteA"></param>
 		/// <param name="nLength"></param>
@@ -73,7 +73,7 @@ namespace ByteAssist
 		}
 
 		/// <summary>
-		/// 끝에서 부터 빈값을 찾아 찾은 자리에서 부터 끝까지의 내용을 지운다.
+		/// 빈값이 찾고 찾은 자리에서 부터 오른쪽 내용을 지웁니다.
 		/// </summary>
 		/// <param name="byteA"></param>
 		/// <returns></returns>
