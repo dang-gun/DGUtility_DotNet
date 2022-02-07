@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_StringAssist", "DGU_Str
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_NetworkAssist", "DGU_NetworkAssist\DGU_NetworkAssist.csproj", "{42777A87-D887-4160-A86C-3EBE481D476B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_EnumToClass", "DGU_EnumToClass\DGU_EnumToClass.csproj", "{3D8E893A-CA2C-4374-870E-983E9A36200D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_EnumToClass_Test", "DGU_EnumToClass_Test\DGU_EnumToClass_Test.csproj", "{50972F77-0382-4EF6-B762-3B7E444AB129}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{42777A87-D887-4160-A86C-3EBE481D476B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42777A87-D887-4160-A86C-3EBE481D476B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42777A87-D887-4160-A86C-3EBE481D476B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D8E893A-CA2C-4374-870E-983E9A36200D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D8E893A-CA2C-4374-870E-983E9A36200D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D8E893A-CA2C-4374-870E-983E9A36200D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D8E893A-CA2C-4374-870E-983E9A36200D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50972F77-0382-4EF6-B762-3B7E444AB129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50972F77-0382-4EF6-B762-3B7E444AB129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50972F77-0382-4EF6-B762-3B7E444AB129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50972F77-0382-4EF6-B762-3B7E444AB129}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
