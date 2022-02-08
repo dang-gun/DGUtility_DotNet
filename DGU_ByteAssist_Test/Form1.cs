@@ -1,4 +1,5 @@
 ﻿using DGU.DGU_ByteAssist;
+using DGU.StringAssist;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -94,6 +95,11 @@ namespace DGU_ByteAssist_Test
 			txtOutputFull.Text
 				= BitConverter.ToInt32(byteData2, 0)
 					.ToString();
+
+
+
+			//문자열 테스트
+			//string[] aa = StringSplit.NLengthArray(txtByteString2.Text, 3);
 
 		}
 	}

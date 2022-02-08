@@ -2,7 +2,7 @@
 
 namespace DGU.StringAssist
 {
-	public static class NumberAssist
+	public static class StringNumber
 	{
 		/// <summary>
 		/// 입력된 문자열이 숫자로 변환 가능한지 여부를 판단한다.

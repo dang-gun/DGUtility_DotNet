@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DGU.StringAssist;
+using System;
 using System.Linq;
 
 namespace DGU.DGU_ByteAssist
@@ -32,11 +33,28 @@ namespace DGU.DGU_ByteAssist
 
 			try
 			{
-				//'-'으로 자르기
-				string[] sCutData
-					//= sByteString.Replace("-", "")
-					= sByteString.Split('-');
+				string[] sCutData;
 
+				if (0 < sByteString.IndexOf("0x"))
+				{//0x로 시작하는 핵사 데이터다.
+
+					//'0x'를 제거하고
+					string sTemp = sByteString.Replace("0x", "");
+					//2칸(1바이트) 씩 자른다.
+					sCutData = StringSplit.NLengthArray(sTemp, 2);
+				}
+				else if (0 < sByteString.IndexOf("-"))
+				{
+					//'-'으로 자르기
+					sCutData = sByteString.Split('-');
+				}
+				else
+				{//구분자가 없다.
+					//2칸(1바이트) 씩 자른다.
+					sCutData = StringSplit.NLengthArray(sByteString, 2);
+				}
+
+				
 				//한칸씩 변환
 				//문자열과 출력용 배열의 최소 크기만큼만 복사함
 				for (int i = 0;
@@ -63,7 +81,8 @@ namespace DGU.DGU_ByteAssist
 
 
 		/// <summary>
-		/// 문자열인데 바이트 핵사(hex) 정보를(예> "06"=6, "AC"=172) 바이트(한칸)로 변환한다.
+		/// 문자열인데 바이트 핵사(hex) 정보를(예> "06"=6, "AC"=172, "0x12") 
+		/// 바이트(한칸)로 변환한다.
 		/// <para>들어있는 정보를 바이트 핵사 정보가 아니면 에러 난다.</para>
 		/// <para>'0x00' 형태의 핵사 데이터는 '0x'를 제거하고 변환한다.</para>
 		/// </summary>

@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DGU_ByteAssist\DGU_ByteAssist.csproj" />
+    <ProjectReference Include="..\DGU_StringAssist\DGU_StringAssist.csproj" />
   </ItemGroup>
 
 </Project>

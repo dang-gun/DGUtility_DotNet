@@ -8,7 +8,7 @@ namespace DGU.DGU_ByteAssist
 	/// <para>성능은 Array.Copy가 약간 더 빠르다.</para>
 	/// <seealso href="http://stackoverflow.com/questions/1389821/array-copy-vs-buffer-blockcopy">Array.Copy vs Buffer.BlockCopy</seealso>
 	/// </summary>
-	public static class ByteArrayAssist
+	public static class ByteArray
 	{
 		/// <summary>
 		/// byteA와 byteB를 합칩니다.

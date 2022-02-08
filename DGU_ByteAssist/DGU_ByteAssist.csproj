@@ -4,4 +4,8 @@
     <TargetFramework>net48</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DGU_StringAssist\DGU_StringAssist.csproj" />
+  </ItemGroup>
+
 </Project>
