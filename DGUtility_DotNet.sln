@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_ByteArrayAssist", "DGU_ByteArrayAssist\DGU_ByteArrayAssist.csproj", "{A1CFD401-4934-499C-B3BC-4143334A3EF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_ByteArrayAssist", "DGU_ByteArrayAssist\DGU_ByteArrayAssist.csproj", "{A1CFD401-4934-499C-B3BC-4143334A3EF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_StringAssist", "DGU_StringAssist\DGU_StringAssist.csproj", "{50B9D1DF-93FF-4B23-8160-AEDA2C42E212}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_StringAssist", "DGU_StringAssist\DGU_StringAssist.csproj", "{50B9D1DF-93FF-4B23-8160-AEDA2C42E212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_NetworkAssist", "DGU_NetworkAssist\DGU_NetworkAssist.csproj", "{42777A87-D887-4160-A86C-3EBE481D476B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_NetworkAssist", "DGU_NetworkAssist\DGU_NetworkAssist.csproj", "{42777A87-D887-4160-A86C-3EBE481D476B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_EnumToClass", "DGU_EnumToClass\DGU_EnumToClass.csproj", "{3D8E893A-CA2C-4374-870E-983E9A36200D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_EnumToClass", "DGU_EnumToClass\DGU_EnumToClass.csproj", "{3D8E893A-CA2C-4374-870E-983E9A36200D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_EnumToClass_Test", "DGU_EnumToClass_Test\DGU_EnumToClass_Test.csproj", "{50972F77-0382-4EF6-B762-3B7E444AB129}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_EnumToClass_Test", "DGU_EnumToClass_Test\DGU_EnumToClass_Test.csproj", "{50972F77-0382-4EF6-B762-3B7E444AB129}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_ByteAssist", "DGU_ByteAssist\DGU_ByteAssist.csproj", "{434C6D73-5880-41FA-9C80-455AC78AF042}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{50972F77-0382-4EF6-B762-3B7E444AB129}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50972F77-0382-4EF6-B762-3B7E444AB129}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50972F77-0382-4EF6-B762-3B7E444AB129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{434C6D73-5880-41FA-9C80-455AC78AF042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{434C6D73-5880-41FA-9C80-455AC78AF042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{434C6D73-5880-41FA-9C80-455AC78AF042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{434C6D73-5880-41FA-9C80-455AC78AF042}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
