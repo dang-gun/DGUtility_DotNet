@@ -126,7 +126,6 @@ namespace DGU.DGU_ByteAssist
 
 			foreach (byte[] packet in Packetize(byteOriginal, byteSplit))
 			{//오리지널 크기만큼 비교 시작
-
 				listReturn.Add(packet);
 			}
 
