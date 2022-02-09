@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DGU.DGU_ByteAssist
 {
@@ -11,7 +12,7 @@ namespace DGU.DGU_ByteAssist
 	public static class ByteArray
 	{
 		/// <summary>
-		/// byteA와 byteB를 합칩니다.
+		/// byteA와 byteB를 합친다.
 		/// </summary>
 		/// <param name="byteA"></param>
 		/// <param name="byteB"></param>
@@ -30,8 +31,8 @@ namespace DGU.DGU_ByteAssist
 		}
 
 		/// <summary>
-		/// byteB의 내용을 그대로 byteA로 복사합니다.
-		/// 입력값의 크기가 다른건 예외처리 하지 않습니다.
+		/// byteB의 내용을 그대로 byteA로 복사한다.<br />
+		/// 입력값의 크기가 다른건 예외처리 하지 않음.
 		/// </summary>
 		/// <param name="byteA"></param>
 		/// <param name="byteB"></param>
@@ -73,7 +74,7 @@ namespace DGU.DGU_ByteAssist
 		}
 
 		/// <summary>
-		/// 빈값이 찾고 찾은 자리에서 부터 오른쪽 내용을 지웁니다.
+		/// 빈값이 찾고 찾은 자리에서 부터 오른쪽 내용을 지운다.
 		/// </summary>
 		/// <param name="byteA"></param>
 		/// <returns></returns>
@@ -92,6 +93,72 @@ namespace DGU.DGU_ByteAssist
 			Array.Copy(byteA, byteReturn, nCount + 1);
 
 			return byteReturn;
+		}
+
+		/// <summary>
+		/// 원본에서 저장할 대상에 크기만큼 복사한후 계산된 위치를 반환한다.
+		/// </summary>
+		/// <param name="byteOriginal">원본</param>
+		/// <param name="byteStorage">저장할 대상</param>
+		/// <param name="nOffsetStart">오프셋 시작</param>
+		/// <returns>이동이 끝나 다시 계산된 오프셋시작 위치</returns>
+		public static int ArrayCopyOffset(
+			byte[] byteOriginal
+			, byte[] byteStorage
+			, int nOffsetStart)
+		{
+			Array.Copy(byteOriginal, nOffsetStart, byteStorage, 0, byteStorage.Length);
+
+			//오프셋 스타트지점에서 사용한 만큼 더해서 리턴한다.
+			return nOffsetStart + byteStorage.Length;
+		}
+
+		/// <summary>
+		/// 바이트 배열을 byteSplit잘라 리턴한다.
+		/// <see href="https://www.codeproject.com/Answers/511256/Howplustoplussplitplusbyteplusarray#answer3">How to split byte array</see>
+		/// </summary>
+		/// <param name="byteOriginal"></param>
+		/// <param name="byteSplit"></param>
+		/// <returns></returns>
+		public static List<byte[]> Split(byte[] byteOriginal, byte[] byteSplit)
+		{
+			List<byte[]> listReturn = new List<byte[]>();
+
+			foreach (var packet in Packetize(byteOriginal))
+			{
+				List<byte> listOneLine = new List<byte>();
+
+				foreach (byte b in packet)
+				{
+					Console.Write("{0:x2} ", b);
+					listOneLine.Add(b);
+				}
+				listReturn.Add(listOneLine.ToArray());
+			}
+
+			return listReturn;
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="stream"></param>
+		/// <returns></returns>
+		private static IEnumerable<byte[]> Packetize(IEnumerable<byte> stream)
+		{
+			var buffer = new List<byte>();
+			foreach (byte b in stream)
+			{
+				buffer.Add(b);
+				if (b == 0x1E || b == 0x1F || b == 0x07)
+				{
+					buffer.Remove(b);
+					yield return buffer.ToArray();
+					buffer.Clear();
+				}
+			}
+			if (buffer.Count > 0)
+				yield return buffer.ToArray();
 		}
 	}
 }
