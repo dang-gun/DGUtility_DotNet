@@ -118,47 +118,53 @@ namespace DGU.DGU_ByteAssist
 		/// <see href="https://www.codeproject.com/Answers/511256/Howplustoplussplitplusbyteplusarray#answer3">How to split byte array</see>
 		/// </summary>
 		/// <param name="byteOriginal"></param>
-		/// <param name="byteSplit"></param>
+		/// <param name="byteSplit">자를 코드(1자리만 가능)</param>
 		/// <returns></returns>
-		public static List<byte[]> Split(byte[] byteOriginal, byte[] byteSplit)
+		public static List<byte[]> Split(byte[] byteOriginal, byte byteSplit)
 		{
 			List<byte[]> listReturn = new List<byte[]>();
 
-			foreach (var packet in Packetize(byteOriginal))
-			{
-				List<byte> listOneLine = new List<byte>();
+			foreach (byte[] packet in Packetize(byteOriginal, byteSplit))
+			{//오리지널 크기만큼 비교 시작
 
-				foreach (byte b in packet)
-				{
-					Console.Write("{0:x2} ", b);
-					listOneLine.Add(b);
-				}
-				listReturn.Add(listOneLine.ToArray());
+				listReturn.Add(packet);
 			}
 
 			return listReturn;
 		}
 
 		/// <summary>
-		/// 
+		/// byteSplit가 나타날때까지의 바이트를 리턴한다.
+		/// <para>yield return에 의해 동작하므로 foreach를 써서 리턴받아야 한다.</para>
 		/// </summary>
 		/// <param name="stream"></param>
+		/// <param name="byteSplit"></param>
 		/// <returns></returns>
-		private static IEnumerable<byte[]> Packetize(IEnumerable<byte> stream)
+		private static IEnumerable<byte[]> Packetize(
+			IEnumerable<byte> stream
+			, byte byteSplit)
 		{
 			var buffer = new List<byte>();
 			foreach (byte b in stream)
 			{
 				buffer.Add(b);
-				if (b == 0x1E || b == 0x1F || b == 0x07)
-				{
+				if (b == byteSplit)
+				{//스플릿 문자다.
+					
+					//스플릿에 사용하는 문자는 제거한다.
 					buffer.Remove(b);
 					yield return buffer.ToArray();
 					buffer.Clear();
 				}
 			}
 			if (buffer.Count > 0)
+			{//버퍼에 데이터가 남아 있다.
+				//모든 데이터를 다 읽었는데 루프에 데이터가 남아 있다는 것은
+				//스플릿을 찾기전에 데이터가 끝났다는 뜻이다.
+				//마지막 데이터를 리턴해주고 끝낸다.
 				yield return buffer.ToArray();
+			}
+				
 		}
 	}
 }
