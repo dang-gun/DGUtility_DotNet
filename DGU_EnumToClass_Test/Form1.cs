@@ -11,6 +11,12 @@ using System.Windows.Forms;
 
 namespace DGU_EnumToClass_Test
 {
+	public class TypeViewModel
+	{
+		public int Id { get; set; }
+		public string Name { get; set; }
+	}
+
 	public partial class Form1 : Form
 	{
 		/// <summary>
@@ -18,9 +24,10 @@ namespace DGU_EnumToClass_Test
 		/// </summary>
 		enum Test1
 		{
-			Test1_a = 0,
-			Test1_b = 0,
+			Test1_a = 1,
+			Test1_b = 1,
 			Test1_c = 0,
+			Test1_d = 0,
 		}
 
 		/// <summary>
@@ -41,6 +48,15 @@ namespace DGU_EnumToClass_Test
 		private void btnTest1_Click(object sender, EventArgs e)
 		{
 			SetListView(new Test1());
+
+			var typeList = Enum.GetValues(typeof(Test1))
+			   .Cast<Test1>()
+			   .Select(t => new TypeViewModel
+			   {
+				   Id = ((int)t),
+				   Name = t.ToString()
+			   });
+
 		}
 
 		private void btnTest2_Click(object sender, EventArgs e)

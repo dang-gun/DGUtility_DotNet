@@ -6,6 +6,7 @@ namespace DGU.EnumToClass
 {
 	/// <summary>
 	/// 열거형의 멤버를 분해하여 배열형태로 관리 해주는 클래스.
+	/// <para>맴버의 값에 중복이 있다면 이 클래스를 사용할 수 없다.</para>
 	/// </summary>
 	public class EnumList
 	{
@@ -58,26 +59,27 @@ namespace DGU.EnumToClass
 
 			//들어온 열거형을 리스트로 변환한다.
 			Array arrayTemp = Enum.GetValues(this.EnumType.GetType());
-			string[] listName = Enum.GetNames(this.EnumType.GetType());
+			//이름 리스트와 벨류리스트의 순서가 같으리라는 보장이 없다.
+			//string[] listName = Enum.GetNames(this.EnumType.GetType());
 
 
 			//맴버 갯수만큼 공간을 만들고
 			this.EnumMember = new EnumMemberModel[arrayTemp.Length];
 
 			//각 맴버를 입력한다.
-			for (int i = 0; i < listName.Length; ++i)
+			for (int i = 0; i < arrayTemp.Length; ++i)
 			{
 				//맴버의 값이 같은 경우 이름과 값이 매칭이 안될 수 있다.
 				//그래서 벨류리스트와 네임리스트를 각각 만들어서 수작업으로 매칭시킨다.
-				this.EnumMember[i] 
-					= new EnumMemberModel(
-						(Enum)arrayTemp.GetValue(i)
-						, arrayTemp.GetValue(i).GetHashCode()
-						, listName[i]
-						, i);
-
 				//this.EnumMember[i] 
-				//	= new EnumMemberModel(arrayTemp.GetValue(i), i);
+				//	= new EnumMemberModel(
+				//		(Enum)arrayTemp.GetValue(i)
+				//		, arrayTemp.GetValue(i).GetHashCode()
+				//		, listName[i]
+				//		, i);
+
+				this.EnumMember[i]
+					= new EnumMemberModel(arrayTemp.GetValue(i), i);
 			}
 		}
 
@@ -95,7 +97,7 @@ namespace DGU.EnumToClass
 			listEM = this.EnumMember.Where(member => member.Name == sName).ToList();
 
 			if (0 < listEM.Count)
-			{	//검색된 데이터가 있다면
+			{   //검색된 데이터가 있다면
 				//맨 첫번째 값을 저장
 				emReturn = listEM[0];
 			}
@@ -126,3 +128,4 @@ namespace DGU.EnumToClass
 		}
 	}
 }
+
