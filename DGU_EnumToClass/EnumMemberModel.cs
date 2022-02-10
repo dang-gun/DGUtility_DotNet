@@ -10,7 +10,8 @@ namespace DGU.EnumToClass
 
 		/// <summary>
 		/// 지정된 열거헝 멤버
-		/// <para>열거형 맴버중에 같은 값을 가진 맴버가 있다면 이 값은 정확하지 않을 수 있다.</para>
+		/// <para>열거형 맴버중에 같은 값을 가진 맴버가 있다면 이 값은 정확하지 않을 수 있다.<br />
+		/// 그러므로 이 모델을 사용할때는 Name, Index로만 사용하는것이 좋다.</para>
 		/// </summary>
 		public Enum Type { get; protected set; }
 		/// <summary>

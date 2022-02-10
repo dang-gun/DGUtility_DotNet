@@ -11,12 +11,6 @@ using System.Windows.Forms;
 
 namespace DGU_EnumToClass_Test
 {
-	public class TypeViewModel
-	{
-		public int Id { get; set; }
-		public string Name { get; set; }
-	}
-
 	public partial class Form1 : Form
 	{
 		/// <summary>
@@ -25,9 +19,9 @@ namespace DGU_EnumToClass_Test
 		enum Test1
 		{
 			Test1_a = 1,
-			Test1_b = 1,
-			Test1_c = 0,
-			Test1_d = 0,
+			Test1_b = 2,
+			Test1_c = 3,
+			Test1_d = 4,
 		}
 
 		/// <summary>
@@ -40,6 +34,17 @@ namespace DGU_EnumToClass_Test
 			Test2_c,
 		}
 
+		/// <summary>
+		/// 테스트용 열거형3(중복된 값 처리)
+		/// </summary>
+		enum Test3
+		{
+			Test1_a = 1,
+			Test1_b = 1,
+			Test1_c = 0,
+			Test1_d = 0,
+		}
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -48,15 +53,6 @@ namespace DGU_EnumToClass_Test
 		private void btnTest1_Click(object sender, EventArgs e)
 		{
 			SetListView(new Test1());
-
-			var typeList = Enum.GetValues(typeof(Test1))
-			   .Cast<Test1>()
-			   .Select(t => new TypeViewModel
-			   {
-				   Id = ((int)t),
-				   Name = t.ToString()
-			   });
-
 		}
 
 		private void btnTest2_Click(object sender, EventArgs e)
@@ -67,11 +63,23 @@ namespace DGU_EnumToClass_Test
 		private void SetListView(Enum typeData)
 		{
 			//열거형 지정
-			EnumList newEnum = new EnumList(typeData);
+			EnumList1 newEnum = new EnumList1(typeData);
 
+			SetListView(newEnum.EnumMember);
+		}
+
+		private void btnTest3_Click(object sender, EventArgs e)
+		{
+			//열거형 지정
+			EnumList2<Test3> newEnum = new EnumList2<Test3>();
+
+			SetListView(newEnum.EnumMember);
+		}
+
+		private void SetListView(EnumMemberModel[] arrEM)
+		{
 			//컨트롤을 지우고
 			listView1.Clear();
-
 
 			//리스트뷰 바인드 시작
 			listView1.BeginUpdate();
@@ -79,16 +87,16 @@ namespace DGU_EnumToClass_Test
 			listView1.View = View.Details;
 
 			//열거형으로 컬럼 생성
-			for (int i = 0; i < newEnum.Count; ++i)
+			for (int i = 0; i < arrEM.Length; ++i)
 			{
-				listView1.Columns.Add(newEnum.EnumMember[i].Name);
+				listView1.Columns.Add(arrEM[i].Name);
 			}
 
 			//아이템 추가
-			string[] sData = new string[newEnum.Count];
-			for (int i = 0; i < newEnum.Count; ++i)
+			string[] sData = new string[arrEM.Length];
+			for (int i = 0; i < arrEM.Length; ++i)
 			{
-				sData[i] = newEnum.EnumMember[i].Index.ToString();
+				sData[i] = arrEM[i].Index.ToString();
 			}
 			listView1.Items.Add(new ListViewItem(sData));
 
