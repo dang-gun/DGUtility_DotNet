@@ -19,8 +19,8 @@ namespace DGU_EnumToClass_Test
 		enum Test1
 		{
 			Test1_a = 0,
-			Test1_b,
-			Test1_c,
+			Test1_b = 0,
+			Test1_c = 0,
 		}
 
 		/// <summary>
