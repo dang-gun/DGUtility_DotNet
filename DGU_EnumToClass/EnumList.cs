@@ -63,7 +63,8 @@ namespace DGU.EnumToClass
 			//각 맴버를 입력한다.
 			for (int i = 0; i < arrayTemp.Length; ++i)
 			{
-				this.EnumMember[i] = new EnumMemberModel(arrayTemp.GetValue(i));
+				this.EnumMember[i] 
+					= new EnumMemberModel(arrayTemp.GetValue(i), i);
 			}
 		}
 
