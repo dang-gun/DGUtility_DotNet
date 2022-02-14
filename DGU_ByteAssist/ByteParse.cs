@@ -6,6 +6,7 @@ namespace DGU.DGU_ByteAssist
 {
 	/// <summary>
 	/// 문자열을 바이트로 변환하기위한 지원.
+	/// <see href="https://github.com/dang-gun/DGUtility_DotNet/tree/main/DGU_ByteAssist">DGUtility_DotNet/DGU_ByteAssist/</see>/>
 	/// </summary>
 	public class ByteParse
 	{

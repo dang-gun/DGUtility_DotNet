@@ -5,9 +5,10 @@ namespace DGU.DGU_ByteAssist
 {
 	/// <summary>
 	/// byte 배열을 처리하기위한 유틸리티
+	/// <see href="https://github.com/dang-gun/DGUtility_DotNet/tree/main/DGU_ByteAssist">DGUtility_DotNet/DGU_ByteAssist/</see>/>
 	/// <para>Buffer.BlockCopy는 인덱스 기반, Array.Copy는 참조 기반이다.</para>
 	/// <para>성능은 Array.Copy가 약간 더 빠르다.</para>
-	/// <seealso href="http://stackoverflow.com/questions/1389821/array-copy-vs-buffer-blockcopy">Array.Copy vs Buffer.BlockCopy</seealso>
+	/// <see href="http://stackoverflow.com/questions/1389821/array-copy-vs-buffer-blockcopy">Array.Copy vs Buffer.BlockCopy</seealso>
 	/// </summary>
 	public static class ByteArray
 	{
