@@ -2,6 +2,9 @@
 
 namespace DGU.StringAssist
 {
+	/// <summary>
+	/// 문자열로된 숫자를 처리하기위한 지원 기능
+	/// </summary>
 	public static class StringNumber
 	{
 		/// <summary>

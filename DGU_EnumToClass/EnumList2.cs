@@ -44,7 +44,7 @@ namespace DGU.EnumToClass
 			Type typeEnum = typeof(T);
 			//Enum enumAA = (Enum)typeof(T);
 
-			//이름 리스트와 벨류리스트의 순서가 같으리라는 보장이 없다.
+			//이름 리스트와 벨류리스트의 순서가 같을 거라는 보장이 없다.
 			//그래서 이름 리스트를 기준으로 작업한다.
 			string[] listName = Enum.GetNames(typeEnum);
 
@@ -59,7 +59,7 @@ namespace DGU.EnumToClass
 				//이름으로 값을 찾는다.
 				int findValue =  (int)Enum.Parse(typeEnum, listName[i]);
 
-				//중복값이 있을때 값으로 대상을 찾으면 동일한 대상이 나오리라는 보장이 없다.
+				//중복값이 있을때 값으로 대상을 찾으면 동일한 대상이 나온다는 보장이 없다.
 				//열거형은 이름으로 개체를 찾을 방법이 없으니 이 대상이 정확하리라는 보장은 없다.
 				Enum enumData = (T)(object)findValue;
 

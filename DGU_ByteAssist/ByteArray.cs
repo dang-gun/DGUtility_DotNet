@@ -97,6 +97,43 @@ namespace DGU.DGU_ByteAssist
 		}
 
 		/// <summary>
+		/// 데이터의 왼쪽에서 부터 지정된 위치만큼 잘라서 두 데이터를 리턴한다.
+		/// </summary>
+		/// <param name="byteA"></param>
+		/// <param name="nLength"></param>
+		/// <returns></returns>
+		public static List<byte[]> Cut_Left(byte[] byteA, int nLength)
+		{
+			List<byte[]> listReturn = new List<byte[]>();
+
+			byte[] byteCut1 = new byte[nLength];
+			byte[] byteCut2 = new byte[byteA.Length - nLength];
+
+			Array.Copy(byteA, 0, byteCut1, 0, byteCut1.Length);
+			Array.Copy(byteA, nLength, byteCut2, 0, byteCut2.Length);
+
+			listReturn.Add(byteCut1);
+			listReturn.Add(byteCut2);
+
+			return listReturn;
+		}
+
+		/// <summary>
+		/// 왼쪽부터 지정한 길이만큼 데이터를 가지고 온다.
+		/// </summary>
+		/// <param name="byteA"></param>
+		/// <param name="nLength"></param>
+		/// <returns></returns>
+		public static byte[] Get_Left(byte[] byteA, int nLength)
+		{
+			byte[] byteCut = new byte[nLength];
+
+			Array.Copy(byteA, 0, byteCut, 0, byteCut.Length);
+
+			return byteCut;
+		}
+
+		/// <summary>
 		/// 원본에서 저장할 대상에 크기만큼 복사한후 계산된 위치를 반환한다.
 		/// </summary>
 		/// <param name="byteOriginal">원본</param>
