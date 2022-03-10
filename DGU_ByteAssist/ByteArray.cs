@@ -128,7 +128,15 @@ namespace DGU.DGU_ByteAssist
 		{
 			byte[] byteCut = new byte[nLength];
 
-			Array.Copy(byteA, 0, byteCut, 0, byteCut.Length);
+			int nLeng = nLength;
+			if (byteA.Length <= nLength)
+			{//데이터가 입력된 길이보다 작다.
+
+				//데이터 길이만큼만 사용한다.
+				nLeng = byteA.Length;
+			}
+
+			Array.Copy(byteA, 0, byteCut, 0, nLeng);
 
 			return byteCut;
 		}
