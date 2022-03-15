@@ -45,7 +45,8 @@ namespace DGU.DGU_ByteAssist
 		}
 
 		/// <summary>
-		/// byteB의 내용을 그대로 byteA로 복사하는데 byteA 크기 만큼만 복사한다.<br />
+		/// byteB의 내용을 그대로 byteA로 복사하는데 byteA 크기 만큼만 복사한다.
+		/// (byteA의 크기조절 없음)
 		/// </summary>
 		/// <param name="byteA"></param>
 		/// <param name="byteB"></param>
@@ -59,7 +60,6 @@ namespace DGU.DGU_ByteAssist
 			}
 			
 
-			byteA = new byte[byteB.Length];
 			Array.Copy(byteB, 0, byteA, 0, nLength);
 		}
 
