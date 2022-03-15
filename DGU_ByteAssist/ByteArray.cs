@@ -42,8 +42,25 @@ namespace DGU.DGU_ByteAssist
 		{
 			byteA = new byte[byteB.Length];
 			Array.Copy(byteB, 0, byteA, 0, byteB.Length);
+		}
 
-			//return byteA;
+		/// <summary>
+		/// byteB의 내용을 그대로 byteA로 복사하는데 byteA 크기 만큼만 복사한다.<br />
+		/// </summary>
+		/// <param name="byteA"></param>
+		/// <param name="byteB"></param>
+		/// <returns></returns>
+		public static void Copy_CutAll(ref byte[] byteA, byte[] byteB)
+		{
+			int nLength = byteA.Length;
+			if (byteA.Length > byteB.Length)
+			{
+				nLength = byteB.Length;
+			}
+			
+
+			byteA = new byte[byteB.Length];
+			Array.Copy(byteB, 0, byteA, 0, nLength);
 		}
 
 		/// <summary>
