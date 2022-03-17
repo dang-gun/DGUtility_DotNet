@@ -8,7 +8,7 @@ namespace DGU.DGU_ByteAssist
 	/// <see href="https://github.com/dang-gun/DGUtility_DotNet/tree/main/DGU_ByteAssist">DGUtility_DotNet/DGU_ByteAssist/</see>/>
 	/// <para>Buffer.BlockCopy는 인덱스 기반, Array.Copy는 참조 기반이다.</para>
 	/// <para>성능은 Array.Copy가 약간 더 빠르다.</para>
-	/// <see href="http://stackoverflow.com/questions/1389821/array-copy-vs-buffer-blockcopy">Array.Copy vs Buffer.BlockCopy</seealso>
+	/// <see href="http://stackoverflow.com/questions/1389821/array-copy-vs-buffer-blockcopy">Array.Copy vs Buffer.BlockCopy</see>
 	/// </summary>
 	public static class ByteArray
 	{
