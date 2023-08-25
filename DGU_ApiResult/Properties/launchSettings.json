@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DGU_ApiResult": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:12831;http://localhost:12832"
+    }
+  }
+}
