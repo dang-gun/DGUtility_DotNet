@@ -64,7 +64,7 @@ namespace DGU.DGU_ByteAssist
 		}
 
 		/// <summary>
-		/// 데이터의 앞을 지정한 크기 만큼 지운다.
+		/// 데이터의 앞을 지정한 크기 만큼 지운 새로운 개체를 리턴한다.
 		/// </summary>
 		/// <param name="byteA"></param>
 		/// <param name="nLength"></param>
