@@ -1,0 +1,798 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DGU_ModelToOutFiles.App</name>
+    </assembly>
+    <members>
+        <member name="T:DGU_ModelToOutFiles.App.Faculty.NamespaceTargetModel">
+            <summary>
+            네임스페이스에 소속된 개체 리스트
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.NamespaceTargetModel.AssemblyName">
+            <summary>
+            로드할 어셈블리 이름
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.NamespaceTargetModel.NamespaceList">
+            <summary>
+            허용할 네임스페이스 리스트
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.App.Faculty.NamespaceToClassList">
+            <summary>
+            네임스페이스에 소속된 개체 리스트
+            </summary>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.NamespaceToClassList.ClassListAdd(System.String,System.String[])">
+            <summary>
+            네임스페이스 기준으로 클래스를 생성하고 기존리스트에 추가한다,.
+            </summary>
+            <remarks>
+            생성된 오브젝트의 물리경로를 찾는 방법을 사용하고 싶었으나....
+            이렇게하면 외부 참조된 개체는 dll 위치로 생성되는 문제가 있다.
+            </remarks>
+            <param name="sAssemblyName">로드할 어셈블리 이름</param>
+            <param name="arrNamespace">허용할 네임스페이스 리스트</param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.NamespaceToClassList.OutputNoCheck(DGU_ModelToOutFiles.Global.Attributes.OutputNoAttributeCheck,System.Type)">
+            <summary>
+            출력 안함 설정이 되어있는지 확인
+            </summary>
+            <param name="attrchkON"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.NamespaceToClassList.ObjectOutTypeGet(System.Type)">
+            <summary>
+            타입으로 오브젝트 출력 타입으로 바꾼다.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel">
+            <summary>
+            내보내기용 오브젝트 모델
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.Assembly">
+            <summary>
+            소속된 어셈블리
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.Namespace">
+            <summary>
+            소속된 네임스페이스
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.Namespace_Cut">
+            <summary>
+            소속된 네임스페이스에서 어셈블리 네임스페이스를 제외한 네임스페이스
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.ClassName">
+            <summary>
+            클레스 이름
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.ClassNameFull">
+            <summary>
+            모든 네임스페이스까지 포함한 클래스 이름
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.ObjectOutType">
+            <summary>
+            개체 출력 타입
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.Instance">
+            <summary>
+            생성된 개체
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.OutPhysicalPathList">
+            <summary>
+            내보낼 상대 물리 경로(파일이름 없음)
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.OutPhysicalPath">
+            <summary>
+            내보낼 상대 물리 경로
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.OutPhysicalFullPath">
+            <summary>
+            이름까지 포함된 내보낼 상대 물리 경로
+            </summary>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.OutPhysicalPath_Create">
+            <summary>
+            네임스페이스 기반으로 내보낼 상대 물리경로를 생성한다.
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.LogicPath">
+            <summary>
+            논리 경로
+            </summary>
+            <remarks>
+            지정된 언어에 따라 사용될 참조 경로이다.<br />
+            언어에 따라 물리 경로가 될 수 있고 네임스페이스가 될 수 있다.
+            </remarks>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.ImportAdd">
+            <summary>
+            임포트 영역에 추가될 내용
+            </summary>
+            <remarks>
+            C#이면 using, 타입스크립트는 Import영영에 추가될 문자열
+            </remarks>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectOutModel.LastText">
+            <summary>
+            생성되고 마지막에 추가될 내용
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.App.Faculty.ObjectOutType">
+            <summary>
+            오브젝트 출력 타입
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.App.Faculty.ObjectOutType.None">
+            <summary>
+            상태 없음
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.App.Faculty.ObjectOutType.Class">
+            <summary>
+            클래스
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.App.Faculty.ObjectOutType.Enum">
+            <summary>
+            열거형
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.App.Faculty.ObjectOutType.Enum_ConstNo">
+            <summary>
+            열거형 - const를 붙이지 않음
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectToOutBase.OutputPath">
+            <summary>
+            출력할 위치
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectToOutBase.ProjectXml">
+            <summary>
+            주석이 들어 있는 XML 개체
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.ObjectToOutBase.NsToClass">
+            <summary>
+            네임스페이스에 소속된 개체를 리스트로 만드는 개체
+            </summary>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.ObjectToOutBase.#ctor(System.String,DGUtility.ProjectXml.ProjectXmlAssist)">
+             <summary>
+            
+             </summary>
+             <param name="sOutputPath">출력할 물리 경로(폴더)</param>
+             <param name="ProjectXml">주석이 들어 있는 XML 개체</param>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.ObjectToOutBase.ToTargetSave(DGU_ModelToOutFiles.App.Faculty.NamespaceTargetModel[])">
+            <summary>
+            
+            </summary>
+            <param name="listNamespace"></param>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.ObjectToOutInterface.ToTargetSave">
+            <summary>
+            대상으로 변환하고 지정된 위치에 저장한다.
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.App.Faculty.ObjectToOut_Typescript">
+            <summary>
+            타입 스크립트로 내보낸다
+            </summary>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.ObjectToOut_Typescript.#ctor(System.String,DGUtility.ProjectXml.ProjectXmlAssist)">
+            <summary>
+            개체 리스트를 타입스크립트 파일로 출력하기위한 클래스
+            </summary>
+            <param name="sOutputPath">출력할 물리 경로(폴더)</param>
+            <param name="ProjectXml">주석이 들어 있는 XML 개체</param>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.ObjectToOut_Typescript.ToTargetSave">
+            <summary>
+            타입스크립트로 저장한다.
+            </summary>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.ObjectToOut_Typescript.DirToImportPath(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            파일 경로 리스트를 임포트 패스로 변경해준다.
+            </summary>
+            <param name="listOutPhysicalPath"></param>
+            <param name="sClassName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist">
+            <summary>
+            XML 파일 지원
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.ProjectRootPath">
+            <summary>
+            프로젝트 루트 경로
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.OutputFolder_RelativePath">
+            <summary>
+            출력 폴더 상대 경로
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.XmlFilePathList">
+            <summary>
+            읽어들인 xml 파일 
+            </summary>
+            <remarks>
+            XmlFilePathReload()로 리스트를 읽어야 내용물이 채워진다.
+            </remarks>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.OutputFolder_FullPath">
+            <summary>
+            출력 폴더 전체 경로
+            </summary>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="sProjectRootPath"></param>
+            <param name="sOutputFolder_RelativePath"></param>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.XmlFilesCopy">
+            <summary>
+            XML 파일 복사
+            </summary>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.XmlFilePathReload">
+            <summary>
+            로컬에 있는 xml 파일리스트를 다시 읽어들인다.
+            </summary>
+            <remarks>
+            보통은 한번만 읽으면 되지만 파일리스트가 빈번하게 변경된다면 자주 읽어야 할 수 있다.
+            </remarks>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.App.Program">
+            <summary>
+            DGU_ModelToOutFiles.App
+            </summary>
+            <remarks>
+            출력하려는 프로젝트를 참조해야 출력할 수 있다.
+            주석을 붙이려면 XmlFilesCopy를 수정하여 .xml파일을 복사해야 한다.
+            
+            필요한 참조 :
+            DGU_EnumToClass
+            </remarks>
+        </member>
+        <member name="T:Utility.FileAssist.FileCopyDirModel">
+            <summary>
+            파일 복사 경로 모델
+            </summary>
+        </member>
+        <member name="P:Utility.FileAssist.FileCopyDirModel.Name">
+            <summary>
+            파일의 이름(확장자 포함)
+            </summary>
+        </member>
+        <member name="P:Utility.FileAssist.FileCopyDirModel.OriginalDir">
+            <summary>
+            원본 파일 위치(이름 제외)
+            </summary>
+        </member>
+        <member name="P:Utility.FileAssist.FileCopyDirModel.OriginalFullDir">
+            <summary>
+            원본 파일의 전체 경로
+            </summary>
+        </member>
+        <member name="P:Utility.FileAssist.FileCopyDirModel.TargetDir">
+            <summary>
+            파일을 저장할 위치(이름 제외)
+            </summary>
+        </member>
+        <member name="P:Utility.FileAssist.FileCopyDirModel.TargetDirFull">
+            <summary>
+            파일을 저장할 위치의 전체 경로
+            </summary>
+        </member>
+        <member name="T:Utility.FileAssist.FileCopyDir_OutListModel">
+            <summary>
+            파일 복사 경로 - 출력 리스트 모델
+            </summary>
+            <remarks>
+            출력하는 경로가 여러개인 경우 이 모델을 사용한다.
+            </remarks>
+        </member>
+        <member name="P:Utility.FileAssist.FileCopyDir_OutListModel.TargetDirList">
+            <summary>
+            파일을 저장할 위치 리스트(이름 제외)
+            </summary>
+        </member>
+        <member name="P:Utility.FileAssist.FileCopyDir_OutListModel.TargetDirListFull">
+            <summary>
+            파일을 저장할 위치 리스트 전체 경로
+            </summary>
+        </member>
+        <member name="P:Utility.FileAssist.FileCopyDir_OutListModel.TargetDirList_Separate">
+            <summary>
+            파일을 저장할 위치 리스트(이름 제외) - 별도
+            </summary>
+            <remarks>
+            TargetDirList와 별도로 관리하기위한 리스트<br />
+            특수한 경우 분리하기위한 용도로 사용할 수 있다.<br />
+            예> 디버깅에서만 출력하는 경로
+            </remarks>
+        </member>
+        <member name="P:Utility.FileAssist.FileCopyDir_OutListModel.TargetDirListFull_Separate">
+            <summary>
+            파일을 저장할 위치 리스트 전체 경로 - 별도
+            </summary>
+        </member>
+        <member name="T:Utility.FileAssist.FileSaveAssist">
+            <summary>
+            파일 저장 관련
+            </summary>
+        </member>
+        <member name="M:Utility.FileAssist.FileSaveAssist.FileSave(System.String,System.String)">
+            <summary>
+            sFullDir 경로에 파일을 생성하고 내용을 저장한다.
+            </summary>
+            <param name="sFullFilePath"></param>
+            <param name="sContents"></param>
+        </member>
+        <member name="T:DGUtility.ModelToFrontend.JsonModelMember">
+            <summary>
+            모델의 멤버 정보를 검색하기 쉽게 저장한다.
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.JsonModelMember.Name">
+            <summary>
+            맴버 이름 
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.JsonModelMember.Value">
+            <summary>
+            맴버가 가지고 있는 값
+            </summary>
+        </member>
+        <member name="T:DGUtility.ModelToFrontend.ModelToJson">
+            <summary>
+            모델을 Json 파일로 변환하기 위한 클래스
+            </summary>
+            <remarks>
+            모델을 직열화하면 주석이 날아간다.<br />
+            이 기능은 주석까지 포함하기위해 사용된다.<br />
+            이 클래스는 프로퍼티가 아닌 필드를 처리하기위한 용도이다.<br />
+            프로퍼티는 가급적 JsonConvert를 쓰는 것이 좋다.
+            </remarks>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToJson.ProjectXml">
+            <summary>
+            사용할 프로젝트Xml
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToJson.MyModel">
+            <summary>
+            지정된 모델
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToJson.BaseNamespace">
+            <summary>
+            베이스가 있다면 베이스의 네임 스페이스
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToJson.BaseName">
+            <summary>
+            베이스가 있다면 베이스의 이름
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToJson.ModelNamespace">
+            <summary>
+            소속된 네임스페이스
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToJson.ModelName">
+            <summary>
+            지정된 모델의 이름
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToJson.ModelMember">
+            <summary>
+            분해한 맴버 데이터
+            </summary>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToJson.#ctor(DGUtility.ProjectXml.ProjectXmlAssist)">
+            <summary>
+            프로젝트 xml만 지정하여 초기화한다.
+            </summary>
+            <param name="projectXmlAssist"></param>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToJson.Data_Set(System.Object)">
+            <summary>
+            사용할 모델을 설정한다.
+            </summary>
+            <remarks>
+            ProjectXml은 가지고 있는 것을 쓴다.
+            </remarks>
+            <param name="model"></param>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToJson.Reset(System.Object,DGUtility.ProjectXml.ProjectXmlAssist)">
+            <summary>
+            model projectXmlAssist를 저장하고 model 맴버를 분해한다.
+            </summary>
+            <param name="model"></param>
+            <param name="projectXmlAssist"></param>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToJson.ProjectXml_SummaryGet(System.String)">
+            <summary>
+            지정된 ProjectXml리스트에서 주석정보를 찾는다.
+            </summary>
+            <param name="sTarget"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToJson.ToJsonString">
+            <summary>
+            가지고 있는 정보를 json 형식으로 출력한다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToJson.ToJsonString(System.String,System.String,System.String)">
+            <summary>
+            json 형식으로 출력한다.
+            </summary>
+            <param name="sHead"></param>
+            <param name="sItemBody"></param>
+            <param name="sFooter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DGUtility.ModelToFrontend.ModelToStringModel">
+            <summary>
+            최종 출력을 위해 텍스트를 정리해둔 모델
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToStringModel.Import">
+            <summary>
+            임포트 영역
+            </summary>
+            <remarks>
+            C#은 using 영역
+            </remarks>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToStringModel.ImportAdd">
+            <summary>
+            임포트 영역 추가 영역
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToStringModel.HeadSummary">
+            <summary>
+            머리 주석
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToStringModel.HeadName">
+            <summary>
+            머리 이름
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToStringModel.BodyStart">
+            <summary>
+            몸통 시작
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToStringModel.ItemList">
+            <summary>
+            요소
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToStringModel.BodyEnd">
+            <summary>
+            몸통 끝
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToStringModel.Footer">
+            <summary>
+            바닥
+            </summary>
+        </member>
+        <member name="T:DGUtility.ModelToFrontend.ModelToStringItemModel">
+            <summary>
+            최종 출력을 위해 텍스트를 정리해둔 모델의 아이템
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToStringItemModel.Summary">
+            <summary>
+            주석
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToStringItemModel.Item">
+            <summary>
+            요소 선언
+            </summary>
+        </member>
+        <member name="T:DGUtility.ModelToFrontend.ModelToTextModel">
+            <summary>
+            최종 출력을 위해 텍스트를 정리해둔 모델
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToTextModel.Import">
+            <summary>
+            임포트 영역
+            </summary>
+            <remarks>
+            C#은 using 영역
+            </remarks>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToTextModel.ImportAdd">
+            <summary>
+            임포트 영역 추가 영역
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToTextModel.HeadSummary">
+            <summary>
+            머리 주석
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToTextModel.HeadName">
+            <summary>
+            머리 이름
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToTextModel.ItemList">
+            <summary>
+            요소
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToTextModel.Footer">
+            <summary>
+            바닥
+            </summary>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTextModel.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DGUtility.ModelToFrontend.ModelToTextItemModel">
+            <summary>
+            최종 출력을 위해 텍스트를 정리해둔 모델의 아이템
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToTextItemModel.Summary">
+            <summary>
+            주석
+            </summary>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToTextItemModel.Item">
+            <summary>
+            요소 선언
+            </summary>
+        </member>
+        <member name="T:DGUtility.ModelToFrontend.ModelToTextImportModel">
+            <summary>
+            Import 출력에 넣을 개체
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToTextImportModel.Name">
+            <summary>
+            선언된 이름
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToTextImportModel.OutPhysicalFullPath">
+            <summary>
+            이름까지 포함된 출력된 물리 경로(확장자는 제외)
+            </summary>
+        </member>
+        <member name="T:DGUtility.ModelToFrontend.ModelToTs">
+            <summary>
+            모델을 타입스크립트용 파일로 변환하기위한 클래스
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToTs.ProjectXml">
+            <summary>
+            사용할 프로젝트Xml
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToTs.MyModel">
+            <summary>
+            지정된 모델
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToTs.BaseNamespace">
+            <summary>
+            베이스가 있다면 베이스의 네임 스페이스
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToTs.BaseName">
+            <summary>
+            베이스가 있다면 베이스의 이름
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToTs.ModelNamespace">
+            <summary>
+            소속된 네임스페이스
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToTs.ModelName">
+            <summary>
+            지정된 모델의 이름
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToTs.ModelMember">
+            <summary>
+            분해한 맴버 데이터
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.ModelToTs.ImportRootDir">
+            <summary>
+            임포트에 사용할 루트 경로 지정
+            </summary>
+            <remarks>
+            임포트 라인을 생성할때 맨 앞의 경로로 사용될 문자열이다.<br />
+            </remarks>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToTs.ImportItem">
+            <summary>
+            임포트 라인을 생성할때 사용될 아이템 리스트
+            </summary>
+            <remarks>
+            외부에 표시될 이름, 임포트 경로(ImportRootDir에서 지정한 경로 제외한 경로)
+            </remarks>
+        </member>
+        <member name="T:DGUtility.ModelToFrontend.ModelToTs.ImportSearchDelegate">
+            <summary>
+            네임스페이스로 임포트할 경로를 찾는 대리자
+            </summary>
+            <param name="sNamespace"></param>
+            <returns></returns>
+        </member>
+        <member name="F:DGUtility.ModelToFrontend.ModelToTs.ImportSearchCallback">
+            <summary>
+            아이템 검색시 참조를 추가해야 할때 호출되는 콜백
+            </summary>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.#ctor(DGUtility.ProjectXml.ProjectXmlAssist)">
+            <summary>
+            프로젝트 xml만 지정하여 초기화한다.
+            </summary>
+            <param name="projectXmlAssist"></param>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.#ctor(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.TypeData_Set(System.Object)">
+            <summary>
+            사용할 모델을 설정한다.
+            </summary>
+            <remarks>
+            ProjectXml은 가지고 있는 것을 쓴다.
+            </remarks>
+            <param name="model"></param>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.Reset(System.Object,DGUtility.ProjectXml.ProjectXmlAssist)">
+            <summary>
+            model projectXmlAssist를 저장하고 model 맴버를 분해한다.
+            </summary>
+            <param name="model"></param>
+            <param name="projectXmlAssist"></param>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.ProjectXml_SummaryGet(System.String)">
+            <summary>
+            지정된 ProjectXml리스트에서 주석정보를 찾는다.
+            </summary>
+            <param name="sTarget"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.ImportClear">
+            <summary>
+            임포트 관련 정보를 초기화 한다.
+            </summary>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.ToTypeScriptImportString">
+            <summary>
+            가지고 있는 임포트 아이템 정보를 가지고 임포트 문자열을 만든다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.ToTypeScriptImportString(System.String,System.String)">
+            <summary>
+            전달받은 sKey와 sValue로 임포트 라인을 완성한다.
+            </summary>
+            <param name="sKey"></param>
+            <param name="sValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.ToTypeScriptInterfaceString">
+            <summary>
+            가지고있는 임포트 정보로 타입스크립트를 생성한다.
+            </summary>
+            <remarks>
+            임포트 라인을 생성하지 않으려면 ImportClear();를 미리 호출하여 임포트 정보를 지우거나
+            ToTypeScriptInterfaceString("") 로 호출하면된다.
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.ToTypeScriptInterfaceString(System.String)">
+            <summary>
+            타입 스크립트에서 사용하는 인터페이스 타입으로 선언하는 코드를 생성한다.
+            </summary>
+            <param name="sImport">
+            임포트 영역에 출력할 내용.<br />
+            입력한 그대로 출력되므로 필요한 전체 내용을 넣는다.<br />
+            이 부분은 자동화할 방법이 없으므로 직접 입력해야 한다.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.ToTypeScriptString(System.String,System.String,System.String,System.String)">
+            <summary>
+            스크립트 형태의 문자열을 생성한다.
+            </summary>
+            <param name="sImport">
+            임포트 영역에 출력할 내용.<br />
+            입력한 그대로 출력되므로 필요한 전체 내용을 넣는다.<br />
+            이 부분은 자동화할 방법이 없으므로 직접 입력해야 한다.
+            </param>
+            <param name="sHead">첫 줄 열기로 사용할 문자열 포맷</param>
+            <param name="sItemBody">아이템 바디로 사용할 문자열 포맷</param>
+            <param name="sFooter">마지막 줄 닫기로 사용할 문자열 포맷</param>
+            <returns></returns>
+        </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.TypeToTs(System.String,System.String@)">
+            <summary>
+            .NET 타입을 타입스크립트 타입으로 변환한다.
+            </summary>
+            <remarks>
+            변환되지 않으면 그대로 출력된다.
+            </remarks>
+            <param name="sType"></param>
+            <param name="sReturn"></param>
+            <returns>타입스크립트로 변환 성공여부. 성공하지 못했으면 개체타입일 확률이 높다.</returns>
+        </member>
+        <member name="T:DGUtility.ModelToFrontend.TypeScriptModelMember">
+            <summary>
+            모델의 멤버 정보를 검색하기 쉽게 저장한다.
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.TypeScriptModelMember.Name">
+            <summary>
+            맴버 이름 
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.TypeScriptModelMember.NameFull">
+            <summary>
+            네임스페이스를 포함한 전체 이름
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.TypeScriptModelMember.Type">
+            <summary>
+            맴버의 타입
+            </summary>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.TypeScriptModelMember.ArrayType">
+            <summary>
+            맴버 타입이 배열타입일때 배열이 가지고 있는 타입
+            </summary>
+            <remarks>
+            1개만, 1댑스까지만 관리된다.
+            </remarks>
+        </member>
+        <member name="P:DGUtility.ModelToFrontend.TypeScriptModelMember.NullableIs">
+            <summary>
+            널 입력 가능 여부
+            </summary>
+        </member>
+    </members>
+</doc>

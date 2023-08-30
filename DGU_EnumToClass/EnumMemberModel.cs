@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DGU.EnumToClass
+namespace DGUtility.EnumToClass
 {
 	/// <summary>
 	/// 열거형 멤버의 정보를 검색하기 쉽게 저장하는 모델

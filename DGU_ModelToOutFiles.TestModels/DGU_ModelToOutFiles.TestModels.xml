@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DGU_ModelToOutFiles.TestModels</name>
+    </assembly>
+    <members>
+        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel">
+            <summary>
+            테스트용 호출 모델
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.Int">
+            <summary>
+            숫자
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.String">
+            <summary>
+            문자열
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.DateTime">
+            <summary>
+            날짜
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestCallResultModel">
+            <summary>
+            테스트용 결과 모델
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallResultModel.Call">
+            <summary>
+            개체 테스트 1
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallResultModel.Result">
+            <summary>
+            개체 테스트 2
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestConstNoType">
+            <summary>
+            테스트용 타입 - 타입스크립트=역참조 가능
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.TestConstNoType.None">
+            <summary>
+            상태 없음
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.TestConstNoType.NonUser">
+            <summary>
+            비회원
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.TestConstNoType.User">
+            <summary>
+            회원
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.TestConstNoType.Admin">
+            <summary>
+            관리자(개발자 포함)
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.TestConstNoType.BoardAdmin">
+            <summary>
+            이 게시판 관리자
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestConstType">
+            <summary>
+            테스트용 타입 - 타입스크립트=역참조 불가
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.TestConstType.None">
+            <summary>
+            상태 없음
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.TestConstType.NonUser">
+            <summary>
+            비회원
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.TestConstType.User">
+            <summary>
+            회원
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.TestConstType.Admin">
+            <summary>
+            관리자(개발자 포함)
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.TestConstType.BoardAdmin">
+            <summary>
+            이 게시판 관리자
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestOutputNoModel">
+            <summary>
+            출력 안함
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestOutputNoModel.Int">
+            <summary>
+            숫자
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestOutputNoModel.String">
+            <summary>
+            문자열
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestOutputNoModel.DateTime">
+            <summary>
+            날짜
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestResultModel">
+            <summary>
+            테스트용 결과 모델
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestResultModel.Int">
+            <summary>
+            숫자
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestResultModel.String">
+            <summary>
+            문자열
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestResultModel.DateTime">
+            <summary>
+            날짜
+            </summary>
+        </member>
+    </members>
+</doc>

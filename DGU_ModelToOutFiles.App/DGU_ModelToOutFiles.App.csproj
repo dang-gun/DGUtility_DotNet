@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>DGU_ModelToOutFiles.App.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DGU_EnumToClass_SummaryAssist\DGU_EnumToClass_SummaryAssist.csproj" />
+    <ProjectReference Include="..\DGU_ModelToOutFiles.Global\DGU_ModelToOutFiles.Global.csproj" />
+    <ProjectReference Include="..\DGU_ModelToOutFiles.TestModels\DGU_ModelToOutFiles.TestModels.csproj" />
+    <ProjectReference Include="..\DGU_ProjectXmlAssist\DGU_ProjectXmlAssist.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DocXml\DGU_ModelToOutFiles.App.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

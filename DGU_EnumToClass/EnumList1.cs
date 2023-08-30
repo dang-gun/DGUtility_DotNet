@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DGU.EnumToClass
+namespace DGUtility.EnumToClass
 {
-	/// <summary>
-	/// 열거형의 멤버를 분해하여 배열형태로 관리 해주는 클래스.
-	/// <para>맴버의 값에 중복이 있다면 이 클래스를 사용할 수 없다.</para>
-	/// </summary>
-	public class EnumList1
+    /// <summary>
+    /// 열거형의 멤버를 분해하여 배열형태로 관리 해주는 클래스.
+    /// </summary>
+    /// <remarks>
+    /// 맴버의 값에 중복이 있다면 이 클래스를 사용할 수 없다.
+    /// </remarks>
+    public class EnumList1
 	{
 		/// <summary>
 		/// 지정된 열거형

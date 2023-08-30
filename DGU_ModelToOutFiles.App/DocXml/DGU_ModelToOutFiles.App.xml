@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DGU_ModelToOutFiles.App</name>
+    </assembly>
+    <members>
+        <member name="T:DGU_ModelToOutFiles.App.Program">
+            <summary>
+            DGU_ModelToOutFiles.App
+            </summary>
+            <remarks>
+            출력하려는 프로젝트를 참조해야 출력할 수 있다.
+            </remarks>
+        </member>
+    </members>
+</doc>

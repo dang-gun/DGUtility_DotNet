@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DGU.EnumToClass
+namespace DGUtility.EnumToClass
 {
-	/// <summary>
-	/// 지정한 열거형을 리스트로 바꾼다.
-	/// <para>중복된 값 처리를 위해 변경된 구조.<br />
-	/// 중복된 값이 있는 열거형 맴버는 이 클래스로 처리해야 한다.</para>
-	/// </summary>
-	/// <typeparam name="T">변환할 열거형</typeparam>
-	public class EnumList2<T> where T : Enum
+    /// <summary>
+    /// 지정한 열거형을 리스트로 바꾼다.
+    /// </summary>
+    /// <remarks>
+    /// 중복된 값 처리를 위해 변경된 구조.<br />
+    /// 중복된 값이 있는 열거형 맴버는 이 클래스로 처리해야 한다.
+    /// </remarks>
+    /// <typeparam name="T">변환할 열거형</typeparam>
+    public class EnumList2<T> where T : Enum
 	{
 		/// <summary>
 		/// 분해한 열거형 멤버 데이터
