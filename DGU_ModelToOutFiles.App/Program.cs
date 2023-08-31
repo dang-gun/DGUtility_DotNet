@@ -89,7 +89,8 @@ internal class Program
             }
         }
 
-
+        Console.WriteLine($"Output folder : {sOutputPath}");
+        Console.WriteLine();
 
 
 
@@ -104,6 +105,7 @@ internal class Program
 
             xmlFA.XmlFilesCopy();
             Console.WriteLine("====== End XML Files copy ======");
+            Console.WriteLine();
         }
 
         //xml 파일 패스 읽기
@@ -133,6 +135,7 @@ internal class Program
         if (true == bOutputPathClear)
         {//출력 폴더 지우기
 
+            Console.WriteLine("Clear folder");
             DirectoryInfo diOutP = new DirectoryInfo(sOutputPath);
 
             //루트에 있는 파일 찾기
@@ -151,6 +154,7 @@ internal class Program
                 diItem.Delete(true);
             }
 
+            Console.WriteLine();
         }
 
         //파일로 출력

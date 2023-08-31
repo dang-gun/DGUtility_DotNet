@@ -178,6 +178,18 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
                     //원본이 가지고 있는 타입을 저장한다.
                     sType = item.PropertyType.GenericTypeArguments[0].Name;
                 }
+				else if("[]" == sType.Substring(sType.Length - 2))
+                {//개체 배열이다.
+
+					//배열 개체를 지정하고
+					sArrayType = sType.Substring(0, sType.Length - 2);
+                    //리스트 타입인걸 알리고
+                    sType = "List";
+
+                    //네임스페이스 전체 이름 재정의
+                    sNameFull = sNameFull.Substring(0, sNameFull.Length - 2);
+
+				}
 
 				this.ModelMember.Add(new TypeScriptModelMember()
 				{

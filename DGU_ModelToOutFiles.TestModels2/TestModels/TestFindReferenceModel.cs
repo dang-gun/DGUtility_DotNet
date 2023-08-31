@@ -10,7 +10,7 @@ public class TestFindReferenceModel
     /// <summary>
     /// 다른 어셈블리에 있는 참조
     /// </summary>
-    public TestCallModel? TestCall { get; set; }
+    public TestCallModel[]? TestCall { get; set; }
 
     /// <summary>
     /// 문자열
