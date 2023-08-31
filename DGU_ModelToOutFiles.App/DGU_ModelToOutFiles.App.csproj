@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DGU_EnumToClass_SummaryAssist\DGU_EnumToClass_SummaryAssist.csproj" />
     <ProjectReference Include="..\DGU_ModelToOutFiles.Global\DGU_ModelToOutFiles.Global.csproj" />
+    <ProjectReference Include="..\DGU_ModelToOutFiles.TestModels2\DGU_ModelToOutFiles.TestModels2.csproj" />
     <ProjectReference Include="..\DGU_ModelToOutFiles.TestModels\DGU_ModelToOutFiles.TestModels.csproj" />
     <ProjectReference Include="..\DGU_ProjectXmlAssist\DGU_ProjectXmlAssist.csproj" />
   </ItemGroup>

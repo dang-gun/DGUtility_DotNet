@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace DGU_ApiResult;
+namespace DGUtility.ApiResult;
 
 /// <summary>
 /// api요청을 처리할때 요청결과처리를 공통화 하는 클래스.

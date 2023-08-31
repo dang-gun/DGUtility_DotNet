@@ -27,17 +27,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TimeScheduler", "TimeSchedu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModelToOutFiles", "ModelToOutFiles", "{EDF0E4CD-CAE1-4EC4-9EBC-506CB66E7979}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_ModelToOutFiles.App", "DGU_ModelToOutFiles.App\DGU_ModelToOutFiles.App.csproj", "{A8C36058-4606-4CF3-93BC-88A0A25776CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_ModelToOutFiles.App", "DGU_ModelToOutFiles.App\DGU_ModelToOutFiles.App.csproj", "{A8C36058-4606-4CF3-93BC-88A0A25776CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_ModelToOutFiles.Global", "DGU_ModelToOutFiles.Global\DGU_ModelToOutFiles.Global.csproj", "{DEF75F07-7A42-46B0-BA65-A04E52429B64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_ModelToOutFiles.Global", "DGU_ModelToOutFiles.Global\DGU_ModelToOutFiles.Global.csproj", "{DEF75F07-7A42-46B0-BA65-A04E52429B64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_ModelToOutFiles.TestModels", "DGU_ModelToOutFiles.TestModels\DGU_ModelToOutFiles.TestModels.csproj", "{2A329A4B-DFE8-4400-A4BC-B4CD2DDF2437}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_ModelToOutFiles.TestModels", "DGU_ModelToOutFiles.TestModels\DGU_ModelToOutFiles.TestModels.csproj", "{2A329A4B-DFE8-4400-A4BC-B4CD2DDF2437}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_ProjectXmlAssist", "DGU_ProjectXmlAssist\DGU_ProjectXmlAssist.csproj", "{40B4B5CD-D742-491B-B415-90747CDDF779}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_ProjectXmlAssist", "DGU_ProjectXmlAssist\DGU_ProjectXmlAssist.csproj", "{40B4B5CD-D742-491B-B415-90747CDDF779}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EnumToClass", "EnumToClass", "{32901CF5-0A85-422D-94C8-BAB7B8E9DDF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_EnumToClass_SummaryAssist", "DGU_EnumToClass_SummaryAssist\DGU_EnumToClass_SummaryAssist.csproj", "{7BA99969-F9B5-4476-9DBB-D8E01C04B71C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_EnumToClass_SummaryAssist", "DGU_EnumToClass_SummaryAssist\DGU_EnumToClass_SummaryAssist.csproj", "{7BA99969-F9B5-4476-9DBB-D8E01C04B71C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_ModelToOutFiles.TestModels2", "DGU_ModelToOutFiles.TestModels2\DGU_ModelToOutFiles.TestModels2.csproj", "{A62E8763-E992-4A87-AF2A-48E336A82FA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{7BA99969-F9B5-4476-9DBB-D8E01C04B71C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BA99969-F9B5-4476-9DBB-D8E01C04B71C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BA99969-F9B5-4476-9DBB-D8E01C04B71C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A62E8763-E992-4A87-AF2A-48E336A82FA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A62E8763-E992-4A87-AF2A-48E336A82FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A62E8763-E992-4A87-AF2A-48E336A82FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A62E8763-E992-4A87-AF2A-48E336A82FA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,6 +125,7 @@ Global
 		{DEF75F07-7A42-46B0-BA65-A04E52429B64} = {EDF0E4CD-CAE1-4EC4-9EBC-506CB66E7979}
 		{2A329A4B-DFE8-4400-A4BC-B4CD2DDF2437} = {EDF0E4CD-CAE1-4EC4-9EBC-506CB66E7979}
 		{7BA99969-F9B5-4476-9DBB-D8E01C04B71C} = {32901CF5-0A85-422D-94C8-BAB7B8E9DDF4}
+		{A62E8763-E992-4A87-AF2A-48E336A82FA1} = {EDF0E4CD-CAE1-4EC4-9EBC-506CB66E7979}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76687BE7-7D76-47EA-8CD1-B48AC1A9AF47}

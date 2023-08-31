@@ -19,10 +19,25 @@ internal class Program
     static void Main(string[] args)
     {
         //프로젝트 루트 폴더
-        string sProjectRootDir
-            = Path.GetFullPath(
-                Path.Combine("..", "..", "..")
-                , Environment.CurrentDirectory);
+        string sProjectRootDir = string.Empty;
+        if (true == System.Diagnostics.Debugger.IsAttached)
+        {//IDE에서 실행중일때
+
+            sProjectRootDir
+                = Path.GetFullPath(
+                    Path.Combine("..", "..", "..")
+                    , Environment.CurrentDirectory);
+        }
+        else
+        {//일반 실행일때
+
+            // 현재 실행중인 프로그램 명을 포함한 경로
+            string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            // 현재 실행중인 프로그램의 경로
+            sProjectRootDir = Path.GetDirectoryName(path)!;
+
+            Console.WriteLine("false : " + sProjectRootDir);
+        }
 
         Console.WriteLine("Hello, DGU_ModelToOutFiles.App!");
 
@@ -30,6 +45,11 @@ internal class Program
         string sOutputPath = "D:\\OutputFiles";
         //출력 타입
         string sOutputType = "typescript";
+        //출력할 폴더 비우기 여부
+        bool bOutputPathClear = false;
+        //임포트시 앞에 붙을 루트
+        string sImportRootDir = string.Empty;
+        //string sImportRootDir = "./";
 
         for (int i = 0; i < args.Length; ++i)
         {
@@ -57,6 +77,14 @@ internal class Program
                                 //break;
                         }
                     }
+                    break;
+
+                case "-clear"://출력 폴더 비우기 여부
+                    bOutputPathClear = true;
+                    break;
+
+                case "-Importroot"://임포트시 앞에 붙을 루트
+                    sImportRootDir = args[i + 1];
                     break;
             }
         }
@@ -93,21 +121,51 @@ internal class Program
         switch (sOutputType)
         {
             case "typescript":
-                otoTemp = new ObjectToOut_Typescript(sOutputPath, xml);
+                otoTemp = new ObjectToOut_Typescript(sOutputPath, xml, sImportRootDir);
                 break;
 
             default:
+                Console.WriteLine("====== 잘못된 형식을 지정하였습니다. ======");
                 return;
 
         }
+
+        if (true == bOutputPathClear)
+        {//출력 폴더 지우기
+
+            DirectoryInfo diOutP = new DirectoryInfo(sOutputPath);
+
+            //루트에 있는 파일 찾기
+            FileInfo[] arrFI = diOutP.GetFiles();
+            foreach (FileInfo fileItem in arrFI)
+            {
+                //파일 삭제
+                fileItem.Delete();
+            }
+
+            //루트에 있는 폴더 찾기
+            DirectoryInfo[] arrDI = diOutP.GetDirectories();
+            foreach (DirectoryInfo diItem in arrDI)
+            {
+                //폴더 삭제
+                diItem.Delete(true);
+            }
+
+        }
+
         //파일로 출력
         otoTemp.ToTargetSave(
             new NamespaceTargetModel[]
             {
-                 new NamespaceTargetModel()
+                new NamespaceTargetModel()
                 {
                     AssemblyName = "DGU_ModelToOutFiles.TestModels"
                     , NamespaceList = new string[] { "DGU_ModelToOutFiles.TestModels" }
+                }
+                , new NamespaceTargetModel()
+                {
+                    AssemblyName = "DGU_ModelToOutFiles.TestModels2"
+                    , NamespaceList = new string[] { "DGU_ModelToOutFiles.TestModels2" }
                 }
             });
 

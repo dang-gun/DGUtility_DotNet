@@ -1,4 +1,4 @@
-﻿namespace DGU_ApiResult;
+﻿namespace DGUtility.ApiResult;
 
 /// <summary>
 /// API 결과 공통 베이스.

@@ -196,12 +196,18 @@
             타입 스크립트로 내보낸다
             </summary>
         </member>
-        <member name="M:DGU_ModelToOutFiles.App.Faculty.ObjectToOut_Typescript.#ctor(System.String,DGUtility.ProjectXml.ProjectXmlAssist)">
+        <member name="F:DGU_ModelToOutFiles.App.Faculty.ObjectToOut_Typescript.ImportRootDir">
+            <summary>
+            임포트시 앞에 붙을 루트
+            </summary>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.App.Faculty.ObjectToOut_Typescript.#ctor(System.String,DGUtility.ProjectXml.ProjectXmlAssist,System.String)">
             <summary>
             개체 리스트를 타입스크립트 파일로 출력하기위한 클래스
             </summary>
             <param name="sOutputPath">출력할 물리 경로(폴더)</param>
             <param name="ProjectXml">주석이 들어 있는 XML 개체</param>
+            <param name="sImportRootDir">임포트시 앞에 붙을 루트 지정</param>
         </member>
         <member name="M:DGU_ModelToOutFiles.App.Faculty.ObjectToOut_Typescript.ToTargetSave">
             <summary>

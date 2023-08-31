@@ -1,4 +1,4 @@
-﻿namespace DGU_ApiResult;
+﻿namespace DGUtility.ApiResult;
 
 /// <summary>
 /// 제네릭으로 사용해볼까해서 테스트중

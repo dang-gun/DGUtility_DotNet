@@ -216,7 +216,7 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 	/// </summary>
 	public void ImportClear()
 	{
-		this.ImportRootDir = string.Empty;
+		//this.ImportRootDir = string.Empty;
 		this.ImportItem.Clear();
 	}
 

@@ -1,5 +1,5 @@
 ﻿
-namespace DGU_ApiResult;
+namespace DGUtility.ApiResult;
 
 /// <summary>
 /// 자주쓰는 API 결과 타입
