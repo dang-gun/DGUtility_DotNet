@@ -4,6 +4,26 @@
         <name>DGU_ModelToOutFiles.TestModels</name>
     </assembly>
     <members>
+        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.BoardStateType">
+            <summary>
+            보드 상태
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.BoardStateType.None">
+            <summary>
+            상태 없음
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.BoardStateType.Open">
+            <summary>
+            열림
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.BoardStateType.Close">
+            <summary>
+            닫침
+            </summary>
+        </member>
         <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel">
             <summary>
             테스트용 호출 모델

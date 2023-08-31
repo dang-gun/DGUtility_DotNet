@@ -16,5 +16,10 @@ public class TestFindReferenceModel
     /// ICollection처리
     /// </summary>
     public ICollection<TestCallResultModel>? TestCallResultList { get; set; }
+    
+    /// <summary>
+    /// 열거형 테스트
+    /// </summary>
+    public EnumType EnumType { get; set; } = EnumType.None;
 
 }
