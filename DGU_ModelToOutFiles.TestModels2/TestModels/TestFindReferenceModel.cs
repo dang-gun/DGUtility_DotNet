@@ -15,11 +15,12 @@ public class TestFindReferenceModel
     /// <summary>
     /// ICollection처리
     /// </summary>
-    public ICollection<TestCallResultModel>? TestCallResultList { get; set; }
+    //public ICollection<TestCallResultModel>? TestCallResultList { get; set; }
     
     /// <summary>
     /// 열거형 테스트
     /// </summary>
-    public EnumType EnumType { get; set; } = EnumType.None;
+    public EnumType? EnumType { get; set; }
 
+    public List<TestCallResultModel>? TestCallResultList { get; set; }
 }

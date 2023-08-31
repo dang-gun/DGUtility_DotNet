@@ -767,6 +767,14 @@
             <param name="sReturn"></param>
             <returns>타입스크립트로 변환 성공여부. 성공하지 못했으면 개체타입일 확률이 높다.</returns>
         </member>
+        <member name="M:DGUtility.ModelToFrontend.ModelToTs.CustomAttributesFind(System.Reflection.PropertyInfo,System.Boolean@)">
+            <summary>
+            지정된 아이템에서 커스텀 어트리 뷰트를 검색하고 
+            지정된 어트리뷰트가 있으면 알려준다.
+            </summary>
+            <param name="item"></param>
+            <param name="bNullableAttribute"></param>
+        </member>
         <member name="T:DGUtility.ModelToFrontend.TypeScriptModelMember">
             <summary>
             모델의 멤버 정보를 검색하기 쉽게 저장한다.

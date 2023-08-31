@@ -4,22 +4,22 @@
         <name>DGU_ModelToOutFiles.TestModels</name>
     </assembly>
     <members>
-        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.BoardStateType">
+        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.EnumType">
             <summary>
             보드 상태
             </summary>
         </member>
-        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.BoardStateType.None">
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.EnumType.None">
             <summary>
             상태 없음
             </summary>
         </member>
-        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.BoardStateType.Open">
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.EnumType.Open">
             <summary>
             열림
             </summary>
         </member>
-        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.BoardStateType.Close">
+        <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.EnumType.Close">
             <summary>
             닫침
             </summary>
