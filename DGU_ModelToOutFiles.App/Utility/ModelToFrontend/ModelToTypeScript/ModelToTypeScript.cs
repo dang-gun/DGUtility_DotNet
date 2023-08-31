@@ -170,7 +170,22 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 					//배열이 가지고 있는 타입을 저장한다.
 					sArrayType = item.PropertyType.GenericTypeArguments[0].Name;
 				}
-				else if (item.PropertyType.Name == "Nullable`1")
+				else if (item.PropertyType.Name == "ICollection`1")
+                {//리스트 타입이다.
+
+                    //리스트 타입인걸 알리고
+                    sType = "List";
+                    //배열이 가지고 있는 타입을 저장한다.
+                    sArrayType = item.PropertyType.GenericTypeArguments[0].Name;
+
+					//네임스페이스 전체 이름 재정의
+					if(null != item.PropertyType.GenericTypeArguments[0].FullName)
+					{
+                        sNameFull = item.PropertyType.GenericTypeArguments[0].FullName!;
+                    }
+					
+                }
+                else if (item.PropertyType.Name == "Nullable`1")
 				{
 					//널 허용
 					bNullable = true;
