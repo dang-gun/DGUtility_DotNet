@@ -31,6 +31,6 @@ public class TestFindReferenceModel
     /// <summary>
     /// 자식 모델 참조 테스트
     /// </summary>
-    public ChildrenModel TestChildrenReference { get; set; }
+    public ChildrenModel TestChildrenReference { get; set; } = new ChildrenModel();
 
 }

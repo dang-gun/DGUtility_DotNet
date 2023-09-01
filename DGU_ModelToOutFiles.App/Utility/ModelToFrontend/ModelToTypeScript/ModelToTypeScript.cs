@@ -167,9 +167,6 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 				//출력하지 않는 프로퍼티인지 여부
 				bool bModelOutputNo = false;
 
-
-
-
                 if (item.PropertyType.Name == "List`1")
 				{//리스트 타입이다.
 
@@ -182,12 +179,6 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
                     {
                         sNameFull = item.PropertyType.GenericTypeArguments[0].FullName!;
                     }
-
-					//커스텀 속성 체크
-					this.CustomAttributesFind(
-						item
-						, ref bNullable
-						, ref bModelOutputNo);
                 }
                 else if (item.PropertyType.Name == "ICollection`1")
                 {//리스트 타입이다.
@@ -202,12 +193,6 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 					{
                         sNameFull = item.PropertyType.GenericTypeArguments[0].FullName!;
                     }
-
-                    //커스텀 속성 체크
-                    this.CustomAttributesFind(
-						item
-						, ref bNullable
-                        , ref bModelOutputNo);
                 }
                 else if (item.PropertyType.Name == "Nullable`1")
 				{
@@ -233,21 +218,23 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 
                     //네임스페이스 전체 이름 재정의
                     sNameFull = sNameFull.Substring(0, sNameFull.Length - 2);
-
-                    //커스텀 속성 체크
-                    this.CustomAttributesFind(
-						item
-						, ref bNullable
-                        , ref bModelOutputNo);
                 }
 
-				this.ModelMember.Add(new TypeScriptModelMember()
+
+                //커스텀 속성 체크
+                this.CustomAttributesFind(
+                    item
+                    , ref bNullable
+                    , ref bModelOutputNo);
+
+                this.ModelMember.Add(new TypeScriptModelMember()
 				{
 					Name = item.Name
 					, NameFull = sNameFull
                     , Type = sType
 					, ArrayType = sArrayType
 					, NullableIs = bNullable
+					, ModelOutputNoIs = bModelOutputNo
 				});
 			}
 		}
