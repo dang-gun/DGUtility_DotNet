@@ -1,7 +1,7 @@
 ﻿namespace DGU_ModelToOutFiles.TestModels.TestCont;
 
 /// <summary>
-/// 보드 상태
+/// 열거형 테스트
 /// </summary>
 public enum EnumType
 {

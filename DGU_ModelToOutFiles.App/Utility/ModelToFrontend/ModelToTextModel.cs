@@ -18,7 +18,7 @@ public class ModelToTextModel
     /// <summary>
     /// 임포트 영역 추가 영역
     /// </summary>
-    public StringBuilder ImportAdd = new StringBuilder();
+    public List<string> ImportAdd = new List<string>();
 
 
     /// <summary>
@@ -49,7 +49,11 @@ public class ModelToTextModel
         StringBuilder sbReturn = new StringBuilder();
 
         sbReturn.Append(this.Import);
-        sbReturn.Append(this.ImportAdd);
+        foreach(string sItem in this.ImportAdd)
+        {
+            sbReturn.AppendLine(sItem);
+        }
+        
         sbReturn.AppendLine();
 
         sbReturn.Append(this.HeadSummary);

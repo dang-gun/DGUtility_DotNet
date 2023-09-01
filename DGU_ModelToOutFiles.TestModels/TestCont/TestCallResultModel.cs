@@ -1,14 +1,14 @@
 ﻿namespace DGU_ModelToOutFiles.TestModels.TestCont;
 
 /// <summary>
-/// 테스트용 결과 모델
+/// 개체 테스트용 모델
 /// </summary>
 public class TestCallResultModel
 {
     /// <summary>
     /// 개체 테스트 1
     /// </summary>
-    public TestCallModel? Call { get; set; }
+    public TestCallModel Call { get; set; } = new TestCallModel();
 
     /// <summary>
     /// 개체 테스트 2

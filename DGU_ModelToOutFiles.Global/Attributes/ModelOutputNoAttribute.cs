@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DGU_ModelToOutFiles.Global.Attributes;
 
 /// <summary>
 /// 파일 출력시 이 개체는 제외한다.
 /// </summary>
-[System.AttributeUsage(
-    System.AttributeTargets.Class 
-    | System.AttributeTargets.Enum)]
-public class OutputNoAttribute : System.Attribute
+[AttributeUsage(
+    AttributeTargets.Class 
+    | AttributeTargets.Enum
+    | AttributeTargets.Property)]
+public class ModelOutputNoAttribute : Attribute
 {
     /// <summary>
     /// 다른 프로젝트로 변환하는 경우 이 개체를 제외할지 여부
@@ -22,7 +19,7 @@ public class OutputNoAttribute : System.Attribute
     /// </remarks>
     public bool OutputNoIs;
 
-    public OutputNoAttribute()
+    public ModelOutputNoAttribute()
     {
         this.OutputNoIs = true;
     }
@@ -33,11 +30,11 @@ public class OutputNoAttribute : System.Attribute
 /// </summary>
 public class OutputNoAttributeCheck
 {
-    public OutputNoAttribute? Check(Type type)
+    public ModelOutputNoAttribute? Check(Type type)
     {
-        OutputNoAttribute? etReturn =
-            type.GetCustomAttributes(typeof(OutputNoAttribute), false)
-                    .Cast<OutputNoAttribute>()
+        ModelOutputNoAttribute? etReturn =
+            type.GetCustomAttributes(typeof(ModelOutputNoAttribute), false)
+                    .Cast<ModelOutputNoAttribute>()
                     .FirstOrDefault();
         return etReturn;
     }

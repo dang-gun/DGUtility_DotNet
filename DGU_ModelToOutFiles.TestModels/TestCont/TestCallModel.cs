@@ -1,7 +1,7 @@
 ﻿namespace DGU_ModelToOutFiles.TestModels.TestCont;
 
 /// <summary>
-/// 테스트용 호출 모델
+/// 일반 출력 테스트
 /// </summary>
 public class TestCallModel
 {

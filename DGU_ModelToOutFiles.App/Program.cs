@@ -83,7 +83,8 @@ internal class Program
                     bOutputPathClear = true;
                     break;
 
-                case "-Importroot"://임포트시 앞에 붙을 루트
+                case "-importroot"://임포트시 앞에 붙을 루트
+                    //절대 주소를 사용해야 한다.
                     sImportRootDir = args[i + 1];
                     break;
             }

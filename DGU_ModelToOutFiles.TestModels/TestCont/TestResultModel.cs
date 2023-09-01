@@ -1,4 +1,6 @@
-﻿namespace DGU_ModelToOutFiles.TestModels.TestCont;
+﻿using DGU_ModelToOutFiles.Global.Attributes;
+
+namespace DGU_ModelToOutFiles.TestModels.TestCont;
 
 /// <summary>
 /// 테스트용 결과 모델
@@ -11,13 +13,9 @@ public class TestResultModel
     public int Int { get; set; }
 
     /// <summary>
-    /// 문자열
+    /// 프로퍼티 출력안함 테스트
     /// </summary>
+    [ModelOutputNo]
     public string String { get; set; } = string.Empty;
 
-    /// <summary>
-    /// 날짜
-    /// </summary>
-
-    public DateTime? DateTime { get; set; }
 }

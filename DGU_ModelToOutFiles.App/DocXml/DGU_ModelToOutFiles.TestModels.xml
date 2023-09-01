@@ -4,9 +4,19 @@
         <name>DGU_ModelToOutFiles.TestModels</name>
     </assembly>
     <members>
+        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.Children.ChildrenModel">
+            <summary>
+            하위 네임스페이스 테스트용
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.Children.ChildrenModel.Int">
+            <summary>
+            숫자
+            </summary>
+        </member>
         <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.EnumType">
             <summary>
-            보드 상태
+            열거형 테스트
             </summary>
         </member>
         <member name="F:DGU_ModelToOutFiles.TestModels.TestCont.EnumType.None">
@@ -26,7 +36,7 @@
         </member>
         <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel">
             <summary>
-            테스트용 호출 모델
+            일반 출력 테스트
             </summary>
         </member>
         <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.Int">
@@ -46,7 +56,7 @@
         </member>
         <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestCallResultModel">
             <summary>
-            테스트용 결과 모델
+            개체 테스트용 모델
             </summary>
         </member>
         <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallResultModel.Call">
@@ -121,7 +131,7 @@
         </member>
         <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestOutputNoModel">
             <summary>
-            출력 안함
+            클래스나 열거형 출력 안함 테스트용 모델
             </summary>
         </member>
         <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestOutputNoModel.Int">
@@ -151,12 +161,7 @@
         </member>
         <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestResultModel.String">
             <summary>
-            문자열
-            </summary>
-        </member>
-        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestResultModel.DateTime">
-            <summary>
-            날짜
+            프로퍼티 출력안함 테스트
             </summary>
         </member>
     </members>

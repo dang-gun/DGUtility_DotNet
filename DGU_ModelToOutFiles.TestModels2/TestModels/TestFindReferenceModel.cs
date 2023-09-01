@@ -1,4 +1,5 @@
 ﻿using DGU_ModelToOutFiles.TestModels.TestCont;
+using DGU_ModelToOutFiles.TestModels.TestCont.Children;
 
 namespace DGU_ModelToOutFiles.TestModels2.TestModels;
 
@@ -10,17 +11,26 @@ public class TestFindReferenceModel
     /// <summary>
     /// 다른 어셈블리에 있는 참조
     /// </summary>
-    public TestCallModel[]? TestCallList { get; set; }
+    public TestCallModel[]? TestArray { get; set; }
 
     /// <summary>
     /// ICollection처리
     /// </summary>
-    //public ICollection<TestCallResultModel>? TestCallResultList { get; set; }
-    
+    public ICollection<TestCallResultModel>? TestICollection { get; set; }
+
+    /// <summary>
+    /// 리스트 테스트
+    /// </summary>
+    public List<TestCallResultModel>? TestList { get; set; }
+
     /// <summary>
     /// 열거형 테스트
     /// </summary>
-    public EnumType? EnumType { get; set; }
+    public EnumType? TestEnumType { get; set; }
 
-    public List<TestCallResultModel>? TestCallResultList { get; set; }
+    /// <summary>
+    /// 자식 모델 참조 테스트
+    /// </summary>
+    public ChildrenModel TestChildrenReference { get; set; }
+
 }

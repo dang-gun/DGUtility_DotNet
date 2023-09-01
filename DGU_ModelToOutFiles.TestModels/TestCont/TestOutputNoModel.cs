@@ -4,9 +4,9 @@
 namespace DGU_ModelToOutFiles.TestModels.TestCont;
 
 /// <summary>
-/// 출력 안함
+/// 클래스나 열거형 출력 안함 테스트용 모델
 /// </summary>
-[OutputNo]
+[ModelOutputNo]
 public class TestOutputNoModel
 {
     /// <summary>
