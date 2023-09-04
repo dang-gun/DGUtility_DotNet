@@ -1,13 +1,13 @@
 ﻿using System.Reflection;
 
 
-namespace DGU_ModelToOutFiles.App.Faculty;
+namespace DGUtility.ModelToOutFiles.Library.ObjectToOut;
 
 
 /// <summary>
 /// 내보내기용 오브젝트 모델
 /// </summary>
-internal class ObjectOutModel
+public class ObjectOutModel
 {
     /// <summary>
     /// 소속된 어셈블리
@@ -34,7 +34,7 @@ internal class ObjectOutModel
     {
         get
         {
-            return $"{this.Namespace}.{this.ClassName}";
+            return $"{Namespace}.{ClassName}";
         }
     }
 
@@ -61,27 +61,27 @@ internal class ObjectOutModel
     /// <summary>
     /// 이름까지 포함된 내보낼 상대 물리 경로
     /// </summary>
-    public string OutPhysicalFullPath 
-    { 
+    public string OutPhysicalFullPath
+    {
         get
         {
-            return Path.Combine(OutPhysicalPath, this.ClassName);
+            return Path.Combine(OutPhysicalPath, ClassName);
         }
     }
-    
+
 
     /// <summary>
     /// 네임스페이스 기반으로 내보낼 상대 물리경로를 생성한다.
     /// </summary>
     public void OutPhysicalPath_Create()
     {
-        this.OutPhysicalPath = string.Empty;
+        OutPhysicalPath = string.Empty;
 
         //네임스페이스 자르기
-        string[] arrNs = this.Namespace_Cut.Split('.');
+        string[] arrNs = Namespace_Cut.Split('.');
         foreach (string ns in arrNs)
         {
-            this.OutPhysicalPath = Path.Combine(this.OutPhysicalPath, ns);
+            OutPhysicalPath = Path.Combine(OutPhysicalPath, ns);
         }
     }
 

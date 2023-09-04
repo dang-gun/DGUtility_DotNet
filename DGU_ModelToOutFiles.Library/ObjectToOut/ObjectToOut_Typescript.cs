@@ -1,18 +1,16 @@
 ﻿using System.Text;
-using System.Threading.Tasks;
 
-using Utility.FileAssist;
-
+using DGUtility.FileAssist.FileSave;
 using DGUtility.EnumToClass;
 using DGUtility.ModelToFrontend;
 using DGUtility.ProjectXml;
 
-namespace DGU_ModelToOutFiles.App.Faculty;
+namespace DGUtility.ModelToOutFiles.Library.ObjectToOut;
 
 /// <summary>
 /// 타입 스크립트로 내보낸다
 /// </summary>
-internal class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
+public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
 {
     /// <summary>
     /// 임포트시 앞에 붙을 루트
@@ -32,7 +30,7 @@ internal class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
         , string sImportRootDir)
         : base(sOutputPath, ProjectXml)
     {
-        this.ImportRootDir = sImportRootDir;
+        ImportRootDir = sImportRootDir;
     }
 
     /// <summary>
@@ -44,20 +42,20 @@ internal class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
 
         //처리할 클래스 리스트
         List<ObjectOutModel> listObject
-            = base.NsToClass.ClassList;
+            = NsToClass.ClassList;
 
         string sTemp = string.Empty;
         //열거형을 모델로 바꾸기위한 개체
-        EnumToModel etmBP_Temp = new EnumToModel(base.ProjectXml);
+        EnumToModel etmBP_Temp = new EnumToModel(ProjectXml);
 
         //모델을 타입스크립트로 출력하기 위한 개체
-        ModelToTs tsModel_Temp = new ModelToTs(base.ProjectXml);
+        ModelToTs tsModel_Temp = new ModelToTs(ProjectXml);
         //임포트시 앞에 붙을 루트 지정
-        tsModel_Temp.ImportRootDir = this.ImportRootDir;
+        tsModel_Temp.ImportRootDir = ImportRootDir;
         //임포트시 다른 참조가 필요하면 호출되는 콜백
         tsModel_Temp.ImportSearchCallback
-            = (string sNamespace)
-            => 
+            = (sNamespace)
+            =>
             {
                 return listObject
                         .Where(w => w.ClassNameFull == sNamespace)
@@ -65,23 +63,24 @@ internal class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
                             new ModelToTextImportModel()
                             {
                                 Name = s.ClassName
-                                , OutPhysicalFullPath 
-                                    = this.DirToImportPath(
+                                ,
+                                OutPhysicalFullPath
+                                    = DirToImportPath(
                                         s.OutPhysicalPathList
                                         , s.ClassName)
                             })
                         .ToList();
-                
+
             };
 
 
-        
+
 
         for (int i = 0; i < listObject.Count; ++i)
         {
             ObjectOutModel itemOOM = listObject[i];
 
-            if(null != itemOOM.Instance)
+            if (null != itemOOM.Instance)
             {
                 //경로 생성
                 itemOOM.OutPhysicalPath_Create();
@@ -106,7 +105,7 @@ internal class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
                 }
 
                 fileSave
-                    .FileSave(Path.Combine(base.OutputPath, itemOOM.OutPhysicalFullPath) + ".ts"
+                    .FileSave(Path.Combine(OutputPath, itemOOM.OutPhysicalFullPath) + ".ts"
                                 , sTemp + itemOOM.LastText);
             }
 

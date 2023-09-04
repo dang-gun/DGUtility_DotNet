@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DGU_ModelToOutFiles.Global.Attributes;
+namespace DGUtility.ModelToOutFiles.Global.Attributes;
 
 /// <summary>
 /// 열거형 추가 처리 속성

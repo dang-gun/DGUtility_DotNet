@@ -1,5 +1,4 @@
-﻿using DGU_ModelToOutFiles.Global.Attributes;
-
+﻿using DGUtility.ModelToOutFiles.Global.Attributes;
 
 namespace DGU_ModelToOutFiles.TestModels.TestCont;
 

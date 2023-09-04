@@ -1,8 +1,8 @@
 ﻿using DGUtility.ProjectXml;
 
-namespace DGU_ModelToOutFiles.App.Faculty;
+namespace DGUtility.ModelToOutFiles.Library.ObjectToOut;
 
-internal class ObjectToOutBase: ObjectToOutInterface
+public class ObjectToOutBase : ObjectToOutInterface
 {
     /// <summary>
     /// 출력할 위치
@@ -29,7 +29,7 @@ internal class ObjectToOutBase: ObjectToOutInterface
         string sOutputPath
         , ProjectXmlAssist ProjectXml)
     {
-        this.OutputPath = sOutputPath;
+        OutputPath = sOutputPath;
         this.ProjectXml = ProjectXml;
     }
 
@@ -41,12 +41,12 @@ internal class ObjectToOutBase: ObjectToOutInterface
     {
         for (int i = 0; i < listNamespace.Length; i++)
         {
-            this.NsToClass.ClassListAdd(
+            NsToClass.ClassListAdd(
                 listNamespace[i].AssemblyName
                 , listNamespace[i].NamespaceList);
         }//end for i
 
-        this.ToTargetSave();
+        ToTargetSave();
     }
 
     public virtual void ToTargetSave()

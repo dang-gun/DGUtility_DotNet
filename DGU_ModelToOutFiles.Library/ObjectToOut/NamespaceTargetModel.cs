@@ -1,5 +1,4 @@
-﻿
-namespace DGU_ModelToOutFiles.App.Faculty;
+﻿namespace DGUtility.ModelToOutFiles.Library.ObjectToOut;
 
 /// <summary>
 /// 네임스페이스에 소속된 개체 리스트
@@ -10,7 +9,7 @@ public class NamespaceTargetModel
     /// 로드할 어셈블리 이름
     /// </summary>
     public string AssemblyName { get; set; } = string.Empty;
-    
+
     /// <summary>
     /// 허용할 네임스페이스 리스트
     /// </summary>

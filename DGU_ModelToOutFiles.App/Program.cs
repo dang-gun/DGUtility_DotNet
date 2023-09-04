@@ -1,5 +1,7 @@
-﻿using DGU_ModelToOutFiles.App.Faculty;
-using DGUtility.ProjectXml;
+﻿using DGUtility.ProjectXml;
+
+using DGU_ModelToOutFiles.App.Faculty;
+using DGUtility.ModelToOutFiles.Library.ObjectToOut;
 
 namespace DGU_ModelToOutFiles.App;
 

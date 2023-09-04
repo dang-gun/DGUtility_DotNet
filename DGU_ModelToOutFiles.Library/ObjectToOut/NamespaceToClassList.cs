@@ -1,13 +1,13 @@
 ﻿using System.Reflection;
 
-using DGU_ModelToOutFiles.Global.Attributes;
+using DGUtility.ModelToOutFiles.Global.Attributes;
 
-namespace DGU_ModelToOutFiles.App.Faculty;
+namespace DGUtility.ModelToOutFiles.Library.ObjectToOut;
 
 /// <summary>
 /// 네임스페이스에 소속된 개체 리스트
 /// </summary>
-internal class NamespaceToClassList
+public class NamespaceToClassList
 {
     public List<ObjectOutModel> ClassList { get; set; }
         = new List<ObjectOutModel>();
@@ -43,15 +43,15 @@ internal class NamespaceToClassList
                 .Where(w1 =>
                 {
                     bool bReturn = false;
-                    if ((true == w1.IsClass || true == w1.IsEnum)  
+                    if ((true == w1.IsClass || true == w1.IsEnum)
                         && null != w1.Namespace)
                     {//클래스거나 열거형이면
-                        //네임스페이스가 있으면
+                     //네임스페이스가 있으면
 
 
-                        
+
                         //허용 리스트와 비교
-                        for(int i = 0; i < arrNamespace.Length; ++i)
+                        for (int i = 0; i < arrNamespace.Length; ++i)
                         {
                             string sItem = arrNamespace[i];
                             if (w1.Namespace.Length >= sItem.Length
@@ -61,14 +61,14 @@ internal class NamespaceToClassList
                                 break;
                             }
                         }
-                             
+
                     }
 
                     return bReturn;
                 })
                 .GroupBy(gb => gb.Namespace);
-                     
-                     
+
+
         foreach (var group in groups)
         {
             Console.WriteLine("Namespace: {0}", group.Key);
@@ -88,7 +88,7 @@ internal class NamespaceToClassList
             string sOutPhysicalPath = string.Empty;
             foreach (string itemNS in arrNs)
             {
-                if(string.Empty != itemNS)
+                if (string.Empty != itemNS)
                 {
                     listOutPhysicalPath.Add(itemNS);
                     sOutPhysicalPath += Path.Combine(sOutPhysicalPath, itemNS);
@@ -98,17 +98,23 @@ internal class NamespaceToClassList
             ClassList.AddRange(
                 group
                     //출력 안함 설정이 안되는 항목만 추출
-                    .Where(w=> false == OutputNoCheck(attrchkON, w))
+                    .Where(w => false == OutputNoCheck(attrchkON, w))
                     .Select(s =>
                         new ObjectOutModel()
                         {
                             Assembly = asm
-                            , Namespace = sNamespace
-                            , Namespace_Cut = sNamespace_Cut
-                            , ClassName = s.Name
-                            , ObjectOutType = ObjectOutTypeGet(s)
-                            , OutPhysicalPathList = listOutPhysicalPath
-                            , OutPhysicalPath = sOutPhysicalPath
+                            ,
+                            Namespace = sNamespace
+                            ,
+                            Namespace_Cut = sNamespace_Cut
+                            ,
+                            ClassName = s.Name
+                            ,
+                            ObjectOutType = ObjectOutTypeGet(s)
+                            ,
+                            OutPhysicalPathList = listOutPhysicalPath
+                            ,
+                            OutPhysicalPath = sOutPhysicalPath
                         }
                     ));
         }
@@ -193,7 +199,7 @@ internal class NamespaceToClassList
                 //const를 붙이지 않는다.
                 ooReturn = ObjectOutType.Enum_ConstNo;
             }
-            
+
         }
 
         return ooReturn;

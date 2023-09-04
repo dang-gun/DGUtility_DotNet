@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DGU_EnumToClass_SummaryAssist\DGU_EnumToClass_SummaryAssist.csproj" />
+    <ProjectReference Include="..\DGU_FileAssist\DGU_FileAssist.csproj" />
+    <ProjectReference Include="..\DGU_ModelToOutFiles.Global\DGU_ModelToOutFiles.Global.csproj" />
+    <ProjectReference Include="..\DGU_ProjectXmlAssist\DGU_ProjectXmlAssist.csproj" />
+  </ItemGroup>
+
+</Project>

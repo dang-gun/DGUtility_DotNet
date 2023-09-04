@@ -1,7 +1,6 @@
-﻿
-namespace DGU_ModelToOutFiles.App.Faculty;
+﻿namespace DGUtility.ModelToOutFiles.Library.ObjectToOut;
 
-internal interface ObjectToOutInterface
+public interface ObjectToOutInterface
 {
     /// <summary>
     /// 대상으로 변환하고 지정된 위치에 저장한다.

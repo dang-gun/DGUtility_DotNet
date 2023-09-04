@@ -1,5 +1,4 @@
-﻿
-namespace DGU_ModelToOutFiles.App.Faculty;
+﻿namespace DGUtility.ModelToOutFiles.Library.ObjectToOut;
 
 /// <summary>
 /// 오브젝트 출력 타입

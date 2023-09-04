@@ -1,7 +1,7 @@
 ﻿using System.Text;
 
 
-namespace Utility.FileAssist;
+namespace DGUtility.FileAssist.FileCopy;
 
 /// <summary>
 /// 파일 복사 경로 - 출력 리스트 모델
@@ -15,7 +15,7 @@ public class FileCopyDir_OutListModel : FileCopyDirModel
     /// 파일을 저장할 위치 리스트(이름 제외)
     /// </summary>
     public List<string> TargetDirList { get; set; } = new List<string>();
-    
+
     /// <summary>
     /// 파일을 저장할 위치 리스트 전체 경로
     /// </summary>
@@ -24,9 +24,9 @@ public class FileCopyDir_OutListModel : FileCopyDirModel
         get
         {
             List<string> listReturn = new List<string>();
-            foreach (string item in this.TargetDirList)
+            foreach (string item in TargetDirList)
             {
-                listReturn.Add(Path.Combine(item, this.Name));
+                listReturn.Add(Path.Combine(item, Name));
             }
 
             return listReturn;
@@ -50,9 +50,9 @@ public class FileCopyDir_OutListModel : FileCopyDirModel
         get
         {
             List<string> listReturn = new List<string>();
-            foreach (string item in this.TargetDirList_Separate)
+            foreach (string item in TargetDirList_Separate)
             {
-                listReturn.Add(Path.Combine(item, this.Name));
+                listReturn.Add(Path.Combine(item, Name));
             }
 
             return listReturn;

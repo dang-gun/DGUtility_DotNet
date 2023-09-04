@@ -1,8 +1,8 @@
-﻿using DGU_ModelToOutFiles.Global.Attributes;
-using DGUtility.ProjectXml;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Reflection;
 using System.Text;
+
+using DGUtility.ProjectXml;
 
 namespace DGUtility.ModelToFrontend;
 

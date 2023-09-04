@@ -1,17 +1,17 @@
 ﻿using System.Text;
 
 
-namespace Utility.FileAssist;
+namespace DGUtility.FileAssist.FileCopy;
 
 /// <summary>
 /// 파일 복사 경로 모델
 /// </summary>
 public class FileCopyDirModel
 {
-	/// <summary>
-	/// 파일의 이름(확장자 포함)
-	/// </summary>
-	public string Name { get; set; } = string.Empty;
+    /// <summary>
+    /// 파일의 이름(확장자 포함)
+    /// </summary>
+    public string Name { get; set; } = string.Empty;
 
     /// <summary>
     /// 원본 파일 위치(이름 제외)
@@ -24,7 +24,7 @@ public class FileCopyDirModel
     {
         get
         {
-            return Path.Combine(this.OriginalDir, this.Name);
+            return Path.Combine(OriginalDir, Name);
         }
     }
 
@@ -39,7 +39,7 @@ public class FileCopyDirModel
     {
         get
         {
-            return Path.Combine(this.TargetDir, this.Name);
+            return Path.Combine(TargetDir, Name);
         }
     }
 

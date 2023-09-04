@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DGU_ModelToOutFiles.Global.Attributes;
+namespace DGUtility.ModelToOutFiles.Global.Attributes;
 
 /// <summary>
 /// 파일 출력시 이 개체는 제외한다.
