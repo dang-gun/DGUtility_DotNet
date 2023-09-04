@@ -14,6 +14,11 @@ public class TestCallModel
     /// 문자열
     /// </summary>
     public string String { get; set; } = string.Empty;
+    /// <summary>
+    /// 문자열 - 널허용
+    /// </summary>
+    public string? String2 { get; set; } = string.Empty;
+
 
     /// <summary>
     /// 날짜

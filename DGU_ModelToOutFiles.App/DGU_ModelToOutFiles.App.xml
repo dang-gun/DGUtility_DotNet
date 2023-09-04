@@ -775,6 +775,7 @@
             <param name="item"></param>
             <param name="bNullableAttribute"></param>
             <param name="bModelOutputNoAttribute"></param>
+            <param name="sVarTypeEnforce"></param>
         </member>
         <member name="T:DGUtility.ModelToFrontend.TypeScriptModelMember">
             <summary>

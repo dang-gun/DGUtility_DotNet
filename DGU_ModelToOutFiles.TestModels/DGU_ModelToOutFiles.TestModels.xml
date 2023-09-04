@@ -49,6 +49,11 @@
             문자열
             </summary>
         </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.String2">
+            <summary>
+            문자열 - 널허용
+            </summary>
+        </member>
         <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.DateTime">
             <summary>
             날짜
