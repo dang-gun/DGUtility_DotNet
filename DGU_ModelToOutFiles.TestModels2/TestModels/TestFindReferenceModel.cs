@@ -1,4 +1,5 @@
-﻿using DGU_ModelToOutFiles.TestModels.TestCont;
+﻿using DGU_ModelToOutFiles.Global.Attributes;
+using DGU_ModelToOutFiles.TestModels.TestCont;
 using DGU_ModelToOutFiles.TestModels.TestCont.Children;
 
 namespace DGU_ModelToOutFiles.TestModels2.TestModels;
@@ -33,4 +34,9 @@ public class TestFindReferenceModel
     /// </summary>
     public ChildrenModel TestChildrenReference { get; set; } = new ChildrenModel();
 
+    /// <summary>
+    /// 변수형 강제지정 테스트
+    /// </summary>
+    [VarTypeEnforce("ReadableStream<Uint8Array> | ArrayBuffer | string")]
+    public byte[] TestVarTypeEnforce { get; set; } = new byte[0];
 }

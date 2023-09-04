@@ -24,6 +24,9 @@ public class EnumTypeAttribute : System.Attribute
     /// </remarks>
     public bool TypeScript_EnumNoConstIs;
 
+    /// <summary>
+    /// const를 붙이지 않는다.
+    /// </summary>
     public EnumTypeAttribute()
     {
         this.TypeScript_EnumNoConstIs = true;
