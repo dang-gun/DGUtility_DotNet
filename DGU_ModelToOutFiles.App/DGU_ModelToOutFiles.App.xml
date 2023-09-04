@@ -4,54 +4,6 @@
         <name>DGU_ModelToOutFiles.App</name>
     </assembly>
     <members>
-        <member name="T:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist">
-            <summary>
-            XML 파일 지원
-            </summary>
-        </member>
-        <member name="P:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.ProjectRootPath">
-            <summary>
-            프로젝트 루트 경로
-            </summary>
-        </member>
-        <member name="P:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.OutputFolder_RelativePath">
-            <summary>
-            출력 폴더 상대 경로
-            </summary>
-        </member>
-        <member name="P:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.XmlFilePathList">
-            <summary>
-            읽어들인 xml 파일 
-            </summary>
-            <remarks>
-            XmlFilePathReload()로 리스트를 읽어야 내용물이 채워진다.
-            </remarks>
-        </member>
-        <member name="P:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.OutputFolder_FullPath">
-            <summary>
-            출력 폴더 전체 경로
-            </summary>
-        </member>
-        <member name="M:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.#ctor(System.String,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="sProjectRootPath"></param>
-            <param name="sOutputFolder_RelativePath"></param>
-        </member>
-        <member name="M:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.XmlFilesCopy">
-            <summary>
-            XML 파일 복사
-            </summary>
-        </member>
-        <member name="M:DGU_ModelToOutFiles.App.Faculty.XmlFileAssist.XmlFilePathReload">
-            <summary>
-            로컬에 있는 xml 파일리스트를 다시 읽어들인다.
-            </summary>
-            <remarks>
-            보통은 한번만 읽으면 되지만 파일리스트가 빈번하게 변경된다면 자주 읽어야 할 수 있다.
-            </remarks>
-        </member>
         <member name="T:DGU_ModelToOutFiles.App.Program">
             <summary>
             DGU_ModelToOutFiles.App

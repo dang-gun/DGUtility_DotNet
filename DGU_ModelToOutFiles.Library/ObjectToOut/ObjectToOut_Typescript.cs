@@ -21,14 +21,14 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
     /// <summary>
     /// 개체 리스트를 타입스크립트 파일로 출력하기위한 클래스
     /// </summary>
-    /// <param name="sOutputPath">출력할 물리 경로(폴더)</param>
+    /// <param name="listOutputPath">출력할 물리 경로(폴더)</param>
     /// <param name="ProjectXml">주석이 들어 있는 XML 개체</param>
     /// <param name="sImportRootDir">임포트시 앞에 붙을 루트 지정</param>
     public ObjectToOut_Typescript(
-        string sOutputPath
+        List<string> listOutputPath
         , ProjectXmlAssist ProjectXml
         , string sImportRootDir)
-        : base(sOutputPath, ProjectXml)
+        : base(listOutputPath, ProjectXml)
     {
         ImportRootDir = sImportRootDir;
     }
@@ -104,9 +104,15 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
                     sTemp = etmBP_Temp.ToTypeScriptEnumString(false);
                 }
 
-                fileSave
-                    .FileSave(Path.Combine(OutputPath, itemOOM.OutPhysicalFullPath) + ".ts"
+
+                //지정된 경로로 파일 출력
+                for (int j = 0; j < OutputPath.Count; ++j)
+                {
+                    fileSave
+                        .FileSave(Path.Combine(OutputPath[j], itemOOM.OutPhysicalFullPath) + ".ts"
                                 , sTemp + itemOOM.LastText);
+                }
+                
             }
 
         }//end for i

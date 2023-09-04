@@ -7,7 +7,7 @@ public class ObjectToOutBase : ObjectToOutInterface
     /// <summary>
     /// 출력할 위치
     /// </summary>
-    public string OutputPath { get; set; }
+    public List<string> OutputPath { get; set; }
 
     /// <summary>
     /// 주석이 들어 있는 XML 개체
@@ -23,13 +23,13 @@ public class ObjectToOutBase : ObjectToOutInterface
     /// <summary>
     ///
     /// </summary>
-    /// <param name="sOutputPath">출력할 물리 경로(폴더)</param>
+    /// <param name="listOutputPath">출력할 물리 경로(폴더)</param>
     /// <param name="ProjectXml">주석이 들어 있는 XML 개체</param>
     public ObjectToOutBase(
-        string sOutputPath
+        List<string> listOutputPath
         , ProjectXmlAssist ProjectXml)
     {
-        OutputPath = sOutputPath;
+        OutputPath = listOutputPath;
         this.ProjectXml = ProjectXml;
     }
 

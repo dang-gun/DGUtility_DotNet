@@ -1,7 +1,8 @@
 ﻿using DGUtility.ProjectXml;
+using DGUtility.XmlFileAssist;
 
-using DGU_ModelToOutFiles.App.Faculty;
 using DGUtility.ModelToOutFiles.Library.ObjectToOut;
+using DGUtility.FileAssist.FileCopy;
 
 namespace DGU_ModelToOutFiles.App;
 
@@ -102,9 +103,19 @@ internal class Program
             = new XmlFileAssist(
                 sProjectRootDir
                 , "DocXml");
+
         //https://stackoverflow.com/questions/15292758/way-to-determine-whether-executing-in-ide-or-not
         if (true == System.Diagnostics.Debugger.IsAttached)
         {//IDE에서 실행중이다.
+
+            //□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□
+            //가급적 비주얼 스튜디오상 프로젝트 정렬에 맞출것!
+            //□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□
+            
+            //DGU_ModelToOutFiles.TestModels
+            xmlFA.XmlFilesAdd(
+                "DGU_ModelToOutFiles.TestModels.xml"
+                , Path.Combine("..", "DGU_ModelToOutFiles.TestModels"));
 
             xmlFA.XmlFilesCopy();
             Console.WriteLine("====== End XML Files copy ======");
@@ -126,7 +137,11 @@ internal class Program
         switch (sOutputType)
         {
             case "typescript":
-                otoTemp = new ObjectToOut_Typescript(sOutputPath, xml, sImportRootDir);
+                otoTemp 
+                    = new ObjectToOut_Typescript(
+                        new string[] { sOutputPath }.ToList()
+                        , xml
+                        , sImportRootDir);
                 break;
 
             default:

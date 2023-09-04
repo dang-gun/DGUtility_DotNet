@@ -1,11 +1,11 @@
 ﻿using DGUtility.FileAssist.FileCopy;
 
-namespace DGU_ModelToOutFiles.App.Faculty;
+namespace DGUtility.XmlFileAssist;
 
 /// <summary>
 /// XML 파일 지원
 /// </summary>
-internal class XmlFileAssist
+public class XmlFileAssist
 {
     /// <summary>
     /// 프로젝트 루트 경로
@@ -16,6 +16,13 @@ internal class XmlFileAssist
     /// 출력 폴더 상대 경로
     /// </summary>
     public string OutputFolder_RelativePath { get; set; }
+
+    /// <summary>
+    /// 읽어들일 xml 파일 리스트
+    /// </summary>
+    public List<FileCopyDir_OutListModel> listProjectXmlDir { get; set; }
+        = new List<FileCopyDir_OutListModel>();
+
 
     /// <summary>
     /// 읽어들인 xml 파일 
@@ -45,8 +52,26 @@ internal class XmlFileAssist
         string sProjectRootPath
         , string sOutputFolder_RelativePath)
     {
-        ProjectRootPath = sProjectRootPath;
-        OutputFolder_RelativePath = sOutputFolder_RelativePath;
+        this.ProjectRootPath = sProjectRootPath;
+        this.OutputFolder_RelativePath = sOutputFolder_RelativePath;
+    }
+
+    /// <summary>
+    /// 읽어들일 XML 파일을 리스트에 등록한다.
+    /// </summary>
+    /// <param name="sName">복사할 대상의 이름(확장자 포함)</param>
+    /// <param name="sOriginalPath">ProjectRootPath 기준 상대 주소</param>
+    public void XmlFilesAdd(
+        string sName
+        , string sOriginalPath)
+    {
+        this.listProjectXmlDir
+                .Add(new FileCopyDir_OutListModel()
+                {
+                    Name = sName
+                    , OriginalPath = Path.GetFullPath(sOriginalPath, ProjectRootPath)
+                    , TargetPath = this.OutputFolder_FullPath
+                });
     }
 
     /// <summary>
@@ -54,36 +79,8 @@ internal class XmlFileAssist
     /// </summary>
     public void XmlFilesCopy()
     {
-        //복사 대상 폴더
-        string sTargetDir = Path.Combine(ProjectRootPath, "DocXml");
-
-        //복사할 파일 리스트
-        List<FileCopyDir_OutListModel> listProjectXmlDir
-            = new List<FileCopyDir_OutListModel>();
-
-
+        
         Console.WriteLine("====== XML Files copy ======");
-
-        //□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□
-        //가급적 비주얼 스튜디오상 프로젝트 정렬에 맞출것!
-        //□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□
-
-        //DGU_ModelToOutFiles.TestModels
-        listProjectXmlDir
-            .Add(new FileCopyDir_OutListModel()
-            {
-                Name = "DGU_ModelToOutFiles.TestModels.xml"
-                ,
-                OriginalDir
-                    = Path.GetFullPath(
-                        Path.Combine("..", "DGU_ModelToOutFiles.TestModels")
-                        , ProjectRootPath)
-                ,
-                TargetDir = sTargetDir
-            });
-
-
-
 
         //파일 복사 *****************************
         foreach (FileCopyDir_OutListModel item in listProjectXmlDir)
@@ -117,6 +114,6 @@ internal class XmlFileAssist
             listFilePath.Add(fileItem.FullName);
         }
 
-        XmlFilePathList = listFilePath.ToArray();
+        this.XmlFilePathList = listFilePath.ToArray();
     }
 }

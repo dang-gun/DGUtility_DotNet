@@ -16,7 +16,7 @@ public class FileCopyDirModel
     /// <summary>
     /// 원본 파일 위치(이름 제외)
     /// </summary>
-    public string OriginalDir { get; set; } = string.Empty;
+    public string OriginalPath { get; set; } = string.Empty;
     /// <summary>
     /// 원본 파일의 전체 경로
     /// </summary>
@@ -24,14 +24,14 @@ public class FileCopyDirModel
     {
         get
         {
-            return Path.Combine(OriginalDir, Name);
+            return Path.Combine(OriginalPath, Name);
         }
     }
 
     /// <summary>
     /// 파일을 저장할 위치(이름 제외)
     /// </summary>
-    public string TargetDir { get; set; } = string.Empty;
+    public string TargetPath { get; set; } = string.Empty;
     /// <summary>
     /// 파일을 저장할 위치의 전체 경로
     /// </summary>
@@ -39,7 +39,7 @@ public class FileCopyDirModel
     {
         get
         {
-            return Path.Combine(TargetDir, Name);
+            return Path.Combine(TargetPath, Name);
         }
     }
 
