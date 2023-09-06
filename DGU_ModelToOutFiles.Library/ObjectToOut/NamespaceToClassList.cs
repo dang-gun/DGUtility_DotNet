@@ -32,9 +32,6 @@ public class NamespaceToClassList
         string sAssemblyName
         , string[] arrNamespace)
     {
-        //출력 안함 설정이 되었는지 체크하는 개체
-        ModelOutputNoAttributeCheck attrchkON = new ModelOutputNoAttributeCheck();
-
         Assembly asm = Assembly.Load(sAssemblyName);
 
 
@@ -171,11 +168,7 @@ public class NamespaceToClassList
 
         ObjectOutType ooReturn = ObjectOutType.None;
 
-        //Json 출력인지 여부
-        ModelOutputJsonAttributeCheck newNOJ = new ModelOutputJsonAttributeCheck();
-        ModelOutputJsonAttribute? mojTemp = newNOJ.Check(type);
-
-        if(null != mojTemp)
+        if(true == ModelOutputJsonAttributeCheck.Instance().Value(type))
         {//json 출력이다.
 
             //어트리뷰트 제한사항에 클래스와 열거형만 허용되어 있으므로

@@ -3,7 +3,7 @@
 namespace DGUtility.ModelToOutFiles.Global.Attributes;
 
 /// <summary>
-/// 파일 출력시 이 개체는 제외한다.
+/// 파일 출력시 JSON으로 출력한다.
 /// </summary>
 [AttributeUsage(
     AttributeTargets.Class 
@@ -16,16 +16,19 @@ public class ModelOutputJsonAttribute : Attribute
     /// <remarks>
     /// true이면 출력하지 않는다.
     /// </remarks>
-    public bool OutputNoIs;
+    public bool JsonIs;
 
+    /// <summary>
+    /// 파일 출력시 JSON으로 출력한다.
+    /// </summary>
     public ModelOutputJsonAttribute()
     {
-        this.OutputNoIs = true;
+        this.JsonIs = true;
     }
 }
 
 /// <summary>
-/// EnumTypeAttribute가 있는지 확인하고 있으면 개체를 리턴해주는 클래스
+/// ModelOutputJsonAttribute가 있는지 확인하고 있으면 개체를 리턴해주는 클래스
 /// </summary>
 public class ModelOutputJsonAttributeCheck
 {
