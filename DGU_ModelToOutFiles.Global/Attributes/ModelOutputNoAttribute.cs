@@ -30,6 +30,30 @@ public class ModelOutputNoAttribute : Attribute
 /// </summary>
 public class ModelOutputNoAttributeCheck
 {
+    /// <summary>
+    /// 사용시 생성되는 개체
+    /// </summary>
+    private static ModelOutputNoAttributeCheck? statcSingleton;
+
+    /// <summary>
+    /// 싱글톤으로 생성된 개체를 리턴한다.
+    /// </summary>
+    /// <returns></returns>
+    public static ModelOutputNoAttributeCheck Instance()
+    {
+        if (null == statcSingleton)
+        {
+            statcSingleton = new ModelOutputNoAttributeCheck();
+        }
+
+        return statcSingleton;
+    }
+
+    /// <summary>
+    /// ModelOutputNoAttribute가 있는지 체크한다.
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
     public ModelOutputNoAttribute? Check(Type type)
     {
         ModelOutputNoAttribute? etReturn =
@@ -37,5 +61,24 @@ public class ModelOutputNoAttributeCheck
                     .Cast<ModelOutputNoAttribute>()
                     .FirstOrDefault();
         return etReturn;
+    }
+
+    /// <summary>
+    /// ModelOutputNoAttribute의 값 확인
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public bool Value(Type type)
+    {
+        bool bReturn = false;
+        ModelOutputNoAttribute? fsfTemp
+            = this.Check(type);
+
+        if (null != fsfTemp)
+        {
+            bReturn = fsfTemp.OutputNoIs;
+        }
+
+        return bReturn;
     }
 }

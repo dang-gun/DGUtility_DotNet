@@ -4,6 +4,7 @@ using DGUtility.FileAssist.FileSave;
 using DGUtility.EnumToClass;
 using DGUtility.ModelToFrontend;
 using DGUtility.ProjectXml;
+using System.Reflection;
 
 namespace DGUtility.ModelToOutFiles.Library.ObjectToOut;
 
@@ -144,10 +145,45 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
                     //지정된 경로로 파일 출력
                     for (int j = 0; j < base.OutputPathList.Count; ++j)
                     {
-                        fileSave
-                            .FileSave(Path.Combine(base.OutputPathList[j], itemOOM.OutPhysicalFullPath) + ".ts"
+                        string sOutputPathItem = base.OutputPathList[j];
+
+                        if (false == itemOOM.SaveIgnoreOtherPathIs)
+                        {//속성외 경로도 허용
+
+                            //전체 설정 출력 경로로 출력
+                            fileSave
+                                .FileSave(Path.Combine(sOutputPathItem
+                                                        , itemOOM.OutPhysicalFullPath) + ".ts"
                                     , sTemp + itemOOM.LastText);
-                    }
+                        }
+                        
+                        if(string.Empty != itemOOM.SaveAbsolutePath)
+                        {//절대 경로 강제 지정
+
+                            //지정된 경로에 출력
+                            fileSave
+                                .FileSave(Path.Combine(itemOOM.SaveAbsolutePath
+                                                        , itemOOM.ClassName) + ".ts"
+                                    , sTemp + itemOOM.LastText);
+                        }
+                        else
+                        {
+                            //절대 경로 강제 지정일때는 상대경로 수정 속성은 무시된다.
+
+                            if (string.Empty != itemOOM.SaveRelativePath)
+                            {//상대 경로 앞쪽 경로 변경
+                                
+                                fileSave
+                                    .FileSave(Path.Combine(
+                                                Path.GetFullPath(
+                                                    itemOOM.SaveRelativePath
+                                                    , Path.Combine(sOutputPathItem
+                                                                    , itemOOM.OutPhysicalPath))
+                                                , itemOOM.ClassName)+ ".ts"
+                                        , sTemp + itemOOM.LastText);
+                            }
+                        }
+                    }//end for j
                 }
                 
             }
@@ -188,4 +224,5 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
 
         return sbReturn.ToString();
     }
+
 }

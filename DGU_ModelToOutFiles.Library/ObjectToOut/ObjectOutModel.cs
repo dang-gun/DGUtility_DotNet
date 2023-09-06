@@ -15,6 +15,11 @@ public class ObjectOutModel
     public Assembly Assembly { get; set; } = Assembly.GetExecutingAssembly();
 
     /// <summary>
+    /// 이 개체의 타입
+    /// </summary>
+    public Type? MyType { get; set; } = null;
+
+    /// <summary>
     /// 소속된 네임스페이스
     /// </summary>
     public string Namespace { get; set; } = string.Empty;
@@ -107,5 +112,19 @@ public class ObjectOutModel
     /// 생성되고 마지막에 추가될 내용
     /// </summary>
     public string LastText { get; set; } = string.Empty;
+
+
+    /// <summary>
+    /// 저장할 경로 전체 강제 지정
+    /// </summary>
+    public string SaveAbsolutePath = string.Empty;
+    /// <summary>
+    /// 저장할 상대 경로 지정
+    /// </summary>
+    public string SaveRelativePath = string.Empty;
+    /// <summary>
+    /// 속성으로 지정된 경로 외에 모든 경로 무시
+    /// </summary>
+    public bool SaveIgnoreOtherPathIs = false;
 }
 

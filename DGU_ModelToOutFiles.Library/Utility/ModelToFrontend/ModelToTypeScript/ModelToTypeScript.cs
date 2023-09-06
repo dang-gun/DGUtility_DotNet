@@ -195,20 +195,20 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 			{
                 //중단점 잡을 개체
                 this.DebugCall("ModelToTs-Reset-Member", item, null);
-				if (item.Name == "ByteArray")
-				{
-					Debug.WriteLine(item.Name);
-				}
+				//if (item.Name == "ByteArray")
+				//{
+				//	Debug.WriteLine(item.Name);
+				//}
 
 				//변수 타입 이름
 				string sType = item.PropertyType.Name;
 				string sNameFull = null != item.PropertyType.FullName ? item.PropertyType.FullName : string.Empty;
-                string sArrayType = string.Empty;
-				
-				//널 허용 여부
-				bool bNullable = false;
-				//출력하지 않는 프로퍼티인지 여부
-				bool bModelOutputNo = false;
+
+				//
+				TypeScriptModelMember newTSMM = new TypeScriptModelMember();
+				newTSMM.Name = item.Name;
+                newTSMM.NameFull = sNameFull;
+
 				//변수형 강제 지정
 				string sVarTypeEnforce = string.Empty;
 
@@ -218,7 +218,7 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
                     //바이트어레이의 경우 ArrayBuffer라는 변도의 변수형을 사용하므로
 					//다른 배열형태와 다르게 취급해야 한다.
                     sType = "ArrayBuffer";
-					sArrayType = "";
+                    newTSMM.ArrayType = "";
 
                     if (null != item.PropertyType.FullName)
                     {
@@ -230,8 +230,8 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 
 					//리스트 타입인걸 알리고
 					sType = "List";
-					//배열이 가지고 있는 타입을 저장한다.
-					sArrayType = item.PropertyType.GenericTypeArguments[0].Name;
+                    //배열이 가지고 있는 타입을 저장한다.
+                    newTSMM.ArrayType = item.PropertyType.GenericTypeArguments[0].Name;
 
                     if (null != item.PropertyType.GenericTypeArguments[0].FullName)
                     {
@@ -244,7 +244,7 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
                     //리스트 타입인걸 알리고
                     sType = "List";
                     //배열이 가지고 있는 타입을 저장한다.
-                    sArrayType = item.PropertyType.GenericTypeArguments[0].Name;
+                    newTSMM.ArrayType = item.PropertyType.GenericTypeArguments[0].Name;
 
 					//네임스페이스 전체 이름 재정의
 					if(null != item.PropertyType.GenericTypeArguments[0].FullName)
@@ -254,8 +254,8 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
                 }
                 else if (item.PropertyType.Name == "Nullable`1")
 				{
-					//널 허용
-					bNullable = true;
+                    //널 허용
+                    newTSMM.NullableIs = true;
 
                     //원본이 가지고 있는 타입을 저장한다.
                     sType = item.PropertyType.GenericTypeArguments[0].Name;
@@ -269,8 +269,8 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 				else if("[]" == sType.Substring(sType.Length - 2))
                 {//개체 배열이다.
 
-					//배열 개체를 지정하고
-					sArrayType = sType.Substring(0, sType.Length - 2);
+                    //배열 개체를 지정하고
+                    newTSMM.ArrayType = sType.Substring(0, sType.Length - 2);
                     //리스트 타입인걸 알리고
                     sType = "List";
 
@@ -282,21 +282,16 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
                 //커스텀 속성 체크
                 this.CustomAttributesFind(
                     item
-                    , ref bNullable
-                    , ref bModelOutputNo
-					, ref sVarTypeEnforce);
+                    , ref newTSMM.NullableIs
+                    , ref newTSMM.ModelOutputNoIs
+                    , ref sVarTypeEnforce);
 
-                this.ModelMember.Add(new TypeScriptModelMember()
-				{
-					Name = item.Name
-					, NameFull = sNameFull
-					//강제 변수형이 지정되었다면 사용
-                    , Type = sVarTypeEnforce == string.Empty ? sType : sVarTypeEnforce
-                    , ArrayType = sArrayType
-					, NullableIs = bNullable
-					, ModelOutputNoIs = bModelOutputNo
-				});
-			}
+				//강제 변수형이 지정되었다면 사용
+				newTSMM.Type = sVarTypeEnforce == string.Empty ? sType : sVarTypeEnforce;
+
+				//맴버 추가
+                this.ModelMember.Add(newTSMM);
+            }
 		}
 
 		//임포트 내용 초기화
@@ -525,9 +520,7 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 						sType = string.Format("{0}[]", sArrayType);
 					}
                     break;
-				case "Byte[]":
-                    sType = "ArrayBuffer";
-                    break;
+
 				default:
                     bResult = this.TypeToTs(itemMM.Type, out sType);
                     break;
@@ -683,7 +676,7 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
             bModelOutputNoAttribute = true;
         }
 
-
+		//변수형 강제 지정 확인
         CustomAttributeData? cadVarTypeEnforce
                 = item.CustomAttributes
                         .Where(w => w.AttributeType.Name == "VarTypeEnforceAttribute")
@@ -697,5 +690,6 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
                 sVarTypeEnforce = temp.ToString()!;
             }
         }
+
     }
 }

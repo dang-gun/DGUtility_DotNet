@@ -39,6 +39,46 @@
             숫자 출력
             </summary>
         </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderAfterModel">
+            <summary>
+            저장할 폴더 뒷경로 변경
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderAfterModel.Int2">
+            <summary>
+            숫자
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderBeforeModel">
+            <summary>
+            저장할 폴더 앞경로 변경
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderBeforeModel.Int">
+            <summary>
+            숫자
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderFullModel">
+            <summary>
+            지정된 경로에 저장
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderFullModel.Int4">
+            <summary>
+            숫자
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderSaveIgnoreOtherModel">
+            <summary>
+            저장할 폴더 앞경로 변경, 다른 경로엔 저장안함
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderSaveIgnoreOtherModel.Int3">
+            <summary>
+            숫자
+            </summary>
+        </member>
         <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.Children.ChildrenModel">
             <summary>
             하위 네임스페이스 테스트용

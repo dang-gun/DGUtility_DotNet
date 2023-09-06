@@ -36,6 +36,30 @@ public class VarTypeEnforceAttribute : System.Attribute
 /// </summary>
 public class VarTypeEnforceAttributeCheck
 {
+    /// <summary>
+    /// 사용시 생성되는 개체
+    /// </summary>
+    private static VarTypeEnforceAttributeCheck? statcSingleton;
+
+    /// <summary>
+    /// 싱글톤으로 생성된 개체를 리턴한다.
+    /// </summary>
+    /// <returns></returns>
+    public static VarTypeEnforceAttributeCheck Instance()
+    {
+        if (null == statcSingleton)
+        {
+            statcSingleton = new VarTypeEnforceAttributeCheck();
+        }
+
+        return statcSingleton;
+    }
+
+    /// <summary>
+    /// VarTypeEnforceAttribute가 있는지 체크한다.
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
     public VarTypeEnforceAttribute? Check(Type type)
     {
         VarTypeEnforceAttribute? etReturn =
@@ -43,5 +67,24 @@ public class VarTypeEnforceAttributeCheck
                     .Cast<VarTypeEnforceAttribute>()
                     .FirstOrDefault();
         return etReturn;
+    }
+
+    /// <summary>
+    /// VarTypeEnforceAttribute의 값 확인
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public bool Value(Type type)
+    {
+        bool bReturn = false;
+        VarTypeEnforceAttribute? fsfTemp
+            = this.Check(type);
+
+        if (null != fsfTemp)
+        {
+            bReturn = true;
+        }
+
+        return bReturn;
     }
 }

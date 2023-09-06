@@ -29,6 +29,30 @@ public class ModelOutputJsonAttribute : Attribute
 /// </summary>
 public class ModelOutputJsonAttributeCheck
 {
+    /// <summary>
+    /// 사용시 생성되는 개체
+    /// </summary>
+    private static ModelOutputJsonAttributeCheck? statcSingleton;
+
+    /// <summary>
+    /// 싱글톤으로 생성된 개체를 리턴한다.
+    /// </summary>
+    /// <returns></returns>
+    public static ModelOutputJsonAttributeCheck Instance()
+    {
+        if (null == statcSingleton)
+        {
+            statcSingleton = new ModelOutputJsonAttributeCheck();
+        }
+
+        return statcSingleton;
+    }
+
+    /// <summary>
+    /// ModelOutputJsonAttribute가 있는지 체크한다.
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
     public ModelOutputJsonAttribute? Check(Type type)
     {
         ModelOutputJsonAttribute? etReturn =
@@ -36,5 +60,24 @@ public class ModelOutputJsonAttributeCheck
                     .Cast<ModelOutputJsonAttribute>()
                     .FirstOrDefault();
         return etReturn;
+    }
+
+    /// <summary>
+    /// EnumTypeAttribute의 값 확인
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public bool Value(Type type)
+    {
+        bool bReturn = false;
+        ModelOutputJsonAttribute? fsfTemp
+            = this.Check(type);
+
+        if (null != fsfTemp)
+        {
+            bReturn = true;
+        }
+
+        return bReturn;
     }
 }

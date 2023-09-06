@@ -38,6 +38,30 @@ public class EnumTypeAttribute : System.Attribute
 /// </summary>
 public class EnumTypeAttributeCheck
 {
+    /// <summary>
+    /// 사용시 생성되는 개체
+    /// </summary>
+    private static EnumTypeAttributeCheck? statcSingleton;
+
+    /// <summary>
+    /// 싱글톤으로 생성된 개체를 리턴한다.
+    /// </summary>
+    /// <returns></returns>
+    public static EnumTypeAttributeCheck Instance()
+    {
+        if (null == statcSingleton)
+        {
+            statcSingleton = new EnumTypeAttributeCheck();
+        }
+
+        return statcSingleton;
+    }
+
+    /// <summary>
+    /// EnumTypeAttribute가 있는지 체크한다.
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
     public EnumTypeAttribute? Check(Type type)
     {
         EnumTypeAttribute? etReturn =
@@ -45,5 +69,25 @@ public class EnumTypeAttributeCheck
                     .Cast<EnumTypeAttribute>()
                     .FirstOrDefault();
         return etReturn;
+    }
+
+
+    /// <summary>
+    /// EnumTypeAttribute의 값 확인
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public bool Value(Type type)
+    {
+        bool bReturn = false;
+        EnumTypeAttribute? fsfTemp
+            = this.Check(type);
+
+        if (null != fsfTemp)
+        {
+            bReturn = true;
+        }
+
+        return bReturn;
     }
 }
