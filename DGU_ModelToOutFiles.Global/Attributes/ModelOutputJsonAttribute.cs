@@ -7,9 +7,8 @@ namespace DGUtility.ModelToOutFiles.Global.Attributes;
 /// </summary>
 [AttributeUsage(
     AttributeTargets.Class 
-    | AttributeTargets.Enum
-    | AttributeTargets.Property)]
-public class ModelOutputNoAttribute : Attribute
+    | AttributeTargets.Enum)]
+public class ModelOutputJsonAttribute : Attribute
 {
     /// <summary>
     /// 다른 프로젝트로 변환하는 경우 이 개체를 제외할지 여부
@@ -19,7 +18,7 @@ public class ModelOutputNoAttribute : Attribute
     /// </remarks>
     public bool OutputNoIs;
 
-    public ModelOutputNoAttribute()
+    public ModelOutputJsonAttribute()
     {
         this.OutputNoIs = true;
     }
@@ -28,13 +27,13 @@ public class ModelOutputNoAttribute : Attribute
 /// <summary>
 /// EnumTypeAttribute가 있는지 확인하고 있으면 개체를 리턴해주는 클래스
 /// </summary>
-public class ModelOutputNoAttributeCheck
+public class ModelOutputJsonAttributeCheck
 {
-    public ModelOutputNoAttribute? Check(Type type)
+    public ModelOutputJsonAttribute? Check(Type type)
     {
-        ModelOutputNoAttribute? etReturn =
-            type.GetCustomAttributes(typeof(ModelOutputNoAttribute), false)
-                    .Cast<ModelOutputNoAttribute>()
+        ModelOutputJsonAttribute? etReturn =
+            type.GetCustomAttributes(typeof(ModelOutputJsonAttribute), false)
+                    .Cast<ModelOutputJsonAttribute>()
                     .FirstOrDefault();
         return etReturn;
     }

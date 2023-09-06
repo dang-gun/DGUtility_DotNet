@@ -9,22 +9,22 @@ namespace DGUtility.FileAssist.FileCopy;
 /// <remarks>
 /// 출력하는 경로가 여러개인 경우 이 모델을 사용한다.
 /// </remarks>
-public class FileCopyDir_OutListModel : FileCopyDirModel
+public class FileCopyPath_OutListModel : FileCopyPathModel
 {
     /// <summary>
     /// 파일을 저장할 위치 리스트(이름 제외)
     /// </summary>
-    public List<string> TargetDirList { get; set; } = new List<string>();
+    public List<string> TargetPathList { get; set; } = new List<string>();
 
     /// <summary>
     /// 파일을 저장할 위치 리스트 전체 경로
     /// </summary>
-    public List<string> TargetDirListFull
+    public List<string> TargetPathListFull
     {
         get
         {
             List<string> listReturn = new List<string>();
-            foreach (string item in TargetDirList)
+            foreach (string item in TargetPathList)
             {
                 listReturn.Add(Path.Combine(item, Name));
             }
@@ -41,16 +41,16 @@ public class FileCopyDir_OutListModel : FileCopyDirModel
     /// 특수한 경우 분리하기위한 용도로 사용할 수 있다.<br />
     /// 예> 디버깅에서만 출력하는 경로
     /// </remarks>
-    public List<string> TargetDirList_Separate { get; set; } = new List<string>();
+    public List<string> TargetPathList_Separate { get; set; } = new List<string>();
     /// <summary>
     /// 파일을 저장할 위치 리스트 전체 경로 - 별도
     /// </summary>
-    public List<string> TargetDirListFull_Separate
+    public List<string> TargetPathListFull_Separate
     {
         get
         {
             List<string> listReturn = new List<string>();
-            foreach (string item in TargetDirList_Separate)
+            foreach (string item in TargetPathList_Separate)
             {
                 listReturn.Add(Path.Combine(item, Name));
             }

@@ -19,6 +19,11 @@ public class TestCallModel
     /// </summary>
     public string? String2 { get; set; } = string.Empty;
 
+    /// <summary>
+    /// 바이트 배열
+    /// </summary>
+    public byte[] ByteArray { get; set; } = new byte[0];
+
 
     /// <summary>
     /// 날짜

@@ -20,8 +20,28 @@ public class XmlFileAssist
     /// <summary>
     /// 읽어들일 xml 파일 리스트
     /// </summary>
-    public List<FileCopyDir_OutListModel> listProjectXmlDir { get; set; }
-        = new List<FileCopyDir_OutListModel>();
+    public List<FileCopyPath_OutListModel> ProjectXmlPathList { get; set; }
+        = new List<FileCopyPath_OutListModel>();
+
+    /// <summary>
+    /// 가지고 있는 xml 파일 모두의 전체 경로
+    /// </summary>
+    public string[] ProjectXmlPathListTarget
+        {
+            get
+            {
+                List<string> listReturn 
+                    = new List<string>();
+
+                foreach (var item in this.ProjectXmlPathList)
+                {
+                listReturn.Add(item.TargetPathFull);
+                    listReturn.AddRange(item.TargetPathListFull.ToArray());
+                }
+
+                return listReturn.ToArray();
+            }
+        }
 
 
     /// <summary>
@@ -39,7 +59,7 @@ public class XmlFileAssist
     {
         get
         {
-            return Path.Combine(ProjectRootPath, OutputFolder_RelativePath);
+            return Path.Combine(this.ProjectRootPath, this.OutputFolder_RelativePath);
         }
     }
 
@@ -65,11 +85,11 @@ public class XmlFileAssist
         string sName
         , string sOriginalPath)
     {
-        this.listProjectXmlDir
-                .Add(new FileCopyDir_OutListModel()
+        this.ProjectXmlPathList
+                .Add(new FileCopyPath_OutListModel()
                 {
                     Name = sName
-                    , OriginalPath = Path.GetFullPath(sOriginalPath, ProjectRootPath)
+                    , OriginalPath = Path.GetFullPath(sOriginalPath, this.ProjectRootPath)
                     , TargetPath = this.OutputFolder_FullPath
                 });
     }
@@ -83,18 +103,21 @@ public class XmlFileAssist
         Console.WriteLine("====== XML Files copy ======");
 
         //파일 복사 *****************************
-        foreach (FileCopyDir_OutListModel item in listProjectXmlDir)
+        foreach (FileCopyPath_OutListModel item in this.ProjectXmlPathList)
         {
-            string sOriginalFullDir = item.OriginalFullDir;
+            string sOriginalFullDir = item.OriginalFullPath;
 
             if (true == File.Exists(sOriginalFullDir))
             {//원본 파일이 있다.
 
                 //대상 위치에 복사
-                File.Copy(sOriginalFullDir, item.TargetDirFull, true);
-                Console.WriteLine($"file copy {sOriginalFullDir}, {item.TargetDirFull}");
+                File.Copy(sOriginalFullDir, item.TargetPathFull, true);
+                Console.WriteLine($"file copy {sOriginalFullDir}, {item.TargetPathFull}");
             }
         }
+
+        Console.WriteLine("====== End XML Files copy ======");
+        Console.WriteLine();
     }//end XmlFilesCopy()
 
 

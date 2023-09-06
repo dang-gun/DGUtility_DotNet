@@ -7,11 +7,15 @@ using DGUtility.ProjectXml;
 
 namespace DGUtility.ModelToOutFiles.Library.ObjectToOut;
 
+
+
 /// <summary>
 /// 타입 스크립트로 내보낸다
 /// </summary>
 public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
 {
+    
+
     /// <summary>
     /// 임포트시 앞에 붙을 루트
     /// </summary>
@@ -38,6 +42,21 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
     /// </summary>
     public override void ToTargetSave()
     {
+        Console.WriteLine();
+
+        Console.WriteLine("====== Model to Out TypeScript ======");
+        Console.WriteLine("Output path : ");
+
+        //지정된 경로로 확인
+        for (int nOutputPath = 0; nOutputPath < base.OutputPathList.Count; ++nOutputPath)
+        {
+            Console.WriteLine(base.OutputPathList[nOutputPath]);
+        }
+        Console.WriteLine();
+
+
+
+
         FileSaveAssist fileSave = new FileSaveAssist();
 
         //처리할 클래스 리스트
@@ -50,6 +69,8 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
 
         //모델을 타입스크립트로 출력하기 위한 개체
         ModelToTs tsModel_Temp = new ModelToTs(ProjectXml);
+        tsModel_Temp.OnDebug -= base.DebugCall;
+        tsModel_Temp.OnDebug += base.DebugCall;
         //임포트시 앞에 붙을 루트 지정
         tsModel_Temp.ImportRootDir = ImportRootDir;
         //임포트시 다른 참조가 필요하면 호출되는 콜백
@@ -74,6 +95,9 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
             };
 
 
+        //모델을 json으로 출력하기위한 개체
+        ModelToJson jsonModel_Temp = new ModelToJson(this.ProjectXml);
+
 
 
         for (int i = 0; i < listObject.Count; ++i)
@@ -85,32 +109,45 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
                 //경로 생성
                 itemOOM.OutPhysicalPath_Create();
 
-                if (itemOOM.ObjectOutType == ObjectOutType.Class)
+                //쓴 변수 초기화
+                sTemp = string.Empty;
+
+                //찾아낸 타입에 출력 타입에 따른
+                switch (itemOOM.ObjectOutType)
                 {
-                    //타입스크립트(인터페이스)로 변환
-                    tsModel_Temp.TypeData_Set(itemOOM.Instance);
-                    sTemp = tsModel_Temp.ToTypeScriptInterfaceString(itemOOM.ImportAdd);
+                    case ObjectOutType.Json:
+                        jsonModel_Temp.Data_Set(itemOOM.Instance);
+                        sTemp = jsonModel_Temp.ToJsonString();
+                        break;
+                    case ObjectOutType.Json_Enum:
+                        break;
+
+                    case ObjectOutType.Class:
+                        //타입스크립트(인터페이스)로 변환
+                        tsModel_Temp.TypeData_Set(itemOOM.Instance);
+                        sTemp = tsModel_Temp.ToTypeScriptInterfaceString(itemOOM.ImportAdd);
+                        break;
+
+                    case ObjectOutType.Enum:
+                        etmBP_Temp.TypeData_Set((Enum)itemOOM.Instance);
+                        sTemp = etmBP_Temp.ToTypeScriptEnumString(true);
+                        break;
+                    case ObjectOutType.Enum_ConstNo:
+                        etmBP_Temp.TypeData_Set((Enum)itemOOM.Instance);
+                        sTemp = etmBP_Temp.ToTypeScriptEnumString(false);
+                        break;
                 }
-                else if (itemOOM.ObjectOutType == ObjectOutType.Enum)
-                {
 
-                    etmBP_Temp.TypeData_Set((Enum)itemOOM.Instance);
-                    sTemp = etmBP_Temp.ToTypeScriptEnumString(true);
-                }
-                else if (itemOOM.ObjectOutType == ObjectOutType.Enum_ConstNo)
-                {
+                if (string.Empty != sTemp)
+                {//생성된 문자열이 있다.
 
-                    etmBP_Temp.TypeData_Set((Enum)itemOOM.Instance);
-                    sTemp = etmBP_Temp.ToTypeScriptEnumString(false);
-                }
-
-
-                //지정된 경로로 파일 출력
-                for (int j = 0; j < OutputPath.Count; ++j)
-                {
-                    fileSave
-                        .FileSave(Path.Combine(OutputPath[j], itemOOM.OutPhysicalFullPath) + ".ts"
-                                , sTemp + itemOOM.LastText);
+                    //지정된 경로로 파일 출력
+                    for (int j = 0; j < base.OutputPathList.Count; ++j)
+                    {
+                        fileSave
+                            .FileSave(Path.Combine(base.OutputPathList[j], itemOOM.OutPhysicalFullPath) + ".ts"
+                                    , sTemp + itemOOM.LastText);
+                    }
                 }
                 
             }

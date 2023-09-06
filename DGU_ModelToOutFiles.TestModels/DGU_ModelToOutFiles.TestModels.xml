@@ -4,6 +4,41 @@
         <name>DGU_ModelToOutFiles.TestModels</name>
     </assembly>
     <members>
+        <member name="T:DGU_ModelToOutFiles.TestModels.JsonCont.JsoneEnumTestModel">
+            <summary>
+            JSON 출력 테스트용 모델
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.JsonCont.JsoneEnumTestModel.None">
+            <summary>
+            없음
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.JsonCont.JsoneEnumTestModel.Test1">
+            <summary>
+            1이 들어갈 것으로 추정
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.JsonCont.JsoneEnumTestModel.Test10">
+            <summary>
+            10이 들어감
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.JsonCont.JsonTestModel">
+            <summary>
+            JSON 출력 테스트용 모델
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.JsonCont.JsonTestModel.TestJsonString">
+            <summary>
+            문자열 출력
+            </summary>
+        </member>
+        <member name="F:DGU_ModelToOutFiles.TestModels.JsonCont.JsonTestModel.TestJsonInt">
+            <summary>
+            숫자 출력
+            </summary>
+        </member>
         <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.Children.ChildrenModel">
             <summary>
             하위 네임스페이스 테스트용
@@ -52,6 +87,11 @@
         <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.String2">
             <summary>
             문자열 - 널허용
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.ByteArray">
+            <summary>
+            바이트 배열
             </summary>
         </member>
         <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.DateTime">

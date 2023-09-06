@@ -33,7 +33,7 @@ public class NamespaceToClassList
         , string[] arrNamespace)
     {
         //출력 안함 설정이 되었는지 체크하는 개체
-        OutputNoAttributeCheck attrchkON = new OutputNoAttributeCheck();
+        ModelOutputNoAttributeCheck attrchkON = new ModelOutputNoAttributeCheck();
 
         Assembly asm = Assembly.Load(sAssemblyName);
 
@@ -98,23 +98,17 @@ public class NamespaceToClassList
             ClassList.AddRange(
                 group
                     //출력 안함 설정이 안되는 항목만 추출
-                    .Where(w => false == OutputNoCheck(attrchkON, w))
+                    .Where(w => false == ModelOutputNoCheck(attrchkON, w))
                     .Select(s =>
                         new ObjectOutModel()
                         {
                             Assembly = asm
-                            ,
-                            Namespace = sNamespace
-                            ,
-                            Namespace_Cut = sNamespace_Cut
-                            ,
-                            ClassName = s.Name
-                            ,
-                            ObjectOutType = ObjectOutTypeGet(s)
-                            ,
-                            OutPhysicalPathList = listOutPhysicalPath
-                            ,
-                            OutPhysicalPath = sOutPhysicalPath
+                            , Namespace = sNamespace
+                            , Namespace_Cut = sNamespace_Cut
+                            , ClassName = s.Name
+                            , ObjectOutType = this.ObjectOutTypeGet(s)
+                            , OutPhysicalPathList = listOutPhysicalPath
+                            , OutPhysicalPath = sOutPhysicalPath
                         }
                     ));
         }
@@ -127,7 +121,17 @@ public class NamespaceToClassList
                         .GetType(itemClass.ClassNameFull);
             if (null != t)
             {
+
+                //일반 생성
                 itemClass.Instance = Activator.CreateInstance(t);
+
+
+                //if (false == t.ContainsGenericParameters)
+                //{//제내릭이 없으면
+
+                    
+                //}
+                
             }
             else
             {//소속된 어셈블리를 모를때
@@ -154,8 +158,8 @@ public class NamespaceToClassList
     /// <param name="attrchkON"></param>
     /// <param name="type"></param>
     /// <returns></returns>
-    public bool OutputNoCheck(
-        OutputNoAttributeCheck attrchkON
+    public bool ModelOutputNoCheck(
+        ModelOutputNoAttributeCheck attrchkON
         , Type type)
     {
         bool bReturn = false;
@@ -179,7 +183,26 @@ public class NamespaceToClassList
 
         ObjectOutType ooReturn = ObjectOutType.None;
 
-        if (true == type.IsClass)
+        //Json 출력인지 여부
+        ModelOutputJsonAttributeCheck newNOJ = new ModelOutputJsonAttributeCheck();
+        ModelOutputJsonAttribute? mojTemp = newNOJ.Check(type);
+
+        if(null != mojTemp)
+        {//json 출력이다.
+
+            //어트리뷰트 제한사항에 클래스와 열거형만 허용되어 있으므로
+            //추가 체크는 필요없다.
+            
+            if(true == type.IsClass)
+            {
+                ooReturn = ObjectOutType.Json;
+            }
+            else if (true == type.IsEnum)
+            {
+                ooReturn = ObjectOutType.Json_Enum;
+            }
+        }
+        else if (true == type.IsClass)
         {
             ooReturn = ObjectOutType.Class;
         }

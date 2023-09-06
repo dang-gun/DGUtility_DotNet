@@ -118,8 +118,6 @@ internal class Program
                 , Path.Combine("..", "DGU_ModelToOutFiles.TestModels"));
 
             xmlFA.XmlFilesCopy();
-            Console.WriteLine("====== End XML Files copy ======");
-            Console.WriteLine();
         }
 
         //xml 파일 패스 읽기
@@ -139,7 +137,7 @@ internal class Program
             case "typescript":
                 otoTemp 
                     = new ObjectToOut_Typescript(
-                        new string[] { sOutputPath }.ToList()
+                        new string[] { sOutputPath, "D:\\OutputFiles2" }.ToList()
                         , xml
                         , sImportRootDir);
                 break;

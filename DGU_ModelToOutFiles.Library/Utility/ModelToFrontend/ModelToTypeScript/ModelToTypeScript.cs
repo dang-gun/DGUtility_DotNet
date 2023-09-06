@@ -1,7 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
 using System.Text;
-
+using DGUtility.ModelToOutFiles.Global.Attributes;
+using DGUtility.ModelToOutFiles.Library.ObjectToOut;
 using DGUtility.ProjectXml;
 
 namespace DGUtility.ModelToFrontend;
@@ -11,6 +12,32 @@ namespace DGUtility.ModelToFrontend;
 /// </summary>
 public class ModelToTs
 {
+    #region 외부에서 연결할 이벤트
+    /// <summary>
+	/// 디버깅 메시지 요청이 발생함
+	/// </summary>
+    public event DebugDelegate? OnDebug;
+    /// <summary>
+    /// 디버깅 메시지 요청이 이벤트 호출
+    /// </summary>
+    /// <summary>
+    /// 디버깅 메시지 요청이 이벤트 호출
+    /// </summary>
+    /// <param name="sCommand">발생한 이벤트가 어디서 발생했는지 명령</param>
+    /// <param name="objModel1">전달할 모델1</param>
+    /// <param name="objModel2">전달할 모델2</param>
+    public void DebugCall(
+        string sCommand
+        , object? objModel1
+        , object? objModel2)
+    {
+        if (OnDebug != null)
+        {
+            this.OnDebug(sCommand, objModel1, objModel2);
+        }
+    }
+    #endregion
+
     /// <summary>
     /// 사용할 프로젝트Xml
     /// </summary>
@@ -150,17 +177,25 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 		//이름 추출
 		this.ModelName = typeMy.Name;
 
+        //중단점 잡을 개체
+        this.DebugCall("ModelToTs-Reset-Parent", typeMy, null);
+        //if (this.ModelName == "JsonTestModel")
+        //{
+        //	Debug.WriteLine(this.ModelName);
+        //}
 
-		//기존 리스트 제거
-		this.ModelMember.Clear();
+
+        //기존 리스트 제거
+        this.ModelMember.Clear();
 
 		//맴버 추가
-		foreach (var item in typeMy.GetProperties())
+		foreach (PropertyInfo? item in typeMy.GetProperties())
 		{
 			if (null != item)
 			{
-				//중단점 잡을 개체
-				if (item.Name == "String2")
+                //중단점 잡을 개체
+                this.DebugCall("ModelToTs-Reset-Member", item, null);
+				if (item.Name == "ByteArray")
 				{
 					Debug.WriteLine(item.Name);
 				}
@@ -177,7 +212,20 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 				//변수형 강제 지정
 				string sVarTypeEnforce = string.Empty;
 
-                if (item.PropertyType.Name == "List`1")
+				if (item.PropertyType.Name == "Byte[]")
+				{//바이트어레이다
+
+                    //바이트어레이의 경우 ArrayBuffer라는 변도의 변수형을 사용하므로
+					//다른 배열형태와 다르게 취급해야 한다.
+                    sType = "ArrayBuffer";
+					sArrayType = "";
+
+                    if (null != item.PropertyType.FullName)
+                    {
+                        sNameFull = item.PropertyType.FullName;
+                    }
+                }
+                else if (item.PropertyType.Name == "List`1")
 				{//리스트 타입이다.
 
 					//리스트 타입인걸 알리고
@@ -422,7 +470,9 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 		{
 			TypeScriptModelMember itemMM = this.ModelMember[i];
 
-			if(true == itemMM.ModelOutputNoIs)
+            this.DebugCall("ModelToTs-ToTypeScriptString-ModelMember", this.ModelName, itemMM);
+
+            if (true == itemMM.ModelOutputNoIs)
 			{//출력 안함이다.
 				continue;
 			}
@@ -584,6 +634,7 @@ public ModelToTs(ProjectXmlAssist projectXmlAssist)
 
 		return bReturn;
 	}
+
 
     /// <summary>
     /// 지정된 아이템에서 커스텀 어트리 뷰트를 검색하고 

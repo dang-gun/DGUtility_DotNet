@@ -6,7 +6,7 @@ namespace DGUtility.FileAssist.FileCopy;
 /// <summary>
 /// 파일 복사 경로 모델
 /// </summary>
-public class FileCopyDirModel
+public class FileCopyPathModel
 {
     /// <summary>
     /// 파일의 이름(확장자 포함)
@@ -20,7 +20,7 @@ public class FileCopyDirModel
     /// <summary>
     /// 원본 파일의 전체 경로
     /// </summary>
-    public string OriginalFullDir
+    public string OriginalFullPath
     {
         get
         {
@@ -35,7 +35,7 @@ public class FileCopyDirModel
     /// <summary>
     /// 파일을 저장할 위치의 전체 경로
     /// </summary>
-    public string TargetDirFull
+    public string TargetPathFull
     {
         get
         {
