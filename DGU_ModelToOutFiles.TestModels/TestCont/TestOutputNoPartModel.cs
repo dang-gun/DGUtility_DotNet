@@ -3,9 +3,9 @@
 namespace DGU_ModelToOutFiles.TestModels.TestCont;
 
 /// <summary>
-/// 테스트용 결과 모델
+/// 부분 출력안함 테스트
 /// </summary>
-public class TestResultModel
+public class TestOutputNoPartModel
 {
     /// <summary>
     /// 숫자

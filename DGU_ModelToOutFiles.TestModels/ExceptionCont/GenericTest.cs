@@ -11,7 +11,7 @@ namespace DGU_ModelToOutFiles.TestModels.JsonCont;
 /// <remarks>
 /// 제네릭은 출력하지 않는다.
 /// </remarks>
-public class GenericTest<T> where T : TestCallModel, new()
+public class GenericTest<T> where T : TestGeneralTypeModel, new()
 {
     /// <summary>
     /// 숫자

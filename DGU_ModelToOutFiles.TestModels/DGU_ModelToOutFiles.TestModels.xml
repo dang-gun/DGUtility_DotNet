@@ -142,51 +142,6 @@
             닫침
             </summary>
         </member>
-        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel">
-            <summary>
-            일반 출력 테스트
-            </summary>
-        </member>
-        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.Int">
-            <summary>
-            숫자
-            </summary>
-        </member>
-        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.String">
-            <summary>
-            문자열
-            </summary>
-        </member>
-        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.String2">
-            <summary>
-            문자열 - 널허용
-            </summary>
-        </member>
-        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.ByteArray">
-            <summary>
-            바이트 배열
-            </summary>
-        </member>
-        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallModel.DateTime">
-            <summary>
-            날짜
-            </summary>
-        </member>
-        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestCallResultModel">
-            <summary>
-            개체 테스트용 모델
-            </summary>
-        </member>
-        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallResultModel.Call">
-            <summary>
-            개체 테스트 1
-            </summary>
-        </member>
-        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestCallResultModel.Result">
-            <summary>
-            개체 테스트 2
-            </summary>
-        </member>
         <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestConstNoType">
             <summary>
             테스트용 타입 - 타입스크립트=역참조 가능
@@ -247,6 +202,56 @@
             이 게시판 관리자
             </summary>
         </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestGeneralTypeModel">
+            <summary>
+            일반적인 변수형 출력
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestGeneralTypeModel.Int">
+            <summary>
+            숫자
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestGeneralTypeModel.String">
+            <summary>
+            문자열
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestGeneralTypeModel.String2">
+            <summary>
+            문자열 - 널허용
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestGeneralTypeModel.ByteArray">
+            <summary>
+            바이트 배열
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestGeneralTypeModel.DateTime">
+            <summary>
+            날짜
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestObjectModel">
+            <summary>
+            개체 테스트용 모델
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestObjectModel.Call">
+            <summary>
+            개체 테스트 1
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestObjectModel.Result">
+            <summary>
+            개체 테스트 2
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestObjectModel.List">
+            <summary>
+            리스트 개체 테스트
+            </summary>
+        </member>
         <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestOutputNoModel">
             <summary>
             클래스나 열거형 출력 안함 테스트용 모델
@@ -267,17 +272,17 @@
             날짜
             </summary>
         </member>
-        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestResultModel">
+        <member name="T:DGU_ModelToOutFiles.TestModels.TestCont.TestOutputNoPartModel">
             <summary>
-            테스트용 결과 모델
+            부분 출력안함 테스트
             </summary>
         </member>
-        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestResultModel.Int">
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestOutputNoPartModel.Int">
             <summary>
             숫자
             </summary>
         </member>
-        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestResultModel.String">
+        <member name="P:DGU_ModelToOutFiles.TestModels.TestCont.TestOutputNoPartModel.String">
             <summary>
             프로퍼티 출력안함 테스트
             </summary>

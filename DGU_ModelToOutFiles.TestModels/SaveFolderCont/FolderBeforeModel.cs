@@ -22,5 +22,5 @@ public class FolderBeforeModel
     /// <summary>
     /// 기본 임포트 경로인 개체
     /// </summary>
-    public TestCallModel? TestCall { get; set; }
+    public TestGeneralTypeModel? TestCall { get; set; }
 }

@@ -1,9 +1,9 @@
 ﻿namespace DGU_ModelToOutFiles.TestModels.TestCont;
 
 /// <summary>
-/// 일반 출력 테스트
+/// 일반적인 변수형 출력
 /// </summary>
-public class TestCallModel
+public class TestGeneralTypeModel
 {
     /// <summary>
     /// 숫자
