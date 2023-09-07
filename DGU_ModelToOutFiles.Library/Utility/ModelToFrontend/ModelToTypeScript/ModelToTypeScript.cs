@@ -205,12 +205,11 @@ public class ModelToTs
 
 				//변수 타입 이름
 				string sType = item.PropertyType.Name;
-				string sNameFull = null != item.PropertyType.FullName ? item.PropertyType.FullName : string.Empty;
 
 				//
 				TypeScriptModelMember newTSMM = new TypeScriptModelMember();
 				newTSMM.Name = item.Name;
-                newTSMM.NameFull = sNameFull;
+                newTSMM.NameFull = null != item.PropertyType.FullName ? item.PropertyType.FullName : string.Empty; ;
 
 				//변수형 강제 지정
 				string sVarTypeEnforce = string.Empty;
@@ -225,7 +224,7 @@ public class ModelToTs
 
                     if (null != item.PropertyType.FullName)
                     {
-                        sNameFull = item.PropertyType.FullName;
+                        newTSMM.NameFull = item.PropertyType.FullName;
                     }
                 }
                 else if (item.PropertyType.Name == "List`1")
@@ -238,7 +237,7 @@ public class ModelToTs
 
                     if (null != item.PropertyType.GenericTypeArguments[0].FullName)
                     {
-                        sNameFull = item.PropertyType.GenericTypeArguments[0].FullName!;
+                        newTSMM.NameFull = item.PropertyType.GenericTypeArguments[0].FullName!;
                     }
                 }
                 else if (item.PropertyType.Name == "ICollection`1")
@@ -252,7 +251,7 @@ public class ModelToTs
 					//네임스페이스 전체 이름 재정의
 					if(null != item.PropertyType.GenericTypeArguments[0].FullName)
 					{
-                        sNameFull = item.PropertyType.GenericTypeArguments[0].FullName!;
+                        newTSMM.NameFull = item.PropertyType.GenericTypeArguments[0].FullName!;
                     }
                 }
                 else if (item.PropertyType.Name == "Nullable`1")
@@ -266,7 +265,7 @@ public class ModelToTs
                     //네임스페이스 전체 이름 재정의
                     if (null != item.PropertyType.GenericTypeArguments[0].FullName)
                     {
-                        sNameFull = item.PropertyType.GenericTypeArguments[0].FullName!;
+                        newTSMM.NameFull = item.PropertyType.GenericTypeArguments[0].FullName!;
                     }
                 }
 				else if("[]" == sType.Substring(sType.Length - 2))
@@ -278,7 +277,9 @@ public class ModelToTs
                     sType = "List";
 
                     //네임스페이스 전체 이름 재정의
-                    sNameFull = sNameFull.Substring(0, sNameFull.Length - 2);
+                    newTSMM.NameFull 
+						= newTSMM.NameFull
+							.Substring(0, newTSMM.NameFull.Length - 2);
                 }
 
 

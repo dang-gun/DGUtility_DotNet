@@ -3,6 +3,9 @@ using DGUtility.XmlFileAssist;
 
 using DGUtility.ModelToOutFiles.Library.ObjectToOut;
 using DGUtility.FileAssist.FileCopy;
+using System.Diagnostics;
+using System.Reflection;
+using DGUtility.ModelToFrontend;
 
 namespace DGU_ModelToOutFiles.App;
 
@@ -148,6 +151,57 @@ internal class Program
 
         }
 
+
+        //디버깅 정보 ****************************
+        otoTemp.OnDebug
+            += (sCommand, objModel1, objModel2)
+            =>
+            {
+                switch (sCommand)
+                {
+                    case "ModelToTs-Reset-Parent":
+                        {
+                            Type typeTemp = (Type)objModel1!;
+
+                            //중단점 잡을 개체
+                            if (typeTemp.Name == "UserInfo")
+                            {
+                                Debug.WriteLine(typeTemp.Name);
+                            }
+                        }
+                        break;
+
+                    case "ModelToTs-Reset-Member":
+                        {
+                            PropertyInfo piTemp = (PropertyInfo)objModel1!;
+
+                            //중단점 잡을 개체
+                            if (piTemp.Name == "Version")
+                            {
+                                Debug.WriteLine(piTemp.Name);
+                            }
+                        }
+                        break;
+
+                    case "ModelToTs-ToTypeScriptString-ModelMember":
+                        {
+                            string sParentName = (string)objModel1!;
+                            TypeScriptModelMember tsmmTemp
+                                = (TypeScriptModelMember)objModel2!;
+
+                            //중단점 잡을 개체
+                            if (sParentName == "TestObjectModel" 
+                                && tsmmTemp.Name == "List")
+                            {
+                                Debug.WriteLine(tsmmTemp.Name);
+                            }
+                        }
+                        break;
+                }
+            };
+
+
+        //***********************************
         if (true == bOutputPathClear)
         {//출력 폴더 지우기
 

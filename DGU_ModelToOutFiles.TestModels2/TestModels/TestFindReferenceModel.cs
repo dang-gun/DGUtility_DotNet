@@ -12,17 +12,17 @@ public class TestFindReferenceModel
     /// <summary>
     /// 다른 어셈블리에 있는 참조
     /// </summary>
-    public TestCallModel[]? TestArray { get; set; }
+    public TestGeneralTypeModel[]? TestArray { get; set; }
 
     /// <summary>
     /// ICollection처리
     /// </summary>
-    public ICollection<TestCallResultModel>? TestICollection { get; set; }
+    public ICollection<TestObjectModel>? TestICollection { get; set; }
 
     /// <summary>
     /// 리스트 테스트
     /// </summary>
-    public List<TestCallResultModel>? TestList { get; set; }
+    public List<TestObjectModel>? TestList { get; set; }
 
     /// <summary>
     /// 열거형 테스트
