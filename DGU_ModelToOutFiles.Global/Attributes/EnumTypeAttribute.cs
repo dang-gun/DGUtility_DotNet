@@ -34,27 +34,28 @@ public class EnumTypeAttribute : System.Attribute
 }
 
 /// <summary>
-/// EnumTypeAttribute가 있는지 확인하고 있으면 개체를 리턴해주는 클래스
+/// EnumTypeAttribute가 있는지 확인해준다
 /// </summary>
-public class EnumTypeAttributeCheck
+public sealed class EnumTypeAttributeCheck
 {
     /// <summary>
     /// 사용시 생성되는 개체
     /// </summary>
-    private static EnumTypeAttributeCheck? statcSingleton;
+    private static readonly EnumTypeAttributeCheck statcSingleton
+        = new EnumTypeAttributeCheck();
+
+    /// <summary>
+    /// static으로만 접근 가능
+    /// </summary>
+    private EnumTypeAttributeCheck() { }
 
     /// <summary>
     /// 싱글톤으로 생성된 개체를 리턴한다.
     /// </summary>
     /// <returns></returns>
-    public static EnumTypeAttributeCheck Instance()
+    public static EnumTypeAttributeCheck Instance
     {
-        if (null == statcSingleton)
-        {
-            statcSingleton = new EnumTypeAttributeCheck();
-        }
-
-        return statcSingleton;
+        get { return statcSingleton; }
     }
 
     /// <summary>

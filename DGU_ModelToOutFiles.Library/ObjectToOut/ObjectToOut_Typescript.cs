@@ -57,7 +57,6 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
 
 
 
-
         FileSaveAssist fileSave = new FileSaveAssist();
 
         //처리할 클래스 리스트
@@ -85,11 +84,8 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
                             new ModelToTextImportModel()
                             {
                                 Name = s.ClassName
-                                ,
-                                OutPhysicalFullPath
-                                    = DirToImportPath(
-                                        s.OutPhysicalPathList
-                                        , s.ClassName)
+                                , OutPhysicalFullPath
+                                    = this.PathToImportPath(s)
                             })
                         .ToList();
 
@@ -196,31 +192,48 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
     /// <summary>
     /// 파일 경로 리스트를 임포트 패스로 변경해준다.
     /// </summary>
-    /// <param name="listOutPhysicalPath"></param>
-    /// <param name="sClassName"></param>
+    /// <param name="oomData"></param>
     /// <returns></returns>
-    private string DirToImportPath(
-        List<string> listOutPhysicalPath
-        , string sClassName)
+    private string PathToImportPath(ObjectOutModel oomData)
     {
         StringBuilder sbReturn = new StringBuilder();
 
-        for (int i = 0; i < listOutPhysicalPath.Count; ++i)
-        {
 
-            string sItem = listOutPhysicalPath[i];
-
-            if (0 != i)
+        if(false == oomData.SaveIgnoreOtherPathIs)
+        {//기본 경로
+            for (int i = 0; i < oomData.OutPhysicalPathList.Count; ++i)
             {
-                //맨앞에는 구분자를 추가하지 않는다.
-                //구분자 추가
-                sbReturn.Append("/");
+
+                string sItem = oomData.OutPhysicalPathList[i];
+
+                if (0 != i)
+                {
+                    //맨앞에는 구분자를 추가하지 않는다.
+                    //구분자 추가
+                    sbReturn.Append("/");
+                }
+
+                sbReturn.Append(sItem);
             }
 
-            sbReturn.Append(sItem);
+            sbReturn.Append($"/{oomData.ClassName}");
+        }
+        else
+        {//기본 경로 무시됨
+
+            //속성으로 지정된 경로 외에 모든 경로 무시인 경우 기본경로에는 아무것도 출력하지 않는다.
+            if(string.Empty != oomData.SaveAbsolutePath)
+            {//절대 주소이다.
+
+            }
+            else
+            {//절대 주소가 아니다.
+
+                //절대 주소가 없을때만 동작
+            }
         }
 
-        sbReturn.Append($"/{sClassName}");
+
 
         return sbReturn.ToString();
     }

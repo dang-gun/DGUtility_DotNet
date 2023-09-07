@@ -31,25 +31,21 @@ public class SaveRelativePathAttribute : System.Attribute
 /// <summary>
 /// SaveRelativePathAttribute가 있는지 확인하고 있으면 개체를 리턴해주는 클래스
 /// </summary>
-public class SaveRelativePathAttributeCheck
+public sealed class SaveRelativePathAttributeCheck
 {
     /// <summary>
     /// 사용시 생성되는 개체
     /// </summary>
-    private static SaveRelativePathAttributeCheck? statcSingleton;
+    private static readonly SaveRelativePathAttributeCheck statcSingleton
+        = new SaveRelativePathAttributeCheck();
 
     /// <summary>
     /// 싱글톤으로 생성된 개체를 리턴한다.
     /// </summary>
     /// <returns></returns>
-    public static SaveRelativePathAttributeCheck Instance()
+    public static SaveRelativePathAttributeCheck Instance
     {
-        if (null == statcSingleton)
-        {
-            statcSingleton = new SaveRelativePathAttributeCheck();
-        }
-
-        return statcSingleton;
+        get { return statcSingleton; }
     }
 
     /// <summary>

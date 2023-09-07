@@ -58,6 +58,9 @@ public class ObjectOutModel
     /// <summary>
     /// 내보낼 상대 물리 경로(파일이름 없음)
     /// </summary>
+    /// <remarks>
+    /// 변환된 경로가 아니라 변환전 오리지널 데이터이다.
+    /// </remarks>
     public List<string> OutPhysicalPathList { get; set; } = new List<string>();
     /// <summary>
     /// 내보낼 상대 물리 경로

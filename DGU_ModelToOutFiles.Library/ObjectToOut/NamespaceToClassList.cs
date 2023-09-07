@@ -93,7 +93,7 @@ public class NamespaceToClassList
             ClassList.AddRange(
                 group
                     //출력 안함 설정이 안되는 항목만 추출
-                    .Where(w => false == ModelOutputNoAttributeCheck.Instance().Value(w))
+                    .Where(w => false == ModelOutputNoAttributeCheck.Instance.Value(w))
                     .Select(s =>
                         new ObjectOutModel()
                         {
@@ -107,15 +107,15 @@ public class NamespaceToClassList
                             , OutPhysicalPath = sOutPhysicalPath
 
                             , SaveAbsolutePath 
-                                = SaveAbsolutePathAttributeCheck.Instance()
+                                = SaveAbsolutePathAttributeCheck.Instance
                                     .Value(s)
                             , SaveRelativePath
-                                = SaveRelativePathAttributeCheck.Instance()
+                                = SaveRelativePathAttributeCheck.Instance
                                     .Value(s)
 
                             , SaveIgnoreOtherPathIs
-                                = SaveIgnoreOtherPathAttributeCheck.Instance()
-                                    .Check(s) == null ? false : true
+                                = SaveIgnoreOtherPathAttributeCheck.Instance
+                                    .Value(s)
                         }
                     ));
         }
@@ -128,16 +128,12 @@ public class NamespaceToClassList
                         .GetType(itemClass.ClassNameFull);
             if (null != t)
             {
+                if (false == t.ContainsGenericParameters)
+                {//제내릭이 없으면
 
-                //일반 생성
-                itemClass.Instance = Activator.CreateInstance(t);
-
-                //if (false == t.ContainsGenericParameters)
-                //{//제내릭이 없으면
-
-                    
-                //}
-                
+                    //일반 생성
+                    itemClass.Instance = Activator.CreateInstance(t);
+                }
             }
             else
             {//소속된 어셈블리를 모를때
@@ -153,7 +149,7 @@ public class NamespaceToClassList
                 //        listObj.Add(Activator.CreateInstance(t)!);
                 //}
 
-                throw new Exception("소속된 어셈블리를 찾지 못함");
+                throw new Exception("Could not find belonging assembly(소속된 어셈블리를 찾지 못함)");
             }
         }
     }
@@ -168,7 +164,7 @@ public class NamespaceToClassList
 
         ObjectOutType ooReturn = ObjectOutType.None;
 
-        if(true == ModelOutputJsonAttributeCheck.Instance().Value(type))
+        if(true == ModelOutputJsonAttributeCheck.Instance.Value(type))
         {//json 출력이다.
 
             //어트리뷰트 제한사항에 클래스와 열거형만 허용되어 있으므로
@@ -189,7 +185,7 @@ public class NamespaceToClassList
         }
         else if (true == type.IsEnum)
         {
-            EnumTypeAttribute? temp = EnumTypeAttributeCheck.Instance().Check(type);
+            EnumTypeAttribute? temp = EnumTypeAttributeCheck.Instance.Check(type);
 
             if (null == temp
                 || false == temp.TypeScript_EnumNoConstIs)

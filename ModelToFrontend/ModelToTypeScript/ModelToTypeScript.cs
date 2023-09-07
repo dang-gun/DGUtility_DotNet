@@ -1,8 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
 using System.Text;
-using DGUtility.ModelToOutFiles.Global.Attributes;
-using DGUtility.ModelToOutFiles.Library.ObjectToOut;
+
 using DGUtility.ProjectXml;
 
 namespace DGUtility.ModelToFrontend;
@@ -10,9 +9,6 @@ namespace DGUtility.ModelToFrontend;
 /// <summary>
 /// 모델을 타입스크립트용 파일로 변환하기위한 클래스
 /// </summary>
-/// <remarks>
-/// DGU_ModelToOutFiles.Library의 전용기능이 필요하여 라이브러리를 분리함.
-/// </remarks>
 public class ModelToTs
 {
     #region 외부에서 연결할 이벤트
@@ -108,11 +104,11 @@ public class ModelToTs
         => { return new List<ModelToTextImportModel>(); };
 
 
-	/// <summary>
-	/// 프로젝트 xml만 지정하여 초기화한다.
-	/// </summary>
-	/// <param name="projectXmlAssist"></param>
-	public ModelToTs(ProjectXmlAssist projectXmlAssist)
+/// <summary>
+/// 프로젝트 xml만 지정하여 초기화한다.
+/// </summary>
+/// <param name="projectXmlAssist"></param>
+public ModelToTs(ProjectXmlAssist projectXmlAssist)
 	{
 		this.ProjectXml = projectXmlAssist;
 	}

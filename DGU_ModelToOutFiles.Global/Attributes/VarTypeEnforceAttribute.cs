@@ -34,25 +34,26 @@ public class VarTypeEnforceAttribute : System.Attribute
 /// <summary>
 /// VarTypeEnforceAttribute 있는지 확인하고 있으면 개체를 리턴해주는 클래스
 /// </summary>
-public class VarTypeEnforceAttributeCheck
+public sealed class VarTypeEnforceAttributeCheck
 {
     /// <summary>
     /// 사용시 생성되는 개체
     /// </summary>
-    private static VarTypeEnforceAttributeCheck? statcSingleton;
+    private static readonly VarTypeEnforceAttributeCheck statcSingleton
+        = new VarTypeEnforceAttributeCheck();
+
+    /// <summary>
+    /// static으로만 접근 가능
+    /// </summary>
+    private VarTypeEnforceAttributeCheck() { }
 
     /// <summary>
     /// 싱글톤으로 생성된 개체를 리턴한다.
     /// </summary>
     /// <returns></returns>
-    public static VarTypeEnforceAttributeCheck Instance()
+    public static VarTypeEnforceAttributeCheck Instance
     {
-        if (null == statcSingleton)
-        {
-            statcSingleton = new VarTypeEnforceAttributeCheck();
-        }
-
-        return statcSingleton;
+        get { return statcSingleton; }
     }
 
     /// <summary>
