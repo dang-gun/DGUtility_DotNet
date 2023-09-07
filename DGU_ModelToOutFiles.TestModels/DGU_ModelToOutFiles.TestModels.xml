@@ -52,6 +52,16 @@
             숫자 출력
             </summary>
         </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.SaveFolderCont.ChangeImportPathModel">
+            <summary>
+            임포트 패스 수정 테스트
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.SaveFolderCont.ChangeImportPathModel.Int6">
+            <summary>
+            숫자
+            </summary>
+        </member>
         <member name="T:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderAfterModel">
             <summary>
             저장할 폴더 뒷경로 변경
@@ -70,6 +80,16 @@
         <member name="P:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderBeforeModel.Int">
             <summary>
             숫자
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderBeforeModel.ChangeImportPath">
+            <summary>
+            강제 지정된 임포트 경로를 사용하는 개체
+            </summary>
+        </member>
+        <member name="P:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderBeforeModel.TestCall">
+            <summary>
+            기본 임포트 경로인 개체
             </summary>
         </member>
         <member name="T:DGU_ModelToOutFiles.TestModels.SaveFolderCont.FolderFullModel">

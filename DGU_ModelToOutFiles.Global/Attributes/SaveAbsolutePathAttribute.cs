@@ -12,7 +12,8 @@ namespace DGUtility.ModelToOutFiles.Global.Attributes;
 /// </summary>
 /// <remarks>
 /// 상대 경로가 아닌 절대 경로를 지정해야 한다.
-/// 이 속성이 지정되면 SaveRelativePathAttribute는 무시된다.
+/// 이 속성을 사용하면 SaveRelativePathAttribute는 무시된다.
+/// ImportPathSetAttribute를 사용하지 않고 이 속성을 사용하면 자동으로 생성되는 참조 경로가 생성되므로 주의해야 한다.
 /// </remarks>
 [System.AttributeUsage(System.AttributeTargets.Class)]
 public class SaveAbsolutePathAttribute : System.Attribute

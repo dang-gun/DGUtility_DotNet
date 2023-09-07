@@ -23,13 +23,18 @@ public enum ImportPathSetType
     /// 타입스크립트
     /// </summary>
     TypeScript,
+
+    /// <summary>
+    /// 테스트용(사용 안함)
+    /// </summary>
+    Test,
 }
 
 /// <summary>
 /// 다른 곳에서 이 속성이 지정된 참조경로를 요청하면 리턴될 참조경로
 /// </summary>
 /// <remarks>
-/// 이 속성이 지정된 참조 경로가 리턴된다.
+/// 이 속성이 지정되면 다른 임포트경로는 모두 무시되고 이 속성으로 설정된 참조 경로만 리턴된다.
 /// SaveAbsolutePathAttribute를 사용한다면 이 속성을 이용하는것이 좋다.
 /// </remarks>
 [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = true)]
@@ -50,6 +55,8 @@ public class ImportPathSetAttribute : System.Attribute
     /// <remarks>
     /// 이 속성이 지정된 참조 경로가 리턴된다.
     /// SaveAbsolutePathAttribute를 사용한다면 이 속성을 이용하는것이 좋다.
+    /// 설정된 루트 문자열은 앞에 붙는다.
+    /// 하지만 상대 경로는 적용되지 않으므로 루트 이후의 모든 경로를 적어야 한다.
     /// </remarks>
     /// <param name="sTypeName">구분용 타입이름</param>
     /// <param name="sImportPath">참조 경로</param>
@@ -130,18 +137,18 @@ public sealed class ImportPathSetAttributeCheck
     /// <param name="type"></param>
     /// <param name="typeImportPathSet"></param>
     /// <returns></returns>
-    public ImportPathSetType Value(Type type, ImportPathSetType typeImportPathSet)
+    public string Value(Type type, ImportPathSetType typeImportPathSet)
     {
-        ImportPathSetType typeReturn = ImportPathSetType.None;
+        string sReturn = string.Empty;
         ImportPathSetAttribute? fsfTemp
             = this.Check(type, typeImportPathSet);
 
         if (null != fsfTemp)
         {
-            typeReturn = fsfTemp.ImportPathSetType;
+            sReturn = fsfTemp.ImportPath;
         }
 
-        return typeReturn;
+        return sReturn;
     }
 
 }

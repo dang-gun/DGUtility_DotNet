@@ -51,7 +51,7 @@ internal class Program
         //출력할 폴더 비우기 여부
         bool bOutputPathClear = false;
         //임포트시 앞에 붙을 루트
-        string sImportRootDir = string.Empty;
+        string sImportRootDir = "";
         //string sImportRootDir = "./";
 
         for (int i = 0; i < args.Length; ++i)

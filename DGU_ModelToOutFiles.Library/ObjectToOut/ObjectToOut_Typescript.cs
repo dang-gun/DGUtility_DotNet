@@ -5,6 +5,7 @@ using DGUtility.EnumToClass;
 using DGUtility.ModelToFrontend;
 using DGUtility.ProjectXml;
 using System.Reflection;
+using DGUtility.ModelToOutFiles.Global.Attributes;
 
 namespace DGUtility.ModelToOutFiles.Library.ObjectToOut;
 
@@ -199,8 +200,18 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
         StringBuilder sbReturn = new StringBuilder();
 
 
-        if(false == oomData.SaveIgnoreOtherPathIs)
-        {//기본 경로
+        //임의로 지정된 임포트 경로가 있는지 확인한다.
+        string sImportPath
+            = ImportPathSetAttributeCheck.Instance
+                .Value(oomData.MyType!, ImportPathSetType.TypeScript);
+
+        if (string.Empty == sImportPath
+            || false == oomData.SaveIgnoreOtherPathIs)
+        {//임의로 지정된 임포트가 없다.
+            //속성에 지정된 경로 말고 무시하는 속성이 없다.
+
+            
+            //기본 경로
             for (int i = 0; i < oomData.OutPhysicalPathList.Count; ++i)
             {
 
@@ -217,21 +228,15 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
             }
 
             sbReturn.Append($"/{oomData.ClassName}");
+
         }
-        else
-        {//기본 경로 무시됨
+        else if (string.Empty != sImportPath)
+        {//임의 경로가 있다.
 
-            //속성으로 지정된 경로 외에 모든 경로 무시인 경우 기본경로에는 아무것도 출력하지 않는다.
-            if(string.Empty != oomData.SaveAbsolutePath)
-            {//절대 주소이다.
-
-            }
-            else
-            {//절대 주소가 아니다.
-
-                //절대 주소가 없을때만 동작
-            }
+            sbReturn.Append(sImportPath);
+            sbReturn.Append($"/{oomData.ClassName}");
         }
+
 
 
 
