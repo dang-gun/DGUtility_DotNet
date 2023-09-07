@@ -221,11 +221,6 @@ public class ModelToTs
 					//다른 배열형태와 다르게 취급해야 한다.
                     sType = "ArrayBuffer";
                     newTSMM.ArrayType = "";
-
-                    if (null != item.PropertyType.FullName)
-                    {
-                        newTSMM.NameFull = item.PropertyType.FullName;
-                    }
                 }
                 else if (item.PropertyType.Name == "List`1")
 				{//리스트 타입이다.
@@ -585,10 +580,11 @@ public class ModelToTs
 
 
     /// <summary>
-    /// .NET 타입을 타입스크립트 타입으로 변환한다.
+    /// .NET 타입을 타입스크립트 변수타입으로 변환한다.
     /// </summary>
     /// <remarks>
-    /// 변환되지 않으면 그대로 출력된다.
+    /// 변환되지 않으면 그대로 출력되고 false가 리턴된다.
+	/// 개체 타입이 아닌경우 여기에 명시를 하여 true가 리턴되도록 한다.
     /// </remarks>
     /// <param name="sType"></param>
     /// <param name="sReturn"></param>
@@ -624,7 +620,13 @@ public class ModelToTs
                 sReturn = "boolean";
                 break;
 
-			default:
+			case "ArrayBuffer":
+				//그대로 출력해되되는 변수 타입은 여기에 나열한다.
+                sReturn = sType;
+                break;
+
+
+            default:
 				bReturn = false;
                 break;
 		}
