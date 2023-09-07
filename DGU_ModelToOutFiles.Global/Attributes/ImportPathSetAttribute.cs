@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DGU_ModelToOutFiles.Global;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,29 +7,7 @@ using System.Threading.Tasks;
 
 namespace DGUtility.ModelToOutFiles.Global.Attributes;
 
-/// <summary>
-/// 구분용 타입
-/// </summary>
-public enum ImportPathSetType
-{
-    /// <summary>
-    /// 설정안함
-    /// </summary>
-    /// <remarks>
-    /// 오류로 사용됨
-    /// </remarks>
-    None = 0,
 
-    /// <summary>
-    /// 타입스크립트
-    /// </summary>
-    TypeScript,
-
-    /// <summary>
-    /// 테스트용(사용 안함)
-    /// </summary>
-    Test,
-}
 
 /// <summary>
 /// 다른 곳에서 이 속성이 지정된 참조경로를 요청하면 리턴될 참조경로
@@ -43,7 +22,7 @@ public class ImportPathSetAttribute : System.Attribute
     /// <summary>
     /// 구분용 타입이름
     /// </summary>
-    public ImportPathSetType ImportPathSetType;
+    public OutputLanguageType OutputLanguageType;
     /// <summary>
     /// 참조 경로
     /// </summary>
@@ -60,9 +39,9 @@ public class ImportPathSetAttribute : System.Attribute
     /// </remarks>
     /// <param name="sTypeName">구분용 타입이름</param>
     /// <param name="sImportPath">참조 경로</param>
-    public ImportPathSetAttribute(ImportPathSetType typeImportPathSet, string sImportPath)
+    public ImportPathSetAttribute(OutputLanguageType typeOutputLanguage, string sImportPath)
     {
-        this.ImportPathSetType = typeImportPathSet;
+        this.OutputLanguageType = typeOutputLanguage;
         this.ImportPath = sImportPath;
     }
 }
@@ -120,12 +99,12 @@ public sealed class ImportPathSetAttributeCheck
     /// </remarks>
     /// <param name="type"></param>
     /// <returns></returns>
-    public ImportPathSetAttribute? Check(Type type, ImportPathSetType typeImportPathSet)
+    public ImportPathSetAttribute? Check(Type type, OutputLanguageType typeOutputLanguage)
     {
         ImportPathSetAttribute? etReturn =
             type.GetCustomAttributes(typeof(ImportPathSetAttribute), false)
                     .Cast<ImportPathSetAttribute>()
-                    .Where(w=>w.ImportPathSetType == typeImportPathSet)
+                    .Where(w=>w.OutputLanguageType == typeOutputLanguage)
                     .FirstOrDefault();
         return etReturn;
     }
@@ -135,13 +114,13 @@ public sealed class ImportPathSetAttributeCheck
     /// ImportPathSetAttribute의 타입 값 확인
     /// </summary>
     /// <param name="type"></param>
-    /// <param name="typeImportPathSet"></param>
+    /// <param name="typeOutputLanguage"></param>
     /// <returns></returns>
-    public string Value(Type type, ImportPathSetType typeImportPathSet)
+    public string Value(Type type, OutputLanguageType typeOutputLanguage)
     {
         string sReturn = string.Empty;
         ImportPathSetAttribute? fsfTemp
-            = this.Check(type, typeImportPathSet);
+            = this.Check(type, typeOutputLanguage);
 
         if (null != fsfTemp)
         {

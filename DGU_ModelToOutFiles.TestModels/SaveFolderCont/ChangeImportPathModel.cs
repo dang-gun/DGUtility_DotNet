@@ -1,4 +1,5 @@
-﻿using DGUtility.ModelToOutFiles.Global.Attributes;
+﻿using DGU_ModelToOutFiles.Global;
+using DGUtility.ModelToOutFiles.Global.Attributes;
 
 namespace DGU_ModelToOutFiles.TestModels.SaveFolderCont;
 
@@ -7,8 +8,8 @@ namespace DGU_ModelToOutFiles.TestModels.SaveFolderCont;
 /// </summary>
 [SaveIgnoreOtherPath]
 [SaveRelativePath("..", "FolderBefore")]
-[ImportPathSet(ImportPathSetType.TypeScript, "FolderBefore")]
-[ImportPathSet(ImportPathSetType.Test, "FolderBefore2")]
+[ImportPathSet(OutputLanguageType.TypeScript, "FolderBefore")]
+[ImportPathSet(OutputLanguageType.Test, "FolderBefore2")]
 public class ChangeImportPathModel
 {
     /// <summary>

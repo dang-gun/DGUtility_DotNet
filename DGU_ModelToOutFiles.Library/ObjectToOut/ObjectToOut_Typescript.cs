@@ -4,8 +4,8 @@ using DGUtility.FileAssist.FileSave;
 using DGUtility.EnumToClass;
 using DGUtility.ModelToFrontend;
 using DGUtility.ProjectXml;
-using System.Reflection;
 using DGUtility.ModelToOutFiles.Global.Attributes;
+using DGU_ModelToOutFiles.Global;
 
 namespace DGUtility.ModelToOutFiles.Library.ObjectToOut;
 
@@ -203,7 +203,7 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
         //임의로 지정된 임포트 경로가 있는지 확인한다.
         string sImportPath
             = ImportPathSetAttributeCheck.Instance
-                .Value(oomData.MyType!, ImportPathSetType.TypeScript);
+                .Value(oomData.MyType!, OutputLanguageType.TypeScript);
 
         if (string.Empty == sImportPath
             || false == oomData.SaveIgnoreOtherPathIs)
