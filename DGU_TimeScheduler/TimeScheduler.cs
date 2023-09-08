@@ -1,4 +1,4 @@
-﻿namespace DGU_TimeScheduler;
+﻿namespace DGUtility.TimeScheduler;
 
 /// <summary>
 /// 시간 스케줄러.
@@ -170,7 +170,10 @@ public class TimeScheduler
     /// 1루프틱에 걸리는 시간(Millisecond).
     /// 1000 이하.
     /// </summary>
-    public int LoopTick { get; private set; }
+    /// <remarks>
+    /// 디폴트 설정은 1000ms(1초)이다.
+    /// </remarks>
+    public int LoopTick { get; private set; } = 1000;
 
     /// <summary>
     /// 누적된 루프 기준 틱카운트.
@@ -243,7 +246,7 @@ public class TimeScheduler
         this.m_Timer_1LoopTick = new System.Timers.Timer();
         this.m_Timer_1LoopTick.Stop();
         //1 게임틱당 시간
-        this.m_Timer_1LoopTick.Interval = 1000;
+        this.m_Timer_1LoopTick.Interval = this.LoopTick;
         this.m_Timer_1LoopTick.Elapsed -= M_Timer_1LoopTick_Elapsed;
         this.m_Timer_1LoopTick.Elapsed += M_Timer_1LoopTick_Elapsed;
 

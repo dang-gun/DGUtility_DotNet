@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DGU_TimeScheduler;
+namespace DGUtility.TimeScheduler;
 
 /// <summary>
 /// 시간 스케줄러 동작 타입

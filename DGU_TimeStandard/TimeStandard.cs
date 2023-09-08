@@ -1,4 +1,4 @@
-﻿namespace DGU_TimeStandard;
+﻿namespace DGUtility.TimeStandard;
 
 /// <summary>
 /// 시간 기준 유틸리티
