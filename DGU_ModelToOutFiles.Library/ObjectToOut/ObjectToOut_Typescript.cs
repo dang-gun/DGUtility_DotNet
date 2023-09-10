@@ -96,6 +96,8 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
         //모델을 json으로 출력하기위한 개체
         ModelToJson jsonModel_Temp = new ModelToJson(this.ProjectXml);
 
+        //출력할때 사용할 확장자
+        string sExtension = ".ts";
 
 
         for (int i = 0; i < listObject.Count; ++i)
@@ -116,6 +118,7 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
                     case ObjectOutType.Json:
                         jsonModel_Temp.Data_Set(itemOOM.Instance);
                         sTemp = jsonModel_Temp.ToJsonString();
+                        sExtension = ".json";
                         break;
                     case ObjectOutType.Json_Enum:
                         break;
@@ -150,7 +153,7 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
                             //전체 설정 출력 경로로 출력
                             fileSave
                                 .FileSave(Path.Combine(sOutputPathItem
-                                                        , itemOOM.OutPhysicalFullPath) + ".ts"
+                                                        , itemOOM.OutPhysicalFullPath) + sExtension
                                     , sTemp + itemOOM.LastText);
                         }
                         
@@ -160,7 +163,7 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
                             //지정된 경로에 출력
                             fileSave
                                 .FileSave(Path.Combine(itemOOM.SaveAbsolutePath
-                                                        , itemOOM.ClassName) + ".ts"
+                                                        , itemOOM.ClassName) + sExtension
                                     , sTemp + itemOOM.LastText);
                         }
                         else
