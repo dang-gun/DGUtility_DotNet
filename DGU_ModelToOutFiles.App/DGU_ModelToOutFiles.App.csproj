@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Utility\**" />
+    <EmbeddedResource Remove="Utility\**" />
+    <None Remove="Utility\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DGU_EnumToClass_SummaryAssist\DGU_EnumToClass_SummaryAssist.csproj" />
     <ProjectReference Include="..\DGU_ModelToOutFiles.Global\DGU_ModelToOutFiles.Global.csproj" />
     <ProjectReference Include="..\DGU_ModelToOutFiles.Library\DGU_ModelToOutFiles.Library.csproj" />
@@ -22,10 +28,6 @@
     <None Update="DocXml\DGU_ModelToOutFiles.App.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Utility\" />
   </ItemGroup>
 
 </Project>
