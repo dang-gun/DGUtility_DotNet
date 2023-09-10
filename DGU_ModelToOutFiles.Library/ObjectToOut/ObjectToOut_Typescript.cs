@@ -66,7 +66,8 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
 
         string sTemp = string.Empty;
         //열거형을 모델로 바꾸기위한 개체
-        EnumToModel etmBP_Temp = new EnumToModel(ProjectXml);
+        //EnumToModel etmBP_Temp = new EnumToModel(ProjectXml);
+        EnumToModel_TypeScript etmBP_Temp = new EnumToModel_TypeScript(ProjectXml);
 
         //모델을 타입스크립트로 출력하기 위한 개체
         ModelToTs tsModel_Temp = new ModelToTs(ProjectXml);

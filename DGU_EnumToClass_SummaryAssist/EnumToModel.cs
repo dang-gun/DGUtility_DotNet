@@ -66,7 +66,7 @@ public class EnumToModel
 	{
 		//원본 저장
 		this.EnumType = typeData;
-		Reset(typeData, null);
+        this.Reset(typeData, null);
 	}
 
 
@@ -76,8 +76,8 @@ public class EnumToModel
 	/// <param name="typeData"></param>
 	/// <param name="projectXmlAssist"></param>
 	public EnumToModel(Enum typeData, ProjectXmlAssist projectXmlAssist)
-        {
-		Reset(typeData, projectXmlAssist);
+    {
+        this.Reset(typeData, projectXmlAssist);
 	}
 
 	/// <summary>
@@ -89,7 +89,7 @@ public class EnumToModel
 	/// <param name="typeData"></param>
 	public void TypeData_Set(Enum typeData)
 	{
-		Reset(typeData, this.ProjectXml);
+		this.Reset(typeData, this.ProjectXml);
 	}
 
 	/// <summary>
@@ -159,49 +159,6 @@ public class EnumToModel
 		return sReturn;
 	}
 
-	/// <summary>
-	/// 자바스크립트에서 사용하는 열거형 타입으로 선언하는 코드를 생성한다.
-	/// </summary>
-	/// <returns></returns>
-	public string ToJavaScriptVarString()
-        {
-		return this.ToScriptString(
-				"var {0} = " + Environment.NewLine
-						+ "{{" + Environment.NewLine
-				, @"    {0}: {1}," + Environment.NewLine
-				, "}}"
-			);
-	}
-
-	/// <summary>
-	/// 타입 스크립트에서 사용하는 열거형 타입으로 선언하는 코드를 생성한다.
-	/// </summary>
-	/// <param name="bConst">
-	/// 'const'로 선언할지 여부<br/>
-	///  Object.keys와 같이 열거형에 직접 접근하려면 const로 선언하면 안된다.<br/>
-	///  대신 const로 선언하면 성능이 향상된다.
-	/// </param>
-	/// <returns></returns>
-	public string ToTypeScriptEnumString(bool bConst)
-	{
-		string sConst = string.Empty;
-
-		if (true == bConst)
-		{
-			sConst = "export const enum {0} ";
-		}
-		else
-		{
-			sConst = "export enum {0} ";
-		}
-
-		return this.ToScriptString(
-				sConst + Environment.NewLine
-						+ "{{" + Environment.NewLine
-				, @"    {0} = {1}," + Environment.NewLine
-				, "}}"
-			);
-	}
 
 	/// <summary>
 	/// 스크립트 형태의 문자열을 생성한다.
