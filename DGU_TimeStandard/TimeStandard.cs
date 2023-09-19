@@ -18,7 +18,7 @@ public class TimeStandard
 
 
     /// <summary>
-    /// 시간 스케줄러 생성
+    /// 기준 시간 생성
     /// </summary>
     public TimeStandard()
     {
@@ -26,7 +26,7 @@ public class TimeStandard
     }
 
     /// <summary>
-    /// 시간 스케줄러 생성.
+    /// 기준 시간을 지정하여 기준 시간 생성.
     /// </summary>
     /// <param name="timeLoopTickResetTime">하루가 시작의 기준 시간</param>
     public TimeStandard(TimeSpan timeLoopTickResetTime)
