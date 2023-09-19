@@ -91,6 +91,43 @@ public class ObjectToOutBase : ObjectToOutInterface
     }
 
     /// <summary>
+    /// 출력폴더 비우기
+    /// </summary>
+    public virtual void ClearOutputFolder()
+    {
+        Console.WriteLine("Clear output folder");
+
+        for (int i = 0; i < this.OutputPathList.Count; ++i)
+        {
+            string sOutputPath = this.OutputPathList[i];
+
+            DirectoryInfo diOutP = new DirectoryInfo(sOutputPath);
+
+            //루트에 있는 파일 찾기
+            FileInfo[] arrFI = diOutP.GetFiles();
+            foreach (FileInfo fileItem in arrFI)
+            {
+                //파일 삭제
+                fileItem.Delete();
+            }
+
+            //루트에 있는 폴더 찾기
+            DirectoryInfo[] arrDI = diOutP.GetDirectories();
+            foreach (DirectoryInfo diItem in arrDI)
+            {
+                //폴더 삭제
+                diItem.Delete(true);
+            }
+
+            Console.WriteLine();
+        }
+
+        
+        
+    }
+
+
+    /// <summary>
     /// 가지고있는 허용리스트를 기준으로 저장을 진행한다.
     /// </summary>
     public virtual void ToTargetSave()

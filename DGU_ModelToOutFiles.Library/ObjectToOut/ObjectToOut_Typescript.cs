@@ -36,7 +36,7 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
         , string sImportRootDir)
         : base(listOutputPath, ProjectXml)
     {
-        ImportRootDir = sImportRootDir;
+        this.ImportRootDir = sImportRootDir;
     }
 
     /// <summary>
@@ -128,15 +128,22 @@ public class ObjectToOut_Typescript : ObjectToOutBase, ObjectToOutInterface
                         //타입스크립트(인터페이스)로 변환
                         tsModel_Temp.TypeData_Set(itemOOM.Instance);
                         sTemp = tsModel_Temp.ToTypeScriptInterfaceString(itemOOM.ImportAdd);
+                        sExtension = ".ts";
                         break;
 
                     case ObjectOutType.Enum:
                         etmBP_Temp.TypeData_Set((Enum)itemOOM.Instance);
                         sTemp = etmBP_Temp.ToTypeScriptEnumString(true);
+                        sExtension = ".ts";
                         break;
                     case ObjectOutType.Enum_ConstNo:
                         etmBP_Temp.TypeData_Set((Enum)itemOOM.Instance);
                         sTemp = etmBP_Temp.ToTypeScriptEnumString(false);
+                        sExtension = ".ts";
+                        break;
+
+                    default:
+                        sExtension = string.Empty;
                         break;
                 }
 

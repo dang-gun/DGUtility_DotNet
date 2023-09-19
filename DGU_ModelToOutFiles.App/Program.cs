@@ -204,27 +204,7 @@ internal class Program
         //***********************************
         if (true == bOutputPathClear)
         {//출력 폴더 지우기
-
-            Console.WriteLine("Clear folder");
-            DirectoryInfo diOutP = new DirectoryInfo(sOutputPath);
-
-            //루트에 있는 파일 찾기
-            FileInfo[] arrFI = diOutP.GetFiles();
-            foreach (FileInfo fileItem in arrFI)
-            {
-                //파일 삭제
-                fileItem.Delete();
-            }
-
-            //루트에 있는 폴더 찾기
-            DirectoryInfo[] arrDI = diOutP.GetDirectories();
-            foreach (DirectoryInfo diItem in arrDI)
-            {
-                //폴더 삭제
-                diItem.Delete(true);
-            }
-
-            Console.WriteLine();
+            otoTemp.ClearOutputFolder();
         }
 
         //파일로 출력
