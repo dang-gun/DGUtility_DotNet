@@ -45,6 +45,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_ModelToOutFiles.Library
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_FileAssist", "DGU_FileAssist\DGU_FileAssist.csproj", "{63D1872B-9E58-47F7-95B4-013EA22A3661}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_Random", "DGU_Random\DGU_Random.csproj", "{A628A15E-F91F-4EF1-9033-E646D21FFCA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{63D1872B-9E58-47F7-95B4-013EA22A3661}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63D1872B-9E58-47F7-95B4-013EA22A3661}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63D1872B-9E58-47F7-95B4-013EA22A3661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A628A15E-F91F-4EF1-9033-E646D21FFCA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A628A15E-F91F-4EF1-9033-E646D21FFCA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A628A15E-F91F-4EF1-9033-E646D21FFCA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A628A15E-F91F-4EF1-9033-E646D21FFCA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
