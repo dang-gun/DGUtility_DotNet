@@ -5,7 +5,7 @@ namespace DGU.StringAssist
 	/// <summary>
 	/// 문자열 자르기 관련 기능
 	/// </summary>
-	public static class StringSplit
+	public class StringSplit
 	{
 		/// <summary>
 		/// 문자열을 지정된 길이만큼 여러번 잘라 배열로 만든다.
@@ -13,7 +13,7 @@ namespace DGU.StringAssist
 		/// <param name="sData"></param>
 		/// <param name="nCutLength">자를 길이</param>
 		/// <returns></returns>
-		public static string[] NLengthArray(
+		public string[] NLengthArray(
 			string sData
 			, int nCutLength)
 		{
@@ -45,5 +45,43 @@ namespace DGU.StringAssist
 
 			return stringReturn;
 		}
-	}
-}
+
+
+        /// <summary>
+        /// 왼쪽 부터 지정된 길이만큼 잘라서 리턴한다.
+        /// </summary>
+        /// <remarks>
+        /// https://stackoverflow.com/a/7574615/6725889
+        /// </remarks>
+        /// <param name="value"></param>
+        /// <param name="nMaxLength">출력할 길이
+        /// <para>value가 nMaxLength보다 짧으면 value가 그대로 출력됨</para></param>
+        /// <returns></returns>
+        public string Left(string value, int nMaxLength)
+        {
+            string sReturn = value;
+
+            if (false == string.IsNullOrEmpty(value)
+                && 0 < nMaxLength)
+            {//빈값이 아니고
+             //입력된 길이가 0보다 크다.
+
+
+                //출력할 길이가 정상이다.
+                if (value.Length <= nMaxLength)
+                {//value가 지정된 길이 이하다
+
+                    //전체 출력
+                }
+                else
+                {
+                    //아니면 잘라준다.
+                    sReturn = value.Substring(0, nMaxLength);
+                }
+            }
+
+            return sReturn;
+        }
+
+    }//end class
+}//end namespace

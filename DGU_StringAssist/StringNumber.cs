@@ -5,7 +5,7 @@ namespace DGU.StringAssist
 	/// <summary>
 	/// 문자열로된 숫자를 처리하기위한 지원 기능
 	/// </summary>
-	public static class StringNumber
+	public class StringNumber
 	{
 		/// <summary>
 		/// 입력된 문자열이 숫자로 변환 가능한지 여부를 판단한다.
@@ -13,7 +13,7 @@ namespace DGU.StringAssist
 		/// </summary>
 		/// <param name="value">판단할 문자열</param>
 		/// <returns></returns>
-		public static bool IsNumeric(string value)
+		public bool IsNumeric(string value)
 		{
 			if ((null == value)
 				|| (true == string.IsNullOrEmpty(value))
@@ -55,7 +55,7 @@ namespace DGU.StringAssist
 		/// </summary>
 		/// <param name="sData">바꿀 데이터</param>
 		/// <returns>변환된 숫자.</returns>
-		public static int StringToInt(string sData)
+		public int StringToInt(string sData)
 		{
 			int nReturn = 0;
 			if (false == IsNumeric(sData))
