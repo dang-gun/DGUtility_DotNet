@@ -33,7 +33,10 @@ namespace DGU.DGU_ByteAssist
 			//변환 성공 여부
 			bool bReturn = true;
 
-			try
+			StringSplit stringSplit = new StringSplit();
+
+
+            try
 			{
 				string[] sCutData;
 
@@ -43,7 +46,7 @@ namespace DGU.DGU_ByteAssist
 					//'0x'를 제거하고
 					string sTemp = sByteString.Replace("0x", "");
 					//2칸(1바이트) 씩 자른다.
-					sCutData = StringSplit.NLengthArray(sTemp, 2);
+					sCutData = stringSplit.NLengthArray(sTemp, 2);
 				}
 				else if (0 < sByteString.IndexOf("-"))
 				{
@@ -53,7 +56,7 @@ namespace DGU.DGU_ByteAssist
 				else
 				{//구분자가 없다.
 					//2칸(1바이트) 씩 자른다.
-					sCutData = StringSplit.NLengthArray(sByteString, 2);
+					sCutData = stringSplit.NLengthArray(sByteString, 2);
 				}
 
 				

@@ -176,14 +176,31 @@ namespace DGU.DGU_ByteAssist
 			return nOffsetStart + byteStorage.Length;
 		}
 
-		/// <summary>
-		/// 바이트 배열을 byteSplit잘라 리턴한다.
-		/// <see href="https://www.codeproject.com/Answers/511256/Howplustoplussplitplusbyteplusarray#answer3">How to split byte array</see>
-		/// </summary>
-		/// <param name="byteOriginal"></param>
-		/// <param name="byteSplit">자를 코드(1자리만 가능)</param>
-		/// <returns></returns>
-		public static List<byte[]> Split(byte[] byteOriginal, byte byteSplit)
+        /// <summary>
+        /// 지정된 배열을 지정된 값에 따라 잘라서 리턴한다.
+        /// </summary>
+        /// <param name="byteOriginal"></param>
+        /// <param name="nStartIndex">시작 인덱스</param>
+        /// <param name="nCutLength">자를 크기</param>
+        /// <returns></returns>
+        public static byte[] SubByte(
+            byte[] byteOriginal
+            , int nStartIndex
+            , int nCutLength)
+		{
+            byte[] arrReturn = new byte[nCutLength];
+            Array.Copy(byteOriginal, nStartIndex, arrReturn, 0, nCutLength);
+            return arrReturn;
+        }
+
+        /// <summary>
+        /// 바이트 배열을 byteSplit잘라 리턴한다.
+        /// <see href="https://www.codeproject.com/Answers/511256/Howplustoplussplitplusbyteplusarray#answer3">How to split byte array</see>
+        /// </summary>
+        /// <param name="byteOriginal"></param>
+        /// <param name="byteSplit">자를 코드(1자리만 가능)</param>
+        /// <returns></returns>
+        public static List<byte[]> Split(byte[] byteOriginal, byte byteSplit)
 		{
 			List<byte[]> listReturn = new List<byte[]>();
 

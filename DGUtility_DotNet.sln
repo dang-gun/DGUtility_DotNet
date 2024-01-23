@@ -47,6 +47,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_FileAssist", "DGU_FileA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_Random", "DGU_Random\DGU_Random.csproj", "{A628A15E-F91F-4EF1-9033-E646D21FFCA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_FileAssist_,Json", "DGU_FileAssist_,Json\DGU_FileAssist_,Json.csproj", "{1484FF12-1911-49E3-8032-EEF55115842D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{A628A15E-F91F-4EF1-9033-E646D21FFCA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A628A15E-F91F-4EF1-9033-E646D21FFCA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A628A15E-F91F-4EF1-9033-E646D21FFCA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1484FF12-1911-49E3-8032-EEF55115842D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1484FF12-1911-49E3-8032-EEF55115842D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1484FF12-1911-49E3-8032-EEF55115842D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1484FF12-1911-49E3-8032-EEF55115842D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
