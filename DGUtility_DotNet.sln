@@ -49,9 +49,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_Random", "DGU_Random\DG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_FileAssist_,Json", "DGU_FileAssist_,Json\DGU_FileAssist_,Json.csproj", "{1484FF12-1911-49E3-8032-EEF55115842D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_ConsoleAssist", "DGU_ConsoleAssist\DGU_ConsoleAssist.csproj", "{F6DDF22E-F4F3-4A5F-A103-F33B36A52370}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_ConsoleAssist", "DGU_ConsoleAssist\DGU_ConsoleAssist.csproj", "{F6DDF22E-F4F3-4A5F-A103-F33B36A52370}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_ConsoleAssist_Test", "DGU_ConsoleAssist_Test\DGU_ConsoleAssist_Test.csproj", "{9D44E7B6-D421-4526-B1F8-E32702916A59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DGU_ConsoleAssist_Test", "DGU_ConsoleAssist_Test\DGU_ConsoleAssist_Test.csproj", "{9D44E7B6-D421-4526-B1F8-E32702916A59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_GameLoop", "DGU_GameLoop\DGU_GameLoop.csproj", "{4245F292-4FB1-430F-931C-DA09286CFC48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DGU_GameLoop_Test", "DGU_GameLoop_Test\DGU_GameLoop_Test.csproj", "{F5F40D94-F9B2-4656-AB87-CF2EF1591FD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,6 +151,14 @@ Global
 		{9D44E7B6-D421-4526-B1F8-E32702916A59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D44E7B6-D421-4526-B1F8-E32702916A59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D44E7B6-D421-4526-B1F8-E32702916A59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4245F292-4FB1-430F-931C-DA09286CFC48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4245F292-4FB1-430F-931C-DA09286CFC48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4245F292-4FB1-430F-931C-DA09286CFC48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4245F292-4FB1-430F-931C-DA09286CFC48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5F40D94-F9B2-4656-AB87-CF2EF1591FD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5F40D94-F9B2-4656-AB87-CF2EF1591FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5F40D94-F9B2-4656-AB87-CF2EF1591FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5F40D94-F9B2-4656-AB87-CF2EF1591FD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
