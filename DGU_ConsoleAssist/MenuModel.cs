@@ -39,7 +39,7 @@ public class MenuModel
     /// <summary>
     /// 메뉴가 선택됐을 때 동작
     /// <para>MenuModel : 이 개체(this) </para>
-    /// <para>return bool : 메뉴를 유지 시킬지 여부(false 이면 메뉴에서 나감) </para>
+    /// <para>return bool : 메뉴를 유지 시킬지 여부(false이면 메뉴에서 나감) </para>
     /// </summary>
     public Func<MenuModel, bool>? Action { get; set; }
 }

@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace DGU_ConsoleAssist;
 
-namespace DGU_ConsoleAssist;
-
+/// <summary>
+/// 콘솔에 메뉴를 표시하고 선택 인터페이스를 표시 및 동작시키는 기능
+/// </summary>
 public class ConsoleMenuAssist
 {
     /// <summary>
     /// 메뉴가 표시되기전 표시될 메시지
     /// </summary>
-    public string WelcomeMessage { get; set; } = string.Empty;
+    public string? WelcomeMessage { get; set; } = string.Empty;
 
     /// <summary>
     /// 메뉴 리스트
@@ -29,7 +26,7 @@ public class ConsoleMenuAssist
     /// <summary>
     /// 메뉴가 표시되고 나서 표될 질문 메시지
     /// </summary>
-    public string QuestionMessage { get; set; } = string.Empty;
+    public string? QuestionMessage { get; set; } = string.Empty;
 
     
 
@@ -45,7 +42,7 @@ public class ConsoleMenuAssist
         }
 
 
-        //입력된 키
+        //입력된 값
         string? sReadString = string.Empty;
 
         //메뉴를 유지시킬지 여부
@@ -79,9 +76,11 @@ public class ConsoleMenuAssist
         //한줄 띄기
         Console.WriteLine("");
 
-        Console.WriteLine(this.WelcomeMessage);
-
-
+        if(null != this.WelcomeMessage)
+        {
+            Console.WriteLine(this.WelcomeMessage);
+        }
+        
         for (int i = 0; i < this.MenuList.Count; ++i)
         {
             MenuModel item = this.MenuList[i];
@@ -118,11 +117,13 @@ public class ConsoleMenuAssist
                                     , this.MenuEnd.MatchString));
             }
         }
-        
 
-        Console.WriteLine("");
-        Console.WriteLine("");
-        Console.Write(this.QuestionMessage);
+
+        if (null != this.QuestionMessage)
+        {
+            Console.Write(this.QuestionMessage);
+        }
+        
     }
 
     /// <summary>

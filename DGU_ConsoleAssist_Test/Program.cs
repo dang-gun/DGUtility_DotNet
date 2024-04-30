@@ -7,7 +7,21 @@ internal class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello, Dang Gun Utility!");
-        Console.WriteLine("☆☆☆ Console Assist(DGU_ConsoleAssist) ☆☆☆");
+        Console.WriteLine("☆☆☆ Console Assist Test(DGU_ConsoleAssist_Test) ☆☆☆");
+        Console.WriteLine(" ");
+
+        (new ConsoleValueAssist()
+        {
+            InputValueMessage = $"값을 직접 받는 인터페이스입니다.",
+            QuestionMessage = "문자열을 넣어주세요 : ",
+            Action = (sInputData) =>
+            {
+                Console.WriteLine($"입력된 문장은 '{sInputData}'입니다.");
+                //true이면 입력을 다시 받는다.
+                return false;
+            }
+        }).InputValueWait();
+
 
         //메뉴 추가에 사용될 카운트
         int nAddCount = 100000;
@@ -25,6 +39,8 @@ internal class Program
             Action = (MenuModel menuThis) => 
             {
                 Console.WriteLine($"'{menuThis.MatchString}({menuThis.Index})'를 선택 했습니다.");
+
+                //true이면 메뉴를 다시 표시한다.
                 return true;
             }
         });
@@ -70,7 +86,7 @@ internal class Program
         newCA.ShowKeyWait(false);
 
 
-
+        Console.WriteLine(" ");
         //지정된 키가 눌릴때까지 대기
         ConsoleExitAssist newExit
             = new ConsoleExitAssist("------ '{0}'을 눌러 프로그램 종료 ------"
