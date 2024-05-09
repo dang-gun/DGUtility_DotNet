@@ -9,7 +9,7 @@
 'Environment.TickCount'나 'TimeSpan'를 사용하는 경우 운영체제 별로 정확도 차이가 생깁니다.
 [[.NET] 게임 루프(Game Loop)를 구현할 때는 'Environment.TickCount'를 사용하면 안 된다.](https://blog.danggun.net/10016)
 
-'Stopwatch'는 'Stopwatch'를 사용할 수 없는 상황에서만 'Environment.TickCount'을 사용합니다.
+'Stopwatch'를 사용할 수 없는 상황에서만 'Environment.TickCount'을 사용하는 것이 좋습니다.
 
 
 
