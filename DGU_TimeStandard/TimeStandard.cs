@@ -15,33 +15,47 @@ public class TimeStandard
     /// </summary>
     public TimeSpan LoopTickCountResetTime { get; private set; }
 
+    /// <summary>
+    /// 기준 시간이 지나면 다음날 취급할지 여부
+    /// </summary>
+    /// <remarks>
+    /// true : 기준 시간이 지나면 다음날로 취급한다.
+    /// <para>false : 기준 시간 지나기 전까지는 전날로 취급한다.</para>
+    /// </remarks>
+    public bool NextDay { get; private set; } = false;
 
 
     /// <summary>
     /// 기준 시간 생성
     /// </summary>
-    public TimeStandard()
+    /// <param name="bNextDay">기준 시간이 지나면 다음날 취급할지 여부</param>
+    public TimeStandard(bool bNextDay = false)
     {
-        this.Reset(TimeSpan.Parse("00:00:00"));
+        this.Reset(TimeSpan.Parse("00:00:00"), bNextDay);
     }
 
     /// <summary>
     /// 기준 시간을 지정하여 기준 시간 생성.
     /// </summary>
-    /// <param name="timeLoopTickResetTime">하루가 시작의 기준 시간</param>
-    public TimeStandard(TimeSpan timeLoopTickResetTime)
+    /// <param name="timeLoopTickResetTime">하루가 시작의 기준 시간
+    /// <para>DateTime를 사용하는 경우 : DateTime.TimeOfDay</para>
+    /// <para>문자열을 사용하는 경우 : TimeSpan.Parse("00:00:00")</para></param>
+    /// <param name="bNextDay">기준 시간이 지나면 다음날 취급할지 여부</param>
+    public TimeStandard(TimeSpan timeLoopTickResetTime, bool bNextDay = false)
     {
-        this.Reset(timeLoopTickResetTime);
+        this.Reset(timeLoopTickResetTime, bNextDay);
     }
 
     /// <summary>
-    /// 리셋
+    /// 기준 정보를 다시 저장한다.
     /// </summary>
     /// <param name="timeLoopTickResetTime">하루가 시작의 기준 시간</param>
-    private void Reset(TimeSpan timeLoopTickResetTime)
+    /// <param name="bNextDay">기준 시간이 지나면 다음날 취급할지 여부</param>
+    public void Reset(TimeSpan timeLoopTickResetTime, bool bNextDay = false)
     {
         //정보 저장
         this.LoopTickCountResetTime = timeLoopTickResetTime;
+        this.NextDay = bNextDay;
     }
 
 
@@ -50,10 +64,10 @@ public class TimeStandard
     /// 지정된 날짜의 기준 날짜를 리턴한다.
     /// </summary>
     /// <remarks>
-    /// 지정된 날짜의 기준 날짜가 전날인지 오늘인지를 계산하여 리턴한다.<br />
-    /// 지정된 날짜의 시간이 0시이후인데 
-    /// LoopTickCountResetTime 시간전이라면 전날 날짜를 주게 된다.<br />
-    /// 시간은 어떻게 처리할지 각자 알아서 해야 한다.
+    /// 지정된 날짜의 기준 날짜가 전날인지 오늘인지를 계산하여 리턴한다.
+    /// <para>NextDay == true : LoopTickCountResetTime가 지났다면 내일 날짜를 준다.</para>
+    /// <para>NextDay == false : 지정된 날짜의 시간이 0시이후인데 
+    /// LoopTickCountResetTime 시간전이라면 전날 날짜를 주게 된다.</para>
     /// </remarks>
     /// <param name="dtTarget"></param>
     /// <returns>년,월,일 만 리턴됨 </returns>
@@ -64,13 +78,29 @@ public class TimeStandard
                             , dtTarget.Month
                             , dtTarget.Day);
 
-        //대상의 오늘 간격받기
-        if (dtTarget.TimeOfDay < this.LoopTickCountResetTime)
-        {//대상의 오늘 간격이 LoopTickCountResetTime보다 작다.
+        if(false == this.NextDay)
+        {//전날 취급
 
-            //전날로 취급해야 한다.
-            dtReturn = dtReturn.AddDays(-1);
+            //대상의 오늘 간격받기
+            if (dtTarget.TimeOfDay < this.LoopTickCountResetTime)
+            {//대상의 오늘 간격이 LoopTickCountResetTime보다 작다.
+
+                //전날로 취급해야 한다.
+                dtReturn = dtReturn.AddDays(-1);
+            }
         }
+        else
+        {//다음날 취급
+
+            //대상의 오늘 간격받기
+            if (dtTarget.TimeOfDay > this.LoopTickCountResetTime)
+            {//대상의 오늘 간격이 LoopTickCountResetTime보다 크다.
+
+                //다음날로 취급해야 한다.
+                dtReturn = dtReturn.AddDays(1);
+            }
+        }
+        
 
         return dtReturn.Date;
     }

@@ -2,8 +2,12 @@
 
 /// <summary>
 /// 시간 스케줄러.
-/// 1틱 == 1초
+/// <para>1틱 == 1초</para>
 /// </summary>
+/// <remarks>
+/// 1틱이 1초보다 낮으면 정확한 호출 횟수를 보장할 수 없다.
+/// <para>이 라이브러리는 날짜를 처리하는 데 목적이 있으므로 1초에 한번씩 동작하도록 구현되어 있다.</para>
+/// </remarks>
 public class TimeScheduler
 {
     #region 외부에서 연결할 이벤트
@@ -168,12 +172,9 @@ public class TimeScheduler
 
     /// <summary>
     /// 1루프틱에 걸리는 시간(Millisecond).
-    /// 1000 이하.
+    /// <para>1000ms(1초) 고정</para>
     /// </summary>
-    /// <remarks>
-    /// 디폴트 설정은 1000ms(1초)이다.
-    /// </remarks>
-    public int LoopTick { get; private set; } = 1000;
+    public int LoopTick { get; } = 1000;
 
     /// <summary>
     /// 누적된 루프 기준 틱카운트.
@@ -208,33 +209,47 @@ public class TimeScheduler
     /// </remarks>
     public TimeSpan LoopTickCountResetTime { get; private set; }
 
+    /// <summary>
+    /// 기준 시간이 지나면 다음날 취급할지 여부
+    /// </summary>
+    /// <remarks>
+    /// true : 기준 시간이 지나면 다음날로 취급한다.
+    /// <para>false : 기준 시간 지나기 전까지는 전날로 취급한다.</para>
+    /// </remarks>
+    public bool NextDay { get; private set; } = false;
 
 
     /// <summary>
     /// 시간 스케줄러 생성
     /// </summary>
-    public TimeScheduler()
+    /// <param name="bNextDay">기준 시간이 지나면 다음날 취급할지 여부</param>
+    public TimeScheduler(bool bNextDay = false)
     {
-        this.Reset(TimeSpan.Parse("00:00:00"));
+        this.Reset(TimeSpan.Parse("00:00:00"), bNextDay);
     }
 
     /// <summary>
-    /// 시간 스케줄러 생성.
+    /// 기준 시간을 지정하여 기준 시간 생성.
     /// </summary>
-    /// <param name="timeLoopTickResetTime">루프틱 리셋 기준시간</param>
-    public TimeScheduler(TimeSpan timeLoopTickResetTime)
+    /// <param name="timeLoopTickResetTime">하루가 시작의 기준 시간
+    /// <para>DateTime를 사용하는 경우 : DateTime.TimeOfDay</para>
+    /// <para>문자열을 사용하는 경우 : TimeSpan.Parse("00:00:00")</para></param>
+    /// <param name="bNextDay">기준 시간이 지나면 다음날 취급할지 여부</param>
+    public TimeScheduler(TimeSpan timeLoopTickResetTime, bool bNextDay = false)
     {
-        this.Reset(timeLoopTickResetTime);
+        this.Reset(timeLoopTickResetTime, bNextDay);
     }
 
     /// <summary>
-    /// 리셋
+    /// 기준 정보를 다시 저장한다.
     /// </summary>
-    /// <param name="timeLoopTickResetTime">루프틱 리셋 기준시간</param>
-    private void Reset(TimeSpan timeLoopTickResetTime)
+    /// <param name="timeLoopTickResetTime">하루가 시작의 기준 시간</param>
+    /// <param name="bNextDay">기준 시간이 지나면 다음날 취급할지 여부</param>
+    public void Reset(TimeSpan timeLoopTickResetTime, bool bNextDay = false)
     {
         //정보 저장
         this.LoopTickCountResetTime = timeLoopTickResetTime;
+        this.NextDay = bNextDay;
 
         //동작 상태 초기화
         this.TimeSchedulerOperationType = TimeSchedulerOperationType.Stop;
@@ -254,25 +269,9 @@ public class TimeScheduler
         //지금 기준날짜 입력 **********************
         DateTime dtNow = DateTime.Now;
         DateTime dtNowDate = dtNow.Date;
-        TimeSpan timeNow = dtNow.TimeOfDay;
 
-        //기준 시간이 됐는지
-        if ((dtNowDate > this.TodayStandard)
-            && (timeNow > this.LoopTickCountResetTime))
-        {//날짜가 다음 날짜이고
-         //시간이 지정된 시간 이후다.
-
-            //루프카운트 초기화
-            this.LoopTickCount = 0;
-            //기준 날짜 변경
-            this.TodayStandard = dtNowDate.Date;
-        }
-        else
-        {//기준 시간이 지나지 않았다.
-
-            //기준 날짜에 전날 날짜를 넣어준다.
-            this.TodayStandard = dtNowDate.Date.AddDays(-1);
-        }
+        //기준 시간이 됐는지 확인 *****************
+        this.DateToStandard_Check(dtNowDate, false);
     }
 
 
@@ -285,7 +284,7 @@ public class TimeScheduler
     {
         DateTime dtNow = DateTime.Now;
         DateTime dtNowDate = dtNow.Date;
-        TimeSpan timeNow = dtNow.TimeOfDay;
+        //TimeSpan timeNow = dtNow.TimeOfDay;
 
         //1틱 처리 내용
         ++this.LoopTickCount;
@@ -340,20 +339,50 @@ public class TimeScheduler
             On1DayCall();
         }
 
-        //기준 시간이 됐는지
-        if ((dtNowDate > this.TodayStandard)
-            && (timeNow > this.LoopTickCountResetTime))
-        {//날짜가 다음 날짜이고
-         //시간이 지정된 시간 이후다.
+        //기준 시간이 됐는지 확인 *****************
+        this.DateToStandard_Check(dtNow, true);
+    }
+
+    /// <summary>
+    /// 다음날로 넘어갔는지 체크
+    /// </summary>
+    /// <param name="dtNowDate">지금 날짜</param>
+    private void DateToStandard_Check(
+        DateTime dtNowDate
+        , bool bEvent)
+    {
+        //DateToStandard로 계산된 날짜
+        DateTime dtDate_Next = this.DateToStandard(dtNowDate);
+
+        if (dtDate_Next != this.TodayStandard)
+        {//날짜가 바뀜
 
             //루프카운트 초기화
             this.LoopTickCount = 0;
             //기준 날짜 변경
-            this.TodayStandard = dtNowDate.Date;
+            this.TodayStandard = dtDate_Next;
 
-            //기준 시간이 변경됐음을 알림
-            this.On1DayStandardCall();
+            if(true == bEvent)
+            {
+                //기준 시간이 변경됐음을 알림
+                this.On1DayStandardCall();
+            }
         }
+
+
+        //if ((dtNowDate > this.TodayStandard)
+        //    && (timeNow > this.LoopTickCountResetTime))
+        //{//날짜가 다음 날짜이고
+        // //시간이 지정된 시간 이후다.
+
+        //    //루프카운트 초기화
+        //    this.LoopTickCount = 0;
+        //    //기준 날짜 변경
+        //    this.TodayStandard = dtNowDate.Date;
+
+        //    //기준 시간이 변경됐음을 알림
+        //    this.On1DayStandardCall();
+        //}
     }
 
 
@@ -396,10 +425,10 @@ public class TimeScheduler
     /// 지정된 날짜의 기준 날짜를 리턴한다.
     /// </summary>
     /// <remarks>
-    /// 지정된 날짜의 기준 날짜가 전날인지 오늘인지를 계산하여 리턴한다.<br />
-    /// 지정된 날짜의 시간이 0시이후인데 
-    /// LoopTickCountResetTime 시간전이라면 전날 날짜를 주게 된다.<br />
-    /// 시간은 어떻게 처리할지 각자 알아서 해야 한다.
+    /// 지정된 날짜의 기준 날짜가 전날인지 오늘인지를 계산하여 리턴한다.
+    /// <para>NextDay == true : LoopTickCountResetTime가 지났다면 내일 날짜를 준다.</para>
+    /// <para>NextDay == false : 지정된 날짜의 시간이 0시이후인데 
+    /// LoopTickCountResetTime 시간전이라면 전날 날짜를 주게 된다.</para>
     /// </remarks>
     /// <param name="dtTarget"></param>
     /// <returns>년,월,일 만 리턴됨 </returns>
@@ -410,12 +439,27 @@ public class TimeScheduler
                             , dtTarget.Month
                             , dtTarget.Day);
 
-        //대상의 오늘 간격받기
-        if (dtTarget.TimeOfDay < this.LoopTickCountResetTime)
-        {//대상의 오늘 간격이 LoopTickCountResetTime보다 작다.
+        if (false == this.NextDay)
+        {//전날 취급
 
-            //전날로 취급해야 한다.
-            dtReturn = dtReturn.AddDays(-1);
+            //대상의 오늘 간격받기
+            if (dtTarget.TimeOfDay < this.LoopTickCountResetTime)
+            {//대상의 오늘 간격이 LoopTickCountResetTime보다 작다.
+
+                //전날로 취급해야 한다.
+                dtReturn = dtReturn.AddDays(-1);
+            }
+        }
+        else
+        {//다음날 취급
+
+            //대상의 오늘 간격받기
+            if (dtTarget.TimeOfDay > this.LoopTickCountResetTime)
+            {//대상의 오늘 간격이 LoopTickCountResetTime보다 크다.
+
+                //다음날로 취급해야 한다.
+                dtReturn = dtReturn.AddDays(1);
+            }
         }
 
 
