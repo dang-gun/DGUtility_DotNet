@@ -29,28 +29,44 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            labTimeScheduler_DayNow = new Label();
+            labTimeScheduler_ViewTime = new Label();
+            labTimeScheduler_StandardTime = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            label3 = new Label();
             groupBox2 = new GroupBox();
+            labTimeStandard_DayNow = new Label();
+            label4 = new Label();
+            labTimeStandard_ViewTime = new Label();
+            label6 = new Label();
+            labTimeStandard_StandardTime = new Label();
+            label11 = new Label();
             timeStandardTime = new DateTimePicker();
             label1 = new Label();
             btnStandardTimeApply = new Button();
             btnViewTimeApply = new Button();
             label2 = new Label();
             timeViewTime = new DateTimePicker();
-            label3 = new Label();
-            labTimeScheduler_StandardTime = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            labTimeScheduler_ViewTime = new Label();
-            labTimeScheduler_DayNow = new Label();
-            label4 = new Label();
-            label6 = new Label();
-            label11 = new Label();
-            labTimeStandard_StandardTime = new Label();
-            labTimeStandard_ViewTime = new Label();
-            labTimeStandard_DayNow = new Label();
             checkRealTime = new CheckBox();
+            groupBox3 = new GroupBox();
+            labTimeScheduler_DayNow_NextDate = new Label();
+            labTimeScheduler_ViewTime_NextDate = new Label();
+            labTimeScheduler_StandardTime_NextDate = new Label();
+            label12 = new Label();
+            label13 = new Label();
+            label14 = new Label();
+            groupBox4 = new GroupBox();
+            labTimeStandard_DayNow_NextDate = new Label();
+            label16 = new Label();
+            labTimeStandard_ViewTime_NextDate = new Label();
+            label18 = new Label();
+            labTimeStandard_StandardTime_NextDate = new Label();
+            label20 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -61,90 +77,30 @@
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(label3);
-            groupBox1.Location = new Point(12, 86);
+            groupBox1.Location = new Point(12, 38);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(193, 111);
+            groupBox1.Size = new Size(200, 111);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "DGU TimeScheduler";
             // 
-            // groupBox2
+            // labTimeScheduler_DayNow
             // 
-            groupBox2.Controls.Add(labTimeStandard_DayNow);
-            groupBox2.Controls.Add(label4);
-            groupBox2.Controls.Add(labTimeStandard_ViewTime);
-            groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(labTimeStandard_StandardTime);
-            groupBox2.Controls.Add(label11);
-            groupBox2.Location = new Point(12, 221);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(193, 105);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "DGU TimeStandard";
+            labTimeScheduler_DayNow.Location = new Point(106, 74);
+            labTimeScheduler_DayNow.Name = "labTimeScheduler_DayNow";
+            labTimeScheduler_DayNow.Size = new Size(76, 23);
+            labTimeScheduler_DayNow.TabIndex = 4;
+            labTimeScheduler_DayNow.Text = "1900-00-00";
+            labTimeScheduler_DayNow.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // timeStandardTime
+            // labTimeScheduler_ViewTime
             // 
-            timeStandardTime.Format = DateTimePickerFormat.Time;
-            timeStandardTime.Location = new Point(118, 9);
-            timeStandardTime.Name = "timeStandardTime";
-            timeStandardTime.ShowUpDown = true;
-            timeStandardTime.Size = new Size(76, 23);
-            timeStandardTime.TabIndex = 2;
-            // 
-            // label1
-            // 
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(100, 23);
-            label1.TabIndex = 3;
-            label1.Text = "Standard Time : ";
-            label1.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // btnStandardTimeApply
-            // 
-            btnStandardTimeApply.Location = new Point(200, 9);
-            btnStandardTimeApply.Name = "btnStandardTimeApply";
-            btnStandardTimeApply.Size = new Size(75, 23);
-            btnStandardTimeApply.TabIndex = 4;
-            btnStandardTimeApply.Text = "Apply";
-            btnStandardTimeApply.UseVisualStyleBackColor = true;
-            // 
-            // btnViewTimeApply
-            // 
-            btnViewTimeApply.Location = new Point(200, 38);
-            btnViewTimeApply.Name = "btnViewTimeApply";
-            btnViewTimeApply.Size = new Size(75, 23);
-            btnViewTimeApply.TabIndex = 7;
-            btnViewTimeApply.Text = "Apply";
-            btnViewTimeApply.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            label2.Location = new Point(12, 38);
-            label2.Name = "label2";
-            label2.Size = new Size(100, 23);
-            label2.TabIndex = 6;
-            label2.Text = "View Time : ";
-            label2.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // timeViewTime
-            // 
-            timeViewTime.Format = DateTimePickerFormat.Time;
-            timeViewTime.Location = new Point(118, 38);
-            timeViewTime.Name = "timeViewTime";
-            timeViewTime.ShowUpDown = true;
-            timeViewTime.Size = new Size(76, 23);
-            timeViewTime.TabIndex = 5;
-            // 
-            // label3
-            // 
-            label3.Location = new Point(6, 19);
-            label3.Name = "label3";
-            label3.Size = new Size(100, 23);
-            label3.TabIndex = 4;
-            label3.Text = "Standard Time : ";
-            label3.TextAlign = ContentAlignment.MiddleRight;
+            labTimeScheduler_ViewTime.Location = new Point(106, 42);
+            labTimeScheduler_ViewTime.Name = "labTimeScheduler_ViewTime";
+            labTimeScheduler_ViewTime.Size = new Size(76, 23);
+            labTimeScheduler_ViewTime.TabIndex = 4;
+            labTimeScheduler_ViewTime.Text = "00:00:00";
+            labTimeScheduler_ViewTime.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // labTimeScheduler_StandardTime
             // 
@@ -173,68 +129,29 @@
             label8.Text = "View Time : ";
             label8.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // labTimeScheduler_ViewTime
+            // label3
             // 
-            labTimeScheduler_ViewTime.Location = new Point(106, 42);
-            labTimeScheduler_ViewTime.Name = "labTimeScheduler_ViewTime";
-            labTimeScheduler_ViewTime.Size = new Size(76, 23);
-            labTimeScheduler_ViewTime.TabIndex = 4;
-            labTimeScheduler_ViewTime.Text = "00:00:00";
-            labTimeScheduler_ViewTime.TextAlign = ContentAlignment.MiddleCenter;
+            label3.Location = new Point(6, 19);
+            label3.Name = "label3";
+            label3.Size = new Size(100, 23);
+            label3.TabIndex = 4;
+            label3.Text = "Standard Time : ";
+            label3.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // labTimeScheduler_DayNow
+            // groupBox2
             // 
-            labTimeScheduler_DayNow.Location = new Point(106, 74);
-            labTimeScheduler_DayNow.Name = "labTimeScheduler_DayNow";
-            labTimeScheduler_DayNow.Size = new Size(76, 23);
-            labTimeScheduler_DayNow.TabIndex = 4;
-            labTimeScheduler_DayNow.Text = "1900-00-00";
-            labTimeScheduler_DayNow.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            label4.Location = new Point(6, 19);
-            label4.Name = "label4";
-            label4.Size = new Size(100, 23);
-            label4.TabIndex = 4;
-            label4.Text = "Standard Time : ";
-            label4.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // label6
-            // 
-            label6.Location = new Point(6, 42);
-            label6.Name = "label6";
-            label6.Size = new Size(100, 23);
-            label6.TabIndex = 4;
-            label6.Text = "View Time : ";
-            label6.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // label11
-            // 
-            label11.Location = new Point(6, 74);
-            label11.Name = "label11";
-            label11.Size = new Size(100, 23);
-            label11.TabIndex = 4;
-            label11.Text = "Day Now : ";
-            label11.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // labTimeStandard_StandardTime
-            // 
-            labTimeStandard_StandardTime.Location = new Point(106, 19);
-            labTimeStandard_StandardTime.Name = "labTimeStandard_StandardTime";
-            labTimeStandard_StandardTime.Size = new Size(76, 23);
-            labTimeStandard_StandardTime.TabIndex = 4;
-            labTimeStandard_StandardTime.Text = "00:00:00";
-            labTimeStandard_StandardTime.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // labTimeStandard_ViewTime
-            // 
-            labTimeStandard_ViewTime.Location = new Point(106, 42);
-            labTimeStandard_ViewTime.Name = "labTimeStandard_ViewTime";
-            labTimeStandard_ViewTime.Size = new Size(76, 23);
-            labTimeStandard_ViewTime.TabIndex = 4;
-            labTimeStandard_ViewTime.Text = "00:00:00";
-            labTimeStandard_ViewTime.TextAlign = ContentAlignment.MiddleCenter;
+            groupBox2.Controls.Add(labTimeStandard_DayNow);
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(labTimeStandard_ViewTime);
+            groupBox2.Controls.Add(label6);
+            groupBox2.Controls.Add(labTimeStandard_StandardTime);
+            groupBox2.Controls.Add(label11);
+            groupBox2.Location = new Point(12, 189);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(200, 105);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "DGU TimeStandard";
             // 
             // labTimeStandard_DayNow
             // 
@@ -245,21 +162,262 @@
             labTimeStandard_DayNow.Text = "1900-00-00";
             labTimeStandard_DayNow.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // label4
+            // 
+            label4.Location = new Point(6, 19);
+            label4.Name = "label4";
+            label4.Size = new Size(100, 23);
+            label4.TabIndex = 4;
+            label4.Text = "Standard Time : ";
+            label4.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // labTimeStandard_ViewTime
+            // 
+            labTimeStandard_ViewTime.Location = new Point(106, 42);
+            labTimeStandard_ViewTime.Name = "labTimeStandard_ViewTime";
+            labTimeStandard_ViewTime.Size = new Size(76, 23);
+            labTimeStandard_ViewTime.TabIndex = 4;
+            labTimeStandard_ViewTime.Text = "00:00:00";
+            labTimeStandard_ViewTime.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            label6.Location = new Point(6, 42);
+            label6.Name = "label6";
+            label6.Size = new Size(100, 23);
+            label6.TabIndex = 4;
+            label6.Text = "View Time : ";
+            label6.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // labTimeStandard_StandardTime
+            // 
+            labTimeStandard_StandardTime.Location = new Point(106, 19);
+            labTimeStandard_StandardTime.Name = "labTimeStandard_StandardTime";
+            labTimeStandard_StandardTime.Size = new Size(76, 23);
+            labTimeStandard_StandardTime.TabIndex = 4;
+            labTimeStandard_StandardTime.Text = "00:00:00";
+            labTimeStandard_StandardTime.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            label11.Location = new Point(6, 74);
+            label11.Name = "label11";
+            label11.Size = new Size(100, 23);
+            label11.TabIndex = 4;
+            label11.Text = "Day Now : ";
+            label11.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // timeStandardTime
+            // 
+            timeStandardTime.Format = DateTimePickerFormat.Time;
+            timeStandardTime.Location = new Point(118, 9);
+            timeStandardTime.Name = "timeStandardTime";
+            timeStandardTime.ShowUpDown = true;
+            timeStandardTime.Size = new Size(76, 23);
+            timeStandardTime.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(100, 23);
+            label1.TabIndex = 3;
+            label1.Text = "Standard Time : ";
+            label1.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // btnStandardTimeApply
+            // 
+            btnStandardTimeApply.Location = new Point(200, 9);
+            btnStandardTimeApply.Name = "btnStandardTimeApply";
+            btnStandardTimeApply.Size = new Size(75, 23);
+            btnStandardTimeApply.TabIndex = 4;
+            btnStandardTimeApply.Text = "Apply";
+            btnStandardTimeApply.UseVisualStyleBackColor = true;
+            btnStandardTimeApply.Click += btnStandardTimeApply_Click;
+            // 
+            // btnViewTimeApply
+            // 
+            btnViewTimeApply.Location = new Point(200, 163);
+            btnViewTimeApply.Name = "btnViewTimeApply";
+            btnViewTimeApply.Size = new Size(75, 23);
+            btnViewTimeApply.TabIndex = 7;
+            btnViewTimeApply.Text = "Apply";
+            btnViewTimeApply.UseVisualStyleBackColor = true;
+            btnViewTimeApply.Click += btnViewTimeApply_Click;
+            // 
+            // label2
+            // 
+            label2.Location = new Point(12, 163);
+            label2.Name = "label2";
+            label2.Size = new Size(100, 23);
+            label2.TabIndex = 6;
+            label2.Text = "View Time : ";
+            label2.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // timeViewTime
+            // 
+            timeViewTime.Format = DateTimePickerFormat.Time;
+            timeViewTime.Location = new Point(118, 163);
+            timeViewTime.Name = "timeViewTime";
+            timeViewTime.ShowUpDown = true;
+            timeViewTime.Size = new Size(76, 23);
+            timeViewTime.TabIndex = 5;
+            // 
             // checkRealTime
             // 
             checkRealTime.AutoSize = true;
-            checkRealTime.Location = new Point(197, 67);
+            checkRealTime.Location = new Point(281, 163);
             checkRealTime.Name = "checkRealTime";
             checkRealTime.Size = new Size(78, 19);
             checkRealTime.TabIndex = 8;
             checkRealTime.Text = "Real Time";
             checkRealTime.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(labTimeScheduler_DayNow_NextDate);
+            groupBox3.Controls.Add(labTimeScheduler_ViewTime_NextDate);
+            groupBox3.Controls.Add(labTimeScheduler_StandardTime_NextDate);
+            groupBox3.Controls.Add(label12);
+            groupBox3.Controls.Add(label13);
+            groupBox3.Controls.Add(label14);
+            groupBox3.Location = new Point(218, 38);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(200, 111);
+            groupBox3.TabIndex = 9;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "DGU TimeScheduler - Next Date";
+            // 
+            // labTimeScheduler_DayNow_NextDate
+            // 
+            labTimeScheduler_DayNow_NextDate.Location = new Point(106, 74);
+            labTimeScheduler_DayNow_NextDate.Name = "labTimeScheduler_DayNow_NextDate";
+            labTimeScheduler_DayNow_NextDate.Size = new Size(76, 23);
+            labTimeScheduler_DayNow_NextDate.TabIndex = 4;
+            labTimeScheduler_DayNow_NextDate.Text = "1900-00-00";
+            labTimeScheduler_DayNow_NextDate.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // labTimeScheduler_ViewTime_NextDate
+            // 
+            labTimeScheduler_ViewTime_NextDate.Location = new Point(106, 42);
+            labTimeScheduler_ViewTime_NextDate.Name = "labTimeScheduler_ViewTime_NextDate";
+            labTimeScheduler_ViewTime_NextDate.Size = new Size(76, 23);
+            labTimeScheduler_ViewTime_NextDate.TabIndex = 4;
+            labTimeScheduler_ViewTime_NextDate.Text = "00:00:00";
+            labTimeScheduler_ViewTime_NextDate.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // labTimeScheduler_StandardTime_NextDate
+            // 
+            labTimeScheduler_StandardTime_NextDate.Location = new Point(106, 19);
+            labTimeScheduler_StandardTime_NextDate.Name = "labTimeScheduler_StandardTime_NextDate";
+            labTimeScheduler_StandardTime_NextDate.Size = new Size(76, 23);
+            labTimeScheduler_StandardTime_NextDate.TabIndex = 4;
+            labTimeScheduler_StandardTime_NextDate.Text = "00:00:00";
+            labTimeScheduler_StandardTime_NextDate.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            label12.Location = new Point(6, 74);
+            label12.Name = "label12";
+            label12.Size = new Size(100, 23);
+            label12.TabIndex = 4;
+            label12.Text = "Day Now : ";
+            label12.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label13
+            // 
+            label13.Location = new Point(6, 42);
+            label13.Name = "label13";
+            label13.Size = new Size(100, 23);
+            label13.TabIndex = 4;
+            label13.Text = "View Time : ";
+            label13.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label14
+            // 
+            label14.Location = new Point(6, 19);
+            label14.Name = "label14";
+            label14.Size = new Size(100, 23);
+            label14.TabIndex = 4;
+            label14.Text = "Standard Time : ";
+            label14.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(labTimeStandard_DayNow_NextDate);
+            groupBox4.Controls.Add(label16);
+            groupBox4.Controls.Add(labTimeStandard_ViewTime_NextDate);
+            groupBox4.Controls.Add(label18);
+            groupBox4.Controls.Add(labTimeStandard_StandardTime_NextDate);
+            groupBox4.Controls.Add(label20);
+            groupBox4.Location = new Point(218, 189);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(200, 105);
+            groupBox4.TabIndex = 10;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "DGU TimeStandard - Next Date";
+            // 
+            // labTimeStandard_DayNow_NextDate
+            // 
+            labTimeStandard_DayNow_NextDate.Location = new Point(106, 74);
+            labTimeStandard_DayNow_NextDate.Name = "labTimeStandard_DayNow_NextDate";
+            labTimeStandard_DayNow_NextDate.Size = new Size(76, 23);
+            labTimeStandard_DayNow_NextDate.TabIndex = 4;
+            labTimeStandard_DayNow_NextDate.Text = "1900-00-00";
+            labTimeStandard_DayNow_NextDate.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label16
+            // 
+            label16.Location = new Point(6, 19);
+            label16.Name = "label16";
+            label16.Size = new Size(100, 23);
+            label16.TabIndex = 4;
+            label16.Text = "Standard Time : ";
+            label16.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // labTimeStandard_ViewTime_NextDate
+            // 
+            labTimeStandard_ViewTime_NextDate.Location = new Point(106, 42);
+            labTimeStandard_ViewTime_NextDate.Name = "labTimeStandard_ViewTime_NextDate";
+            labTimeStandard_ViewTime_NextDate.Size = new Size(76, 23);
+            labTimeStandard_ViewTime_NextDate.TabIndex = 4;
+            labTimeStandard_ViewTime_NextDate.Text = "00:00:00";
+            labTimeStandard_ViewTime_NextDate.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label18
+            // 
+            label18.Location = new Point(6, 42);
+            label18.Name = "label18";
+            label18.Size = new Size(100, 23);
+            label18.TabIndex = 4;
+            label18.Text = "View Time : ";
+            label18.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // labTimeStandard_StandardTime_NextDate
+            // 
+            labTimeStandard_StandardTime_NextDate.Location = new Point(106, 19);
+            labTimeStandard_StandardTime_NextDate.Name = "labTimeStandard_StandardTime_NextDate";
+            labTimeStandard_StandardTime_NextDate.Size = new Size(76, 23);
+            labTimeStandard_StandardTime_NextDate.TabIndex = 4;
+            labTimeStandard_StandardTime_NextDate.Text = "00:00:00";
+            labTimeStandard_StandardTime_NextDate.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label20
+            // 
+            label20.Location = new Point(6, 74);
+            label20.Name = "label20";
+            label20.Size = new Size(100, 23);
+            label20.TabIndex = 4;
+            label20.Text = "Day Now : ";
+            label20.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(360, 354);
+            ClientSize = new Size(431, 301);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox3);
             Controls.Add(checkRealTime);
             Controls.Add(btnViewTimeApply);
             Controls.Add(label2);
@@ -269,10 +427,14 @@
             Controls.Add(timeStandardTime);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Form1";
             Text = "Form1";
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -300,5 +462,19 @@
         private Label labTimeStandard_StandardTime;
         private Label label11;
         private CheckBox checkRealTime;
+        private GroupBox groupBox3;
+        private Label labTimeScheduler_DayNow_NextDate;
+        private Label labTimeScheduler_ViewTime_NextDate;
+        private Label labTimeScheduler_StandardTime_NextDate;
+        private Label label12;
+        private Label label13;
+        private Label label14;
+        private GroupBox groupBox4;
+        private Label labTimeStandard_DayNow_NextDate;
+        private Label label16;
+        private Label labTimeStandard_ViewTime_NextDate;
+        private Label label18;
+        private Label labTimeStandard_StandardTime_NextDate;
+        private Label label20;
     }
 }
