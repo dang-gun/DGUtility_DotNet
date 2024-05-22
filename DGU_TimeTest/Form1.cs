@@ -67,7 +67,7 @@ public partial class Form1 : Form
     private void btnStandardTimeApply_Click(object sender, EventArgs e)
     {
         //UI의 시간 받아오기
-        DateTime dtSelect = timeStandardTime.Value;
+        DateTime dtSelect = timeStandardTime.Value; 
 
         this.TS.Reset(dtSelect.TimeOfDay);
         this.TS_ND.Reset(dtSelect.TimeOfDay, true);
