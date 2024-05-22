@@ -9,14 +9,16 @@
 
 예>
 기준 시간 '09:00'이면 '2024-05-21 09:00:00 ~ 2024-05-22 08:59:59' 까지는 '2024-05-21'로 표시됩니다.
+![이미지](https://raw.githubusercontent.com/dang-gun/DGUtility_DotNet/main/DGU_TimeTest/ProjectFiles/DGU_TimeStandard_001.png)
 
 반대의 기능도 있습니다.
 예>
 기준 시간 '09:00'이면 '2024-05-22 09:00:00 ~ 2024-05-23 08:59:59' 까지는 '2024-05-23'로 표시됩니다.
+![이미지](https://raw.githubusercontent.com/dang-gun/DGUtility_DotNet/main/DGU_TimeTest/ProjectFiles/DGU_TimeStandard_002.png)
 
 ## 사용방법
 1. TimeScheduler를 생성합니다.
-1. 
+
 ```
 TimeScheduler tsObj = new TimeScheduler(DateTime.Now, true);
 ```
@@ -31,3 +33,13 @@ bNextDay : 기준 시간이 지나면 다음날 취급할지 여부
 - 기본값 : false
 - true : 기준 시간이 지나면 다음날로 취급한다.
 - false : 기준 시간 지나기 전까지는 전날로 취급한다.
+
+2. 이벤트 연결
+1. 
+생성한 TimeScheduler 개체에 필요한 이벤트를 연결합니다.
+
+해당 조건에 맞는 타이밍에 이벤트가 전달됩니다.
+
+```
+tsObj.On1Second += TS_On1Second;
+```

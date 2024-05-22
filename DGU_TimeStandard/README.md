@@ -4,10 +4,12 @@
 
 예>
 기준 시간 '09:00'이면 '2024-05-21 09:00:00 ~ 2024-05-22 08:59:59' 까지는 '2024-05-21'로 표시됩니다.
+![이미지](https://raw.githubusercontent.com/dang-gun/DGUtility_DotNet/main/DGU_TimeTest/ProjectFiles/DGU_TimeStandard_001.png)
 
 반대의 기능도 있습니다.
 예>
 기준 시간 '09:00'이면 '2024-05-22 09:00:00 ~ 2024-05-23 08:59:59' 까지는 '2024-05-23'로 표시됩니다.
+![이미지](https://raw.githubusercontent.com/dang-gun/DGUtility_DotNet/main/DGU_TimeTest/ProjectFiles/DGU_TimeStandard_002.png)
 
 ## 사용방법
 
