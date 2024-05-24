@@ -19,12 +19,37 @@ public partial class Form1 : Form
         DateTime dtSelect = timeStandardTime.Value;
 
         this.TS = new TimeScheduler(dtSelect.TimeOfDay);
-        this.TS.On1Second += TS_On1Second;
+        this.TS.StopWatch_Add("1", 1
+            , (nNowLoopTickCount, nThisTickCount) => {
+                this.CrossThread_Winfom(() => {
+                    this.labTimeScheduler_StandardTime.Text
+                        = this.TS.LoopCountResetTime.ToString(@"hh\:mm\:ss");
+
+                    this.labTimeScheduler_ViewTime.Text
+                        = DateTime.Now.ToString(@"HH\:mm\:ss");
+
+                    this.labTimeScheduler_DayNow.Text
+                        = this.TS.TodayStandard.ToString(@"yyyy-MM-dd");
+                });
+            });
+        this.TimeScheduler_StopWatch_Add();
         this.TS.Start();
         
         
         this.TS_ND = new TimeScheduler(dtSelect.TimeOfDay, true);
-        this.TS_ND.On1Second += TS_ND_On1Second;
+        this.TS_ND.StopWatch_Add("1", 1
+            , (nNowLoopTickCount, nThisTickCount) => {
+                this.CrossThread_Winfom(() => {
+                    this.labTimeScheduler_StandardTime_NextDate.Text
+                        = this.TS_ND.LoopCountResetTime.ToString(@"hh\:mm\:ss");
+
+                    this.labTimeScheduler_ViewTime_NextDate.Text
+                        = DateTime.Now.ToString(@"HH\:mm\:ss");
+
+                    this.labTimeScheduler_DayNow_NextDate.Text
+                        = this.TS_ND.TodayStandard.ToString(@"yyyy-MM-dd");
+                });
+            });
         this.TS_ND.Start();
 
 
@@ -34,35 +59,48 @@ public partial class Form1 : Form
         this.TStd_ND = new TimeStandard(dtSelect.TimeOfDay, true);
     }
 
-    
-
-    private void TS_On1Second()
+    /// <summary>
+    /// TS에 테스트용 스톱워치를 추가한다.
+    /// </summary>
+    private void TimeScheduler_StopWatch_Add()
     {
-        this.CrossThread_Winfom(() => {
-            this.labTimeScheduler_StandardTime.Text
-                = this.TS.LoopTickCountResetTime.ToString(@"hh\:mm\:ss");
+        this.TS.StopWatch_Add("10", 10
+            , (nNowLoopTickCount, nThisTickCount) => {
+                this.CrossThread_Winfom(() => {
+                    this.lab10Sec.Text = $"{nNowLoopTickCount},{nThisTickCount}";
+                });
+            });
 
-            this.labTimeScheduler_ViewTime.Text
-                = DateTime.Now.ToString(@"HH\:mm\:ss");
+        this.TS.StopWatch_Add("30", 30
+            , (nNowLoopTickCount, nThisTickCount) => {
+                this.CrossThread_Winfom(() => {
+                    this.lab30Sec.Text = $"{nNowLoopTickCount},{nThisTickCount}";
+                });
+            });
 
-            this.labTimeScheduler_DayNow.Text
-                = this.TS.TodayStandard.ToString(@"yyyy-MM-dd");
-        });
+        this.TS.StopWatch_Add("60", 60
+            , (nNowLoopTickCount, nThisTickCount) => {
+                this.CrossThread_Winfom(() => {
+                    this.lab1Min.Text = $"{nNowLoopTickCount},{nThisTickCount}";
+                });
+            });
+
+        this.TS.StopWatch_Add("1800", 1800
+            , (nNowLoopTickCount, nThisTickCount) => {
+                this.CrossThread_Winfom(() => {
+                    this.lab30Min.Text = $"{nNowLoopTickCount},{nThisTickCount}";
+                });
+            });
+
+        this.TS.StopWatch_Add("3600", 3600
+            , (nNowLoopTickCount, nThisTickCount) => {
+                this.CrossThread_Winfom(() => {
+                    this.lab1Hour.Text = $"{nNowLoopTickCount},{nThisTickCount}";
+                });
+            });
     }
 
-    private void TS_ND_On1Second()
-    {
-        this.CrossThread_Winfom(() => {
-            this.labTimeScheduler_StandardTime_NextDate.Text
-                = this.TS_ND.LoopTickCountResetTime.ToString(@"hh\:mm\:ss");
 
-            this.labTimeScheduler_ViewTime_NextDate.Text
-                = DateTime.Now.ToString(@"HH\:mm\:ss");
-
-            this.labTimeScheduler_DayNow_NextDate.Text
-                = this.TS_ND.TodayStandard.ToString(@"yyyy-MM-dd");
-        });
-    }
 
     private void btnStandardTimeApply_Click(object sender, EventArgs e)
     {
@@ -89,11 +127,11 @@ public partial class Form1 : Form
     {
         this.CrossThread_Winfom(() => {
             this.labTimeScheduler_StandardTime.Text
-                = this.TS.LoopTickCountResetTime.ToString(@"hh\:mm\:ss");
+                = this.TS.LoopCountResetTime.ToString(@"hh\:mm\:ss");
 
 
             this.labTimeScheduler_StandardTime_NextDate.Text
-                = this.TS_ND.LoopTickCountResetTime.ToString(@"hh\:mm\:ss");
+                = this.TS_ND.LoopCountResetTime.ToString(@"hh\:mm\:ss");
 
 
 

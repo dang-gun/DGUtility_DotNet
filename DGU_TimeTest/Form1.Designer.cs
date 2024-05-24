@@ -63,10 +63,22 @@
             label18 = new Label();
             labTimeStandard_StandardTime_NextDate = new Label();
             label20 = new Label();
+            groupBox5 = new GroupBox();
+            lab30Min = new Label();
+            lab1Min = new Label();
+            label17 = new Label();
+            label10 = new Label();
+            lab30Sec = new Label();
+            label5 = new Label();
+            lab1Hour = new Label();
+            lab10Sec = new Label();
+            label15 = new Label();
+            label9 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
+            groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -146,7 +158,7 @@
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(labTimeStandard_StandardTime);
             groupBox2.Controls.Add(label11);
-            groupBox2.Location = new Point(12, 189);
+            groupBox2.Location = new Point(15, 263);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(200, 105);
             groupBox2.TabIndex = 1;
@@ -237,7 +249,7 @@
             // 
             // btnViewTimeApply
             // 
-            btnViewTimeApply.Location = new Point(200, 163);
+            btnViewTimeApply.Location = new Point(203, 237);
             btnViewTimeApply.Name = "btnViewTimeApply";
             btnViewTimeApply.Size = new Size(75, 23);
             btnViewTimeApply.TabIndex = 7;
@@ -247,7 +259,7 @@
             // 
             // label2
             // 
-            label2.Location = new Point(12, 163);
+            label2.Location = new Point(15, 237);
             label2.Name = "label2";
             label2.Size = new Size(100, 23);
             label2.TabIndex = 6;
@@ -257,7 +269,7 @@
             // timeViewTime
             // 
             timeViewTime.Format = DateTimePickerFormat.Time;
-            timeViewTime.Location = new Point(118, 163);
+            timeViewTime.Location = new Point(121, 237);
             timeViewTime.Name = "timeViewTime";
             timeViewTime.ShowUpDown = true;
             timeViewTime.Size = new Size(76, 23);
@@ -266,7 +278,7 @@
             // checkRealTime
             // 
             checkRealTime.AutoSize = true;
-            checkRealTime.Location = new Point(281, 163);
+            checkRealTime.Location = new Point(284, 237);
             checkRealTime.Name = "checkRealTime";
             checkRealTime.Size = new Size(78, 19);
             checkRealTime.TabIndex = 8;
@@ -350,7 +362,7 @@
             groupBox4.Controls.Add(label18);
             groupBox4.Controls.Add(labTimeStandard_StandardTime_NextDate);
             groupBox4.Controls.Add(label20);
-            groupBox4.Location = new Point(218, 189);
+            groupBox4.Location = new Point(221, 263);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(200, 105);
             groupBox4.TabIndex = 10;
@@ -411,11 +423,121 @@
             label20.Text = "Day Now : ";
             label20.TextAlign = ContentAlignment.MiddleRight;
             // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(lab30Min);
+            groupBox5.Controls.Add(lab1Min);
+            groupBox5.Controls.Add(label17);
+            groupBox5.Controls.Add(label10);
+            groupBox5.Controls.Add(lab30Sec);
+            groupBox5.Controls.Add(label5);
+            groupBox5.Controls.Add(lab1Hour);
+            groupBox5.Controls.Add(lab10Sec);
+            groupBox5.Controls.Add(label15);
+            groupBox5.Controls.Add(label9);
+            groupBox5.Location = new Point(12, 155);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(406, 73);
+            groupBox5.TabIndex = 11;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "DGU TimeScheduler Event";
+            // 
+            // lab30Min
+            // 
+            lab30Min.Location = new Point(204, 42);
+            lab30Min.Name = "lab30Min";
+            lab30Min.Size = new Size(70, 23);
+            lab30Min.TabIndex = 5;
+            lab30Min.Text = "0";
+            lab30Min.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lab1Min
+            // 
+            lab1Min.Location = new Point(204, 19);
+            lab1Min.Name = "lab1Min";
+            lab1Min.Size = new Size(70, 23);
+            lab1Min.TabIndex = 5;
+            lab1Min.Text = "0";
+            lab1Min.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label17
+            // 
+            label17.Location = new Point(148, 42);
+            label17.Name = "label17";
+            label17.Size = new Size(60, 23);
+            label17.TabIndex = 6;
+            label17.Text = "30 min : ";
+            label17.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label10
+            // 
+            label10.Location = new Point(148, 19);
+            label10.Name = "label10";
+            label10.Size = new Size(60, 23);
+            label10.TabIndex = 6;
+            label10.Text = "1 min : ";
+            label10.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lab30Sec
+            // 
+            lab30Sec.Location = new Point(72, 42);
+            lab30Sec.Name = "lab30Sec";
+            lab30Sec.Size = new Size(70, 23);
+            lab30Sec.TabIndex = 5;
+            lab30Sec.Text = "0";
+            lab30Sec.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            label5.Location = new Point(6, 42);
+            label5.Name = "label5";
+            label5.Size = new Size(60, 23);
+            label5.TabIndex = 6;
+            label5.Text = "30 sec : ";
+            label5.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lab1Hour
+            // 
+            lab1Hour.Location = new Point(330, 19);
+            lab1Hour.Name = "lab1Hour";
+            lab1Hour.Size = new Size(70, 23);
+            lab1Hour.TabIndex = 5;
+            lab1Hour.Text = "0";
+            lab1Hour.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lab10Sec
+            // 
+            lab10Sec.Location = new Point(72, 19);
+            lab10Sec.Name = "lab10Sec";
+            lab10Sec.Size = new Size(70, 23);
+            lab10Sec.TabIndex = 5;
+            lab10Sec.Text = "0";
+            lab10Sec.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label15
+            // 
+            label15.Location = new Point(272, 19);
+            label15.Name = "label15";
+            label15.Size = new Size(60, 23);
+            label15.TabIndex = 6;
+            label15.Text = "1 hour : ";
+            label15.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label9
+            // 
+            label9.Location = new Point(6, 19);
+            label9.Name = "label9";
+            label9.Size = new Size(60, 23);
+            label9.TabIndex = 6;
+            label9.Text = "10 sec : ";
+            label9.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(431, 301);
+            ClientSize = new Size(431, 377);
+            Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(checkRealTime);
@@ -435,6 +557,7 @@
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -476,5 +599,16 @@
         private Label label18;
         private Label labTimeStandard_StandardTime_NextDate;
         private Label label20;
+        private GroupBox groupBox5;
+        private Label lab10Sec;
+        private Label label9;
+        private Label lab30Sec;
+        private Label label5;
+        private Label lab1Min;
+        private Label label10;
+        private Label lab1Hour;
+        private Label label15;
+        private Label lab30Min;
+        private Label label17;
     }
 }

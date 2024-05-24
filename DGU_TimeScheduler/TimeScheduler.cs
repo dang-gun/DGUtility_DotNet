@@ -1,12 +1,15 @@
-﻿namespace DGUtility.TimeScheduler;
+﻿using DGU_TimeScheduler.ModelDatas;
+
+namespace DGUtility.TimeScheduler;
 
 /// <summary>
 /// 시간 스케줄러.
-/// <para>1틱 == 1초</para>
+/// <para>이 스케줄러는 1초에 한번씩 동작한다.</para>
 /// </summary>
 /// <remarks>
-/// 1틱이 1초보다 낮으면 정확한 호출 횟수를 보장할 수 없다.
-/// <para>이 라이브러리는 날짜를 처리하는데 목적이 있으므로 1초에 한번씩 동작하도록 구현되어 있다.</para>
+/// 이 라이브러리는 날짜를 처리하는데 목적이 있으므로 1초에 한번씩 동작하도록 구현되어 있다.
+/// <para>TimeScheduler.TodayStandard가 변경되면 LoopCount가 초기화된다.<br />
+/// 이로인해 반복 간격이 달라질 수 있음을 명심해야 한다.</para>
 /// </remarks>
 public class TimeScheduler
 {
@@ -16,117 +19,13 @@ public class TimeScheduler
     /// </summary>
     public delegate void TimeSchedulerDelegate();
 
-    /// <summary>
-    /// 1초 마다 발생하는 이벤트
-    /// </summary>
-    public event TimeSchedulerDelegate? On1Second;
-    /// <summary>
-    /// 1초 이벤트 호출
-    /// </summary>
-    public void Occur1SecondCall()
-    {
-        if (On1Second != null)
-        {
-            On1Second();
-        }
-    }
-
-    /// <summary>
-    /// 10초 마다 발생하는 이벤트
-    /// </summary>
-    public event TimeSchedulerDelegate? On10Second;
-    /// <summary>
-    /// 10초 이벤트 호출
-    /// </summary>
-    public void Occur10SecondCall()
-    {
-        if (On10Second != null)
-        {
-            On10Second();
-        }
-    }
-
-    /// <summary>
-    /// 30초 마다 발생하는 이벤트
-    /// </summary>
-    public event TimeSchedulerDelegate? On30Second;
-    /// <summary>
-    /// 30초 이벤트 호출
-    /// </summary>
-    public void Occur30SecondCall()
-    {
-        if (On30Second != null)
-        {
-            On30Second();
-        }
-    }
-
-    /// <summary>
-    /// 1분 마다 발생하는 이벤트
-    /// </summary>
-    public event TimeSchedulerDelegate? On1Minute;
-    /// <summary>
-    /// 1분 이벤트 호출
-    /// </summary>
-    public void Occur1MinuteCall()
-    {
-        if (On1Minute != null)
-        {
-            On1Minute();
-        }
-    }
-
-    /// <summary>
-    /// 10분 마다 발생하는 이벤트
-    /// </summary>
-    public event TimeSchedulerDelegate? On10Minute;
-    /// <summary>
-    /// 10분 이벤트 호출
-    /// </summary>
-    public void Occur10MinuteCall()
-    {
-        if (On10Minute != null)
-        {
-            On10Minute();
-        }
-    }
-
-    /// <summary>
-    /// 30분 마다 발생하는 이벤트
-    /// </summary>
-    public event TimeSchedulerDelegate? On30Minute;
-    /// <summary>
-    /// 30분 이벤트 호출
-    /// </summary>
-    public void Occur30MinuteCall()
-    {
-        if (On30Minute != null)
-        {
-            On30Minute();
-        }
-    }
-
-    /// <summary>
-    /// 1시간 마다 발생하는 이벤트
-    /// </summary>
-    public event TimeSchedulerDelegate? On1Hour;
-    /// <summary>
-    /// 1시간 이벤트 호출
-    /// </summary>
-    public void Occur1HourCall()
-    {
-        if (On1Hour != null)
-        {
-            On1Hour();
-        }
-    }
 
     /// <summary>
     /// 날짜 변경 이벤트
     /// </summary>
     /// <remarks>
-    /// On1Day와 달리 이 이벤트는 컴퓨터의 날짜가 바뀌면 발생한다.<br />
-    /// 기준 날짜를 기준으로 변경되는 이벤트는 On1Day를 사용해야 한다.
+    /// On1Day와 달리 이 이벤트는 컴퓨터의 날짜가 바뀌면 발생한다.
+    /// <para>기준 날짜를 기준으로 변경되는 이벤트는 On1DayStandard를 사용해야 한다.</para>
     /// </remarks>
     public event TimeSchedulerDelegate? On1Day;
     /// <summary>
@@ -142,7 +41,7 @@ public class TimeScheduler
 
     /// <summary>
     /// 하루 마다 발생하는 이벤트.
-    /// 기준 날짜가 변경되면 발생한다.
+    /// <para>기준 날짜가 변경되면 발생한다.</para>
     /// </summary>
     public event TimeSchedulerDelegate? On1DayStandard;
     /// <summary>
@@ -160,9 +59,9 @@ public class TimeScheduler
 
     /// <summary>
     /// 사용할 타이머.
-    /// 이 타이머의 인터벌이 1틱이 된다.
+    ///<para>이 타이머의 인터벌이 1틱이 된다.</para>
     /// </summary>
-    private System.Timers.Timer? m_Timer_1LoopTick;
+    private System.Timers.Timer? m_Timer_1LoopSecond;
 
 
     /// <summary>
@@ -171,18 +70,12 @@ public class TimeScheduler
     public TimeSchedulerOperationType TimeSchedulerOperationType { get; private set; }
 
     /// <summary>
-    /// 1루프틱에 걸리는 시간(Millisecond).
-    /// <para>1000ms(1초) 고정</para>
-    /// </summary>
-    public int LoopTick { get; } = 1000;
-
-    /// <summary>
     /// 누적된 루프 기준 틱카운트.
     /// </summary>
     /// <remarks>
-    /// 리셋시간(LoopTickCountResetTime)을 기준으로 0이된다.
+    /// 리셋시간(LoopCountResetTime)을 기준으로 0이된다.
     /// </remarks>
-    public int LoopTickCount { get; private set; }
+    public int LoopCount { get; private set; }
 
     /// <summary>
     /// 스케줄러가 가지고 있는 컴퓨터 기준 오늘 날짜.
@@ -207,7 +100,7 @@ public class TimeScheduler
     /// <remarks>
     /// TodayStandard는 이 시간을 기준으로 날짜가 변경된다.
     /// </remarks>
-    public TimeSpan LoopTickCountResetTime { get; private set; }
+    public TimeSpan LoopCountResetTime { get; private set; }
 
     /// <summary>
     /// 기준 시간이 지나면 다음날 취급할지 여부
@@ -218,6 +111,52 @@ public class TimeScheduler
     /// </remarks>
     public bool NextDay { get; private set; } = false;
 
+    #region StopWatchList 관련
+    /// <summary>
+    /// 지정한 간격만큼 반복 실행할 액션 리스트
+    /// </summary>
+    public List<StopWatchDataModel> StopWatchList 
+        = new List<StopWatchDataModel>();
+
+    /// <summary>
+    /// 스톱워치리스트에 내용을 추가하고 생성된 데이터모델을 리턴한다.
+    /// </summary>
+    /// <param name="sName"></param>
+    /// <param name="nTickCount"></param>
+    /// <param name="action"></param>
+    /// <returns></returns>
+    public StopWatchDataModel StopWatch_Add(
+        string sName
+        , int nTickCount
+        , Action<int, int> action)
+    {
+        StopWatchDataModel swReturn = new StopWatchDataModel();
+        swReturn.Name = sName;
+        swReturn.TickCount = nTickCount;
+        swReturn.Action = action;
+
+        this.StopWatchList.Add(swReturn);
+
+        return swReturn;
+    }
+
+    /// <summary>
+    /// 지정된 개채를 스톱워치리스트에서 지웁니다.
+    /// </summary>
+    /// <param name="swTarget"></param>
+    public void StopWatch_Remove(StopWatchDataModel swTarget)
+    {
+        this.StopWatchList.Remove(swTarget);
+    }
+    /// <summary>
+    /// 지정된 이름의 개체를 찾아 스톱워치리스트에서 지웁니다.
+    /// </summary>
+    /// <param name="sTargetName"></param>
+    public void StopWatch_Remove(string sTargetName)
+    {
+        this.StopWatchList.RemoveAll(r => r.Name == sTargetName);
+    }
+    #endregion
 
     /// <summary>
     /// 시간 스케줄러 생성
@@ -231,24 +170,24 @@ public class TimeScheduler
     /// <summary>
     /// 기준 시간을 지정하여 기준 시간 생성.
     /// </summary>
-    /// <param name="timeLoopTickResetTime">하루가 시작의 기준 시간
+    /// <param name="timeLoopResetTime">하루가 시작의 기준 시간
     /// <para>DateTime를 사용하는 경우 : DateTime.TimeOfDay</para>
     /// <para>문자열을 사용하는 경우 : TimeSpan.Parse("00:00:00")</para></param>
     /// <param name="bNextDay">기준 시간이 지나면 다음날 취급할지 여부</param>
-    public TimeScheduler(TimeSpan timeLoopTickResetTime, bool bNextDay = false)
+    public TimeScheduler(TimeSpan timeLoopResetTime, bool bNextDay = false)
     {
-        this.Reset(timeLoopTickResetTime, bNextDay);
+        this.Reset(timeLoopResetTime, bNextDay);
     }
 
     /// <summary>
     /// 기준 정보를 다시 저장한다.
     /// </summary>
-    /// <param name="timeLoopTickResetTime">하루가 시작의 기준 시간</param>
+    /// <param name="timeLoopResetTime">하루가 시작의 기준 시간</param>
     /// <param name="bNextDay">기준 시간이 지나면 다음날 취급할지 여부</param>
-    public void Reset(TimeSpan timeLoopTickResetTime, bool bNextDay = false)
+    public void Reset(TimeSpan timeLoopResetTime, bool bNextDay = false)
     {
         //정보 저장
-        this.LoopTickCountResetTime = timeLoopTickResetTime;
+        this.LoopCountResetTime = timeLoopResetTime;
         this.NextDay = bNextDay;
 
         //동작 상태 초기화
@@ -258,12 +197,12 @@ public class TimeScheduler
         this.Today = DateTime.Now.Date;
 
         //1 게임틱 타이머 ***************************************
-        this.m_Timer_1LoopTick = new System.Timers.Timer();
-        this.m_Timer_1LoopTick.Stop();
-        //1 게임틱당 시간
-        this.m_Timer_1LoopTick.Interval = this.LoopTick;
-        this.m_Timer_1LoopTick.Elapsed -= M_Timer_1LoopTick_Elapsed;
-        this.m_Timer_1LoopTick.Elapsed += M_Timer_1LoopTick_Elapsed;
+        this.m_Timer_1LoopSecond = new System.Timers.Timer();
+        this.m_Timer_1LoopSecond.Stop();
+        //1초 지정
+        this.m_Timer_1LoopSecond.Interval = 1000;
+        this.m_Timer_1LoopSecond.Elapsed -= M_Timer_1Loop_Elapsed;
+        this.m_Timer_1LoopSecond.Elapsed += M_Timer_1Loop_Elapsed;
 
 
         //지금 기준날짜 입력 **********************
@@ -280,53 +219,27 @@ public class TimeScheduler
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void M_Timer_1LoopTick_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+    private void M_Timer_1Loop_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
     {
         DateTime dtNow = DateTime.Now;
         DateTime dtNowDate = dtNow.Date;
         //TimeSpan timeNow = dtNow.TimeOfDay;
 
-        //1틱 처리 내용
-        ++this.LoopTickCount;
+        //1초 처리 내용
+        ++this.LoopCount;
 
-
-        //1초 이벤트
-        this.Occur1SecondCall();
-
-        //10초 이벤트
-        if (0 == (this.LoopTickCount % 10))
+        for (int i = 0; i < this.StopWatchList.Count; ++i)
         {
-            this.Occur10SecondCall();
-        }
+            StopWatchDataModel item = this.StopWatchList[i];
 
-        //30초 이벤트
-        if (0 == (this.LoopTickCount % 30))
-        {
-            this.Occur30SecondCall();
-        }
+            
+            if (1 == item.TickCount 
+                || 0 == (this.LoopCount % item.TickCount))
+            {//지정된 시간1초이다.(1초는 계산할 필요가 없으므로 바로 실행)
+             //간격에도달함
 
-        //1분 이벤트
-        if (0 == (this.LoopTickCount % 60))
-        {
-            this.Occur1MinuteCall();
-        }
-
-        //10분 이벤트
-        if (0 == (this.LoopTickCount % (60 * 10)))
-        {
-            this.Occur10MinuteCall();
-        }
-
-        //30분 이벤트
-        if (0 == (this.LoopTickCount % (60 * 30)))
-        {
-            this.Occur30MinuteCall();
-        }
-
-        //1시간 이벤트
-        if (0 == (this.LoopTickCount % (60 * 60)))
-        {
-            this.Occur1HourCall();
+                item.Action(this.LoopCount, item.TickCount);
+            }
         }
 
         //하루 이벤트
@@ -358,7 +271,7 @@ public class TimeScheduler
         {//날짜가 바뀜
 
             //루프카운트 초기화
-            this.LoopTickCount = 0;
+            this.LoopCount = 0;
             //기준 날짜 변경
             this.TodayStandard = dtDate_Next;
 
@@ -391,7 +304,7 @@ public class TimeScheduler
     /// </summary>
     public void Start()
     {
-        this.m_Timer_1LoopTick!.Start();
+        this.m_Timer_1LoopSecond!.Start();
     }
 
     /// <summary>
@@ -403,10 +316,10 @@ public class TimeScheduler
         DateTime dtNow = DateTime.Now;
         DateTime dtNowDate = dtNow.Date;
 
-        this.m_Timer_1LoopTick!.Stop();
+        this.m_Timer_1LoopSecond!.Stop();
 
         //루프카운트 초기화
-        this.LoopTickCount = 0;
+        this.LoopCount = 0;
         //날짜 리셋
         this.Today = dtNowDate;
     }
@@ -416,7 +329,7 @@ public class TimeScheduler
     /// </summary>
     public void Pause()
     {
-        this.m_Timer_1LoopTick!.Stop();
+        this.m_Timer_1LoopSecond!.Stop();
     }
 
 
@@ -443,7 +356,7 @@ public class TimeScheduler
         {//전날 취급
 
             //대상의 오늘 간격받기
-            if (dtTarget.TimeOfDay < this.LoopTickCountResetTime)
+            if (dtTarget.TimeOfDay < this.LoopCountResetTime)
             {//대상의 오늘 간격이 LoopTickCountResetTime보다 작다.
 
                 //전날로 취급해야 한다.
@@ -454,7 +367,7 @@ public class TimeScheduler
         {//다음날 취급
 
             //대상의 오늘 간격받기
-            if (dtTarget.TimeOfDay > this.LoopTickCountResetTime)
+            if (dtTarget.TimeOfDay > this.LoopCountResetTime)
             {//대상의 오늘 간격이 LoopTickCountResetTime보다 크다.
 
                 //다음날로 취급해야 한다.
