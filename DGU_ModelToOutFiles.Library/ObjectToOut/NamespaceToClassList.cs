@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 
 using DGUtility.ModelToOutFiles.Global.Attributes;
 
@@ -93,6 +94,8 @@ public class NamespaceToClassList
             ClassList.AddRange(
                 group
                     //출력 안함 설정이 안되는 항목만 추출
+                    //어셈블리 관련 예외처리는 여기서 하지말고 "//소속된 어셈블리를 모를때"에서 해야한다.
+                    //여기는 있으면 일단 추가한다.(Instance를 생성할 수 있는지만 가지고 판단하므로 여기서는 추가 처리가 없다.)
                     .Where(w => false == ModelOutputNoAttributeCheck.Instance.Value(w))
                     .Select(s =>
                         new ObjectOutModel()
@@ -149,7 +152,22 @@ public class NamespaceToClassList
                 //        listObj.Add(Activator.CreateInstance(t)!);
                 //}
 
-                throw new Exception("Could not find belonging assembly(소속된 어셈블리를 찾지 못함)");
+                //예측할 수 있는 어셈블리 없는 맴버
+                if (3 <= itemClass.ClassName.Length 
+                    && itemClass.ClassName.Substring(0, 3) == "<>c")
+                {//이름의 글자수가 3개 이상이고
+                    //앞에 3글자가 "<>c"이면 익명함수를 의미한다.
+
+                    //익명함수는 어셈블리가 없다.
+                    Debug.WriteLine("익명 함수가 있음");
+                }
+                else
+                {
+                    throw new Exception("Could not find belonging assembly(소속된 어셈블리를 찾지 못함)");
+                }
+
+
+                
             }
         }
     }

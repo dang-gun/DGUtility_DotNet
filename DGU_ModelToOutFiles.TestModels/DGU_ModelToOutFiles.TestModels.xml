@@ -4,7 +4,17 @@
         <name>DGU_ModelToOutFiles.TestModels</name>
     </assembly>
     <members>
-        <member name="T:DGU_ModelToOutFiles.TestModels.JsonCont.GenericTest`1">
+        <member name="T:DGU_ModelToOutFiles.TestModels.ExceptionCont.AnonymousFunction">
+            <summary>
+            익명함수가 존제하는 경우 출력하지 않는다.
+            </summary>
+        </member>
+        <member name="M:DGU_ModelToOutFiles.TestModels.ExceptionCont.AnonymousFunction.#ctor">
+            <summary>
+            익명함수 사용
+            </summary>
+        </member>
+        <member name="T:DGU_ModelToOutFiles.TestModels.ExceptionCont.GenericTest`1">
             <summary>
             제네릭 테스트
             </summary>
@@ -12,7 +22,7 @@
             제네릭은 출력하지 않는다.
             </remarks>
         </member>
-        <member name="P:DGU_ModelToOutFiles.TestModels.JsonCont.GenericTest`1.Int2">
+        <member name="P:DGU_ModelToOutFiles.TestModels.ExceptionCont.GenericTest`1.Int2">
             <summary>
             숫자
             </summary>

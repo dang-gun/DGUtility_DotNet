@@ -2,7 +2,7 @@
 using DGU_ModelToOutFiles.TestModels.TestCont;
 using DGUtility.ModelToOutFiles.Global.Attributes;
 
-namespace DGU_ModelToOutFiles.TestModels.JsonCont;
+namespace DGU_ModelToOutFiles.TestModels.ExceptionCont;
 
 
 /// <summary>
